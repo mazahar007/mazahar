@@ -99,6 +99,10 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .hero h1 .underline:after{content:"";position:absolute;left:0;right:0;bottom:6px;height:10px;background:var(--amber);opacity:.55;z-index:-1;border-radius:999px;transform-origin:left;animation:drawLine 1s var(--ease) .9s both}
 .lead{font-size:18.5px;line-height:1.65;color:var(--muted);max-width:580px}
 .lead strong{color:var(--ink)}
+/* One quiet pass draws attention to the paragraph's most useful proof points. */
+.lead-keyword{color:var(--ink2);font-weight:600;background-image:linear-gradient(90deg,color-mix(in srgb,var(--amber) 46%,transparent),color-mix(in srgb,var(--teal) 22%,transparent));background-repeat:no-repeat;background-position:0 91%;background-size:0% .5em;animation:heroKeywordMark .72s var(--ease) both;animation-delay:calc(4.7s + var(--k)*.22s)}
+@keyframes heroKeywordMark{from{background-size:0% .5em}to{background-size:100% .5em}}
+@media(prefers-reduced-motion:reduce){.lead-keyword{animation:none;background-size:100% .5em}}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 22px}
 .hero-actions .btn{padding:14px 22px;font-size:15px}
 .proof{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13.5px;color:var(--muted);font-weight:600}
@@ -106,21 +110,50 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .proof span:before{content:"✓";width:18px;height:18px;border-radius:50%;background:var(--teal-light);color:var(--teal);display:grid;place-items:center;font-size:11px}
 
 .hero-visual{position:relative;will-change:transform}
-.photo-frame{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:var(--surface);position:relative;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.photo-frame{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:var(--surface);position:relative;will-change:transform,box-shadow;animation:heroFrameBreathe 8.4s ease-in-out .2s infinite}
 .photo-frame::before{content:"";position:absolute;inset:0;border-radius:28px;padding:1.5px;background:conic-gradient(from var(--a,0deg),transparent 0 70%,var(--teal) 82%,var(--amber) 90%,transparent 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:3;pointer-events:none;animation:spinBorder 5s linear infinite}
 @property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
 @keyframes spinBorder{to{--a:360deg}}
-.photo-frame img{width:100%;height:520px;object-fit:cover;object-position:center 22%;transition:transform .8s var(--ease)}
-.photo-frame:hover img{transform:scale(1.03)}
+@keyframes heroFrameBreathe{
+  0%,100%{transform:translateY(0);box-shadow:var(--shadow-lg),0 0 0 rgba(12,118,105,0)}
+  50%{transform:translateY(-4px);box-shadow:var(--shadow-lg),0 18px 54px color-mix(in srgb,var(--teal) 20%,transparent)}
+}
+.photo-frame img{width:100%;height:520px;object-fit:cover;object-position:center 22%;will-change:transform;animation:heroPhotoZoom 8.4s cubic-bezier(.45,0,.55,1) infinite;transform-origin:center 38%}
+@keyframes heroPhotoZoom{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
 .photo-caption{position:absolute;left:16px;right:16px;bottom:16px;background:rgba(10,14,16,.88);backdrop-filter:blur(14px);color:#fff;border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:12px;z-index:2}
 .photo-caption b{font-size:16px;line-height:1.1;display:block}
 .photo-caption span{font-size:12.5px;opacity:.75}
-.badge-float{position:absolute;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:12px 14px;animation:floatY 5s ease-in-out infinite;backdrop-filter:blur(8px);z-index:4}
-.badge-1{top:18px;left:-18px}
-.badge-2{bottom:92px;right:-14px;text-align:right;animation-delay:1.2s;animation-duration:6s}
+.badge-float{position:absolute;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:12px 14px;backdrop-filter:blur(8px);z-index:4;will-change:transform,box-shadow;overflow:hidden}
+.badge-2{bottom:92px;right:-14px;text-align:right;animation:heroBadgeFloat 8.8s cubic-bezier(.45,0,.55,1) 2.1s infinite}
+@keyframes heroBadgeFloat{
+  0%,100%{transform:translate3d(0,0,0) rotate(0);box-shadow:var(--shadow)}
+  34%{transform:translate3d(-2px,-4px,0) rotate(-.25deg);box-shadow:var(--shadow),0 13px 32px color-mix(in srgb,var(--teal) 12%,transparent)}
+  70%{transform:translate3d(2px,-1px,0) rotate(.2deg);box-shadow:var(--shadow)}
+}
 .badge-float b{font-size:22px;line-height:1;font-family:"Bricolage Grotesque",sans-serif}
 .badge-float span{font-size:12px;color:var(--muted);font-weight:600;display:block;margin-top:2px}
-.play-pill{position:absolute;top:18px;right:18px;background:#fff;color:#111;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.06em;display:flex;gap:6px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18)}
+.play-pill{position:absolute;top:18px;right:18px;background:#fff;color:#111;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.06em;display:flex;gap:6px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.18);will-change:transform,box-shadow;overflow:hidden;animation:heroBadgeDrift 7.8s cubic-bezier(.45,0,.55,1) .9s infinite}
+@keyframes heroBadgeDrift{
+  0%,100%{transform:translate3d(0,0,0) rotate(0);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+  38%{transform:translate3d(-3px,3px,0) rotate(.3deg);box-shadow:0 11px 28px rgba(0,0,0,.2)}
+  72%{transform:translate3d(2px,-2px,0) rotate(-.2deg);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+}
+.badge-float::after,.play-pill::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(112deg,transparent 30%,rgba(255,255,255,.32) 48%,transparent 66%);transform:translateX(-145%);pointer-events:none;animation:heroBadgeSheen 8.8s var(--ease) infinite}
+.play-pill::after{animation-delay:1.15s;animation-duration:7.8s}
+@keyframes heroBadgeSheen{0%,58%{transform:translateX(-145%)}78%,100%{transform:translateX(145%)}}
+@media(max-width:900px){
+  .photo-frame{animation-name:heroFrameBreatheMobile}
+  .photo-frame img{animation-name:heroPhotoZoomMobile}
+  .badge-2{animation-name:heroBadgeFloatMobile}
+  .play-pill{animation-name:heroBadgeDriftMobile}
+}
+@keyframes heroFrameBreatheMobile{0%,100%{transform:translateY(0);box-shadow:var(--shadow-lg),0 0 0 rgba(12,118,105,0)}50%{transform:translateY(-2px);box-shadow:var(--shadow-lg),0 12px 34px color-mix(in srgb,var(--teal) 12%,transparent)}}
+@keyframes heroPhotoZoomMobile{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+@keyframes heroBadgeFloatMobile{0%,100%{transform:translate3d(0,0,0)}40%{transform:translate3d(-1px,-2px,0)}72%{transform:translate3d(1px,-1px,0)}}
+@keyframes heroBadgeDriftMobile{0%,100%{transform:translate3d(0,0,0)}42%{transform:translate3d(-1px,2px,0)}74%{transform:translate3d(1px,-1px,0)}}
+@media(prefers-reduced-motion:reduce){
+  .photo-frame,.photo-frame img,.badge-float,.play-pill,.badge-float::after,.play-pill::after{animation:none!important;transform:none!important}
+}
 
 /* MARQUEE */
 .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2);padding:14px 0;overflow:hidden;white-space:nowrap;margin-top:56px}
@@ -163,7 +196,6 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 
 /* PROCESS */
 .process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
-.process::before{content:"";position:absolute;top:44px;left:6%;right:6%;height:2px;background:repeating-linear-gradient(90deg,var(--teal) 0 8px,transparent 8px 16px);opacity:.28;pointer-events:none}
 .step{background:var(--surface2);border:1px solid var(--line);border-radius:20px;padding:22px;position:relative;transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
 .step:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .step b{font-size:42px;font-family:"Bricolage Grotesque",sans-serif;line-height:1;color:var(--teal);display:inline-block;transition:transform .4s var(--ease-bounce)}
@@ -233,8 +265,48 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .cta-card{background:#fff;color:#111;border-radius:20px;padding:20px}
 .cta-card a{font-weight:800;color:var(--teal);word-break:break-all}
 
-footer{padding:28px 0 36px;border-top:1px solid var(--line);color:var(--muted);font-size:13.5px}
-.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+/* MODERN MOTION FOOTER */
+.site-footer{position:relative;margin-top:34px;background:#090D0F;color:#F4F1EA;overflow:hidden;isolation:isolate;border-top:0;font-size:14px}
+.site-footer::before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;right:-250px;top:-310px;border:1px solid rgba(46,211,183,.18);box-shadow:0 0 0 70px rgba(46,211,183,.035),0 0 0 140px rgba(245,184,65,.025);animation:footerHalo 14s ease-in-out infinite alternate;pointer-events:none;z-index:-1}
+@keyframes footerHalo{to{transform:translate(-36px,44px) rotate(18deg) scale(1.08)}}
+.footer-ticker{display:flex;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.12);background:#0D1316;white-space:nowrap}
+.footer-ticker-track{display:flex;min-width:max-content;animation:footerTicker 24s linear infinite}
+.footer-ticker-track span{padding:15px 28px;font-family:"Bricolage Grotesque",sans-serif;font-size:13px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.68)}
+.footer-ticker-track b{color:#2ED3B7;font-weight:800}
+@keyframes footerTicker{to{transform:translateX(-50%)}}
+.footer-main{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(280px,.8fr);gap:clamp(40px,7vw,100px);align-items:center;padding:82px 0 68px}
+.footer-status{display:inline-flex;align-items:center;gap:9px;color:#B8C3C7;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.footer-status i{width:9px;height:9px;border-radius:50%;background:#2ED3B7;box-shadow:0 0 0 0 rgba(46,211,183,.45);animation:footerPulse 2s ease-out infinite}
+@keyframes footerPulse{70%{box-shadow:0 0 0 10px rgba(46,211,183,0)}100%{box-shadow:0 0 0 0 rgba(46,211,183,0)}}
+.footer-pitch h2{max-width:760px;margin:18px 0 18px;color:#fff;font-size:clamp(46px,6.8vw,86px);line-height:.88;letter-spacing:-.055em}
+.footer-pitch h2 span{font-family:"Newsreader",serif;font-style:italic;font-weight:500;color:#F5B841}
+.footer-pitch p{max-width:610px;margin:0;color:#A9B4B8;font-size:16px;line-height:1.7}
+.footer-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.footer-actions .btn{padding:14px 22px}
+.footer-actions .footer-primary{background:#F4F1EA;color:#090D0F;border-color:#F4F1EA}
+.footer-actions .footer-primary:hover{background:#2ED3B7;border-color:#2ED3B7;color:#07110F}
+.footer-actions .footer-secondary{color:#F4F1EA;border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.035)}
+.footer-actions .footer-secondary:hover{border-color:#F4F1EA;background:rgba(255,255,255,.07)}
+.footer-motion{position:relative;min-height:340px;display:grid;place-items:center}
+.footer-orbit{position:relative;width:min(320px,78vw);aspect-ratio:1;border-radius:50%;border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;animation:footerDrift 7s ease-in-out infinite}
+.footer-orbit::before,.footer-orbit::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.11)}
+.footer-orbit::before{inset:28px;border-style:dashed;animation:spinSlow 22s linear infinite reverse}
+.footer-orbit::after{inset:62px;border-color:rgba(46,211,183,.34);box-shadow:inset 0 0 45px rgba(46,211,183,.06)}
+@keyframes footerDrift{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-12px) rotate(2deg)}}
+.footer-core{position:relative;z-index:2;width:132px;height:132px;border-radius:50%;display:grid;place-items:center;text-align:center;background:#F4F1EA;color:#090D0F;box-shadow:0 22px 65px rgba(0,0,0,.45)}
+.footer-core b{font-family:"Bricolage Grotesque",sans-serif;font-size:47px;line-height:.78;letter-spacing:-.06em}.footer-core small{display:block;margin-top:8px;font-size:9px;line-height:1.25;letter-spacing:.15em;text-transform:uppercase;font-weight:800}
+.footer-satellite{position:absolute;width:15px;height:15px;border-radius:50%;background:#F5B841;top:34px;left:48px;box-shadow:0 0 0 7px rgba(245,184,65,.12);animation:footerSatellite 8s linear infinite;transform-origin:112px 126px}
+.footer-satellite.two{width:10px;height:10px;background:#2ED3B7;top:auto;left:auto;right:42px;bottom:52px;transform-origin:-102px -94px;animation-duration:11s;animation-direction:reverse}
+@keyframes footerSatellite{to{transform:rotate(360deg)}}
+.footer-directory{padding:34px 0;border-top:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:34px}
+.footer-brandline{max-width:340px;color:#909DA2;line-height:1.65}.footer-brandline strong{display:block;color:#fff;font-family:"Bricolage Grotesque",sans-serif;font-size:19px;margin-bottom:8px}
+.footer-col h3{font-family:"Public Sans",sans-serif;font-size:11px;line-height:1.2;letter-spacing:.15em;text-transform:uppercase;color:#728087;margin:0 0 13px}
+.footer-links{display:flex;flex-wrap:wrap;gap:8px 18px}.footer-links a{color:#D7DDDF;font-weight:600;transition:color .25s,transform .25s var(--ease)}.footer-links a:hover{color:#2ED3B7;transform:translateX(3px)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0 28px;color:#748187;font-size:12.5px}
+.footer-bottom span:last-child{text-align:right}.footer-bottom b{color:#AAB4B8;font-weight:700}
+@media(max-width:760px){.footer-main{grid-template-columns:1fr;padding:62px 0 48px;gap:24px}.footer-pitch h2{font-size:50px}.footer-motion{min-height:280px}.footer-orbit{width:270px}.footer-directory{grid-template-columns:1fr 1fr}.footer-brandline{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-direction:column}.footer-bottom span:last-child{text-align:left}}
+@media(max-width:460px){.footer-pitch h2{font-size:42px}.footer-actions{display:grid}.footer-actions .btn{width:100%}.footer-directory{grid-template-columns:1fr}.footer-brandline{grid-column:auto}.footer-motion{min-height:248px}.footer-orbit{width:230px}.footer-core{width:108px;height:108px}.footer-core b{font-size:38px}.footer-ticker-track span{padding:13px 20px;font-size:11px}}
+@media(prefers-reduced-motion:reduce){.site-footer::before,.footer-ticker-track,.footer-status i,.footer-orbit,.footer-orbit::before,.footer-satellite{animation:none!important}}
 
 .reveal{opacity:1;transform:none}
 .js .reveal{opacity:0;transform:translateY(44px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0ms)}
@@ -268,9 +340,7 @@ footer{padding:28px 0 36px;border-top:1px solid var(--line);color:var(--muted);f
 .marquee-outline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;overflow:hidden;white-space:nowrap;background:var(--surface)}
 .marquee-outline .marquee-track{font-size:30px;font-family:"Bricolage Grotesque",sans-serif;letter-spacing:.04em;text-transform:uppercase;color:transparent;-webkit-text-stroke:1.2px var(--muted2);animation-duration:30s}
 .marquee-outline .marquee-track b{color:var(--teal);-webkit-text-stroke:0;font-weight:800}
-/* process — marching connector + lit steps */
-.process::before{animation:marchLine 1.4s linear infinite}
-@keyframes marchLine{to{background-position:16px 0}}
+/* process — lit steps */
 .step{overflow:hidden}
 .step::after{content:"";position:absolute;inset:0;background:radial-gradient(320px circle at 18% 0%,color-mix(in srgb, var(--teal) 13%, transparent),transparent 65%);opacity:0;transition:opacity .45s var(--ease);pointer-events:none}
 .step:hover::after{opacity:1}
@@ -332,7 +402,7 @@ footer{padding:28px 0 36px;border-top:1px solid var(--line);color:var(--muted);f
   .nav-cta{gap:8px;flex-shrink:0}
   .nav-cta .btn-primary{padding:10px 14px;font-size:13.5px}
   .photo-frame img{height:420px}
-  .badge-1{left:10px}.badge-2{right:10px}
+  .badge-2{right:10px}
   .builder-right{border-left:0;border-top:1px solid var(--line)}
   .showcase-main{height:280px}.showcase-side img{height:200px}
 }
@@ -392,19 +462,79 @@ footer{padding:28px 0 36px;border-top:1px solid var(--line);color:var(--muted);f
 .hook-result{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px;padding:10px 12px;border:1px dashed color-mix(in srgb, var(--teal) 45%, var(--line));border-radius:14px;background:color-mix(in srgb, var(--teal-light) 55%, transparent);font-size:13px;font-weight:700;color:var(--ink2)}
 .hook-result b{color:var(--teal-dark);letter-spacing:.02em}
 .hook-result .dotsep{color:var(--muted2)}
-/* 2 — Real portfolio showreel */
-.showreel{position:relative;border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:#0B0F12;color:#fff;aspect-ratio:16/9;min-height:420px;isolation:isolate}
-.showreel-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#0B0F12;z-index:0}
-.showreel::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,10,.92) 0%,rgba(5,10,10,.68) 42%,rgba(5,10,10,.08) 78%),linear-gradient(0deg,rgba(5,10,10,.42),transparent 45%);z-index:1;pointer-events:none}
-.showreel-content{position:relative;z-index:2;padding:34px;max-width:570px;pointer-events:none}
-.showreel-content h3{font-size:clamp(28px,3.6vw,44px);color:#fff;line-height:1}
-.showreel-content p{color:rgba(255,255,255,.82);font-size:15.5px;line-height:1.65}
-.reel-play{width:62px;height:62px;border-radius:50%;border:0;background:#fff;color:#111;display:grid;place-items:center;font-size:18px;box-shadow:0 14px 34px rgba(0,0,0,.35);transition:transform .4s var(--ease);flex-shrink:0;cursor:pointer;pointer-events:auto}
-.reel-play:hover{transform:scale(1.08)}
-.reel-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.reel-tags span{padding:7px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(5,10,10,.36);backdrop-filter:blur(8px);font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
-.reel-note{font-size:12px !important;opacity:.72;margin-top:12px}
-.reel-soundless{position:absolute;right:16px;top:16px;z-index:3;padding:7px 10px;border-radius:999px;background:rgba(5,10,10,.7);border:1px solid rgba(255,255,255,.25);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;pointer-events:none}
+.sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.hero-copy{position:relative;min-width:0}
+.typewriter-heading{min-height:2.85em}
+.typewriter-visual{display:inline}
+.typewriter-heading .typed-accent{color:var(--teal);position:relative;white-space:nowrap}
+.typewriter-heading .typed-accent::after{content:"";position:absolute;left:0;right:0;bottom:5px;height:8px;border-radius:999px;background:var(--amber);opacity:.42;z-index:-1;transform-origin:left;animation:drawLine .7s var(--ease) both}
+.typewriter-heading .typed-serif{font-family:"Newsreader",serif;font-style:italic;font-weight:500}
+.typewriter-caret{display:inline-block;width:.075em;height:.82em;margin-left:.08em;vertical-align:-.03em;border-radius:99px;background:var(--teal);animation:typeCaret .78s steps(1,end) infinite}
+.typewriter-heading.is-complete .typewriter-caret{height:.68em;opacity:.72}
+@keyframes typeCaret{50%{opacity:0}}
+/* Purpose-built animated sticker in the open area above and beside the first headline line. */
+.typewriter-sticker{position:absolute;z-index:6;top:-18px;right:18px;width:108px;padding:6px 6px 4px;border:1px solid color-mix(in srgb,var(--teal) 34%,var(--line));border-radius:25px 20px 23px 17px;background:var(--surface);box-shadow:0 14px 30px rgba(17,20,23,.12);opacity:0;transform:translateY(12px) rotate(4deg) scale(.88);transition:opacity .28s ease,transform .38s var(--ease-bounce);pointer-events:none}
+.typewriter-sticker::after{content:"";position:absolute;width:13px;height:13px;left:-5px;bottom:10px;background:var(--surface);border-left:1px solid color-mix(in srgb,var(--teal) 34%,var(--line));border-bottom:1px solid color-mix(in srgb,var(--teal) 34%,var(--line));transform:rotate(38deg);border-radius:0 0 0 4px}
+.typewriter-heading.is-typing + .typewriter-sticker{opacity:1;transform:translateY(0) rotate(-2deg) scale(1)}
+.typewriter-sticker svg{width:100%;height:auto;display:block;overflow:visible}
+.typewriter-heading.is-typing + .typewriter-sticker svg{animation:stickerHover 1.6s ease-in-out infinite}
+.typewriter-heading.is-typing + .typewriter-sticker .sticker-hand{transform-box:fill-box;transform-origin:80% 80%;animation:stickerType .22s steps(2,end) infinite alternate}
+.typewriter-heading.is-typing + .typewriter-sticker .sticker-hand-2{animation-delay:.11s}
+.typewriter-heading.is-typing + .typewriter-sticker .sticker-carriage{animation:stickerCarriage 1.15s steps(6,end) infinite}
+.typewriter-heading.is-typing + .typewriter-sticker .sticker-line{stroke-dasharray:30;animation:stickerLine 1.15s linear infinite}
+.typewriter-heading.is-typing + .typewriter-sticker .sticker-spark{transform-box:fill-box;transform-origin:center;animation:stickerSpark .8s ease-in-out infinite alternate}
+@keyframes stickerHover{50%{transform:translateY(-5px) rotate(1.5deg)}}
+@keyframes stickerType{to{transform:rotate(-13deg) translateY(2px)}}
+@keyframes stickerCarriage{0%{transform:translateX(-4px)}90%{transform:translateX(10px)}100%{transform:translateX(-4px)}}
+@keyframes stickerLine{from{stroke-dashoffset:30}to{stroke-dashoffset:0}}
+@keyframes stickerSpark{to{transform:scale(1.35) rotate(18deg);opacity:.35}}
+.typing-sound-toggle{display:inline-flex;align-items:center;gap:8px;margin:-4px 0 14px;padding:7px 11px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--muted);font:700 11.5px/1 "Public Sans",sans-serif;letter-spacing:.04em;cursor:pointer;transition:color .3s,border-color .3s,transform .3s var(--ease)}
+.typing-sound-toggle:hover{color:var(--teal-dark);border-color:color-mix(in srgb,var(--teal) 45%,var(--line));transform:translateY(-1px)}
+.typing-sound-toggle i{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 color-mix(in srgb,var(--teal) 40%,transparent)}
+.typing-sound-toggle.is-playing i{animation:typingSoundPulse .7s ease-out infinite}
+@keyframes typingSoundPulse{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media(max-width:1100px){.typewriter-sticker{right:8px;width:100px;top:-12px}}
+@media(max-width:900px){.typewriter-sticker{right:4%;width:98px;top:-10px}}
+@media(max-width:560px){.typewriter-heading{min-height:3.8em}.typewriter-sticker{position:relative;top:auto;right:auto;width:86px;margin:-24px 4px 8px auto;padding:4px}.typing-sound-toggle{margin-top:0}.js .hero-actions{opacity:1;animation:none;transform:none}}
+@media(prefers-reduced-motion:reduce){.typewriter-caret,.typing-sound-toggle.is-playing i,.typewriter-heading .typed-accent::after,.typewriter-sticker svg,.typewriter-sticker *{animation:none!important}.typewriter-sticker{display:none}}
+/* 2 — MotionFlow-inspired showreel: a compact copy capsule leaves the film in view */
+#showreel{padding:0;overflow:hidden;background:#05090A}
+.showreel-stage{position:relative;width:100%;aspect-ratio:16/9;min-height:680px;display:grid;align-items:center;isolation:isolate;overflow:hidden}
+.showreel-backdrop{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;background:#05090A;filter:saturate(.94) brightness(.54);transform:scale(1.02);z-index:-3}
+.showreel-stage::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,6,7,.62),rgba(2,6,7,.08) 48%,rgba(2,6,7,.28));z-index:-2;pointer-events:none}
+.showreel-stage::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 45%,rgba(46,211,183,.1),transparent 31%),linear-gradient(180deg,rgba(0,0,0,.06),rgba(0,0,0,.42));z-index:-1;pointer-events:none}
+.showreel-shell{position:relative;isolation:isolate;padding:86px 0 34px}
+/* Keep this lead showcase readable even when the global scroll-reveal observer has not fired yet. */
+.js .showreel-intro.reveal{opacity:1;transform:none}
+.showreel-intro{position:relative;width:min(535px,49%);min-height:360px;border-radius:48px;overflow:hidden;color:#fff;filter:drop-shadow(0 28px 64px rgba(0,0,0,.42));isolation:isolate}
+.showreel-copy{position:relative;min-height:360px;padding:clamp(32px,3.2vw,44px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(132deg,rgba(245,184,65,.93) 0%,rgba(232,90,36,.89) 44%,rgba(44,183,165,.88) 100%);z-index:2}
+.showreel-copy::before{content:"";position:absolute;width:330px;height:330px;left:-160px;bottom:-210px;border:66px solid rgba(255,255,255,.1);border-radius:50%;pointer-events:none}
+.showreel-kicker{display:flex;align-items:center;gap:10px;margin-bottom:16px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.showreel-kicker::before{content:"";width:27px;height:2px;background:#fff}
+.showreel-copy h2{font-size:clamp(37px,3.8vw,54px);line-height:.94;letter-spacing:-.05em;color:#fff;max-width:470px;position:relative}
+.showreel-copy h2 .serif{display:block;font-size:.79em;color:#FFF3CB;margin-top:6px}
+.showreel-copy p{max-width:445px;margin:18px 0 0;color:rgba(255,255,255,.94);font-size:14px;line-height:1.58;position:relative}
+.reel-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:19px;position:relative}
+.reel-tags span{padding:6px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.52);background:rgba(5,38,34,.14);font-size:8.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.reel-play{position:absolute;right:clamp(7%,12vw,18%);top:50%;z-index:5;width:92px;height:92px;border-radius:50%;border:1px solid rgba(255,255,255,.82);background:rgba(255,255,255,.94);color:#0A3732;display:grid;place-items:center;font-size:22px;box-shadow:0 16px 40px rgba(0,0,0,.34);transform:translateY(-50%) scale(.78);opacity:0;transition:transform .4s var(--ease),opacity .35s,background .3s;cursor:pointer;backdrop-filter:blur(8px)}
+.showreel-stage:hover .reel-play,.reel-play:focus-visible{opacity:1;transform:translateY(-50%) scale(1)}
+.reel-play:hover{transform:translateY(-50%) scale(1.08);background:#fff}
+.reel-duration{position:absolute;right:clamp(7%,12vw,18%);top:calc(50% + 62px);z-index:4;padding:8px 11px;border-radius:999px;background:rgba(5,10,10,.72);border:1px solid rgba(255,255,255,.28);color:#fff;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:0;transform:translateY(7px);transition:opacity .35s,transform .35s;pointer-events:none}
+.showreel-stage:hover .reel-duration,.reel-play:focus-visible+.reel-duration{opacity:1;transform:none}
+.showreel-signature{display:flex;justify-content:center;align-items:center;gap:14px;padding:24px 12px 0;color:rgba(255,255,255,.74);font-size:12px;font-weight:800;letter-spacing:.15em;text-align:center;text-transform:uppercase}
+.showreel-signature::before,.showreel-signature::after{content:"";width:min(90px,10vw);height:1px;background:rgba(255,255,255,.24)}
+.reel-modal[hidden]{display:none}
+.reel-modal{position:fixed;inset:0;z-index:11000;display:grid;place-items:center;padding:clamp(12px,3vw,42px)}
+.reel-modal-backdrop{position:absolute;inset:0;border:0;background:rgba(2,5,6,.92);backdrop-filter:blur(18px);cursor:zoom-out}
+.reel-modal-shell{position:relative;z-index:1;width:min(1280px,94vw);aspect-ratio:16/9;background:#05090A;border:1px solid rgba(255,255,255,.2);border-radius:24px;overflow:hidden;box-shadow:0 36px 110px rgba(0,0,0,.76);animation:reelModalIn .5s var(--ease) both}
+@keyframes reelModalIn{from{opacity:0;transform:scale(.92) translateY(18px)}to{opacity:1;transform:none}}
+.reel-modal-slot{width:100%;height:100%;background:#05090A}
+.reel-modal .showreel-backdrop{position:relative;inset:auto;width:100%;height:100%;filter:none;transform:none;z-index:0;object-fit:contain}
+.reel-modal-close{position:absolute;right:14px;top:14px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.36);background:rgba(5,10,10,.74);color:#fff;font-size:22px;cursor:pointer;display:grid;place-items:center;transition:background .25s,transform .25s var(--ease)}
+.reel-modal-close:hover{background:#fff;color:#111;transform:scale(1.05)}
+@media(max-width:900px){.showreel-stage{aspect-ratio:auto;min-height:0}.showreel-shell{padding:66px 0 30px}.showreel-intro{width:min(500px,76%);min-height:0;border-radius:40px}.showreel-copy{min-height:0;padding:38px}.showreel-backdrop{filter:saturate(.88) brightness(.4)}.reel-play{right:12%;top:50%;bottom:auto;transform:translateY(-50%);opacity:1}.reel-play:hover,.reel-play:focus-visible{transform:translateY(-50%) scale(1.06)}.reel-duration{right:12%;top:calc(50% + 55px);bottom:auto;transform:none;opacity:1}.showreel-signature{padding-bottom:28px}}
+@media(max-width:560px){.showreel-stage{min-height:620px}.showreel-shell{padding:42px 0 20px}.showreel-intro{width:88%;border-radius:28px}.showreel-copy{padding:28px 22px 26px}.showreel-copy h2{font-size:clamp(34px,10.5vw,46px)}.showreel-copy p{font-size:13px;line-height:1.55}.reel-play{right:50%;top:auto;bottom:94px;width:64px;height:64px;font-size:17px;transform:translateX(50%)}.reel-play:hover,.reel-play:focus-visible{transform:translateX(50%) scale(1.06)}.reel-duration{right:50%;top:auto;bottom:65px;transform:translateX(50%);font-size:9px}.showreel-signature{padding:18px 4px 112px;font-size:9px;letter-spacing:.08em;line-height:1.5}.reel-tags span{font-size:8px}.reel-modal{padding:8px}.reel-modal-shell{width:100%;border-radius:14px}.reel-modal-close{right:8px;top:8px;width:38px;height:38px}}
+@media(prefers-reduced-motion:reduce){.showreel-backdrop,.reel-modal-shell{animation:none!important}}
 /* 3 — Hook Story Conversion */
 .hsc{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .hsc-card{border-radius:22px;padding:24px;border:1px solid var(--line);background:var(--surface);position:relative;overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
@@ -509,13 +639,13 @@ body.has-cursor .cursor-dot,body.has-cursor .cursor-ring{display:block}
 @media (prefers-color-scheme: dark){
   :root{--bg:#07090B;--bg2:#0B0F12;--surface:#11181C;--surface2:#131C20;--line:#263239;--line2:#1E2A30}
   .hero{background:radial-gradient(900px 480px at 85% -10%,rgba(46,211,183,.13),transparent 60%),radial-gradient(700px 420px at 0% 20%,rgba(245,184,65,.08),transparent 55%)}
-  .showreel{border-color:#2A3A41;box-shadow:0 30px 80px rgba(0,0,0,.65),0 0 0 1px rgba(46,211,183,.08)}
+  .showreel-intro{box-shadow:0 30px 80px rgba(0,0,0,.65),0 0 0 1px rgba(46,211,183,.08)}
   .pkg.featured{box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 44px rgba(245,184,65,.08)}
   .cta{box-shadow:0 24px 60px rgba(12,118,105,.35)}
   .service,.work-card,.hsc-card{box-shadow:0 10px 30px rgba(0,0,0,.28)}
 }
-@media(max-width:900px){.hsc,.work-grid,.compare{grid-template-columns:1fr 1fr}.showreel-content{padding:24px}.showreel{min-height:300px}}
-@media(max-width:560px){.hsc,.work-grid,.compare{grid-template-columns:1fr}.slot-bar{width:100%}.testi-slide{padding:20px}.testi-slide blockquote{font-size:18px}.showreel{aspect-ratio:auto;min-height:540px}.showreel-video{height:265px;bottom:auto}.showreel::after{background:linear-gradient(180deg,transparent 0,rgba(5,10,10,.72) 38%,#0B0F12 52%)}.showreel-content{padding:20px;margin-top:185px}.reel-soundless{top:12px;right:12px}.reel-play{width:52px;height:52px}.js .showreel.reveal{opacity:1;transform:none}.js .showreel.wipe{clip-path:inset(0)}}
+@media(max-width:900px){.hsc,.work-grid,.compare{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.hsc,.work-grid,.compare{grid-template-columns:1fr}.slot-bar{width:100%}.testi-slide{padding:20px}.testi-slide blockquote{font-size:18px}}
 /* ===== SECTION TRANSITIONS + SPACING RHYTHM — Zajno motion × MZ Media whitespace ===== */
 /* one generous, consistent vertical rhythm for every section (MZ Media style) */
 html{scroll-padding-top:96px}
@@ -625,8 +755,7 @@ main .section.inview .section-head .kicker::before{width:28px}
 .platform-card-copy{position:relative;z-index:3;padding:25px;display:flex;min-height:530px;flex-direction:column}
 .platform-card-copy h3{font-size:27px;line-height:1;margin-bottom:9px;color:#fff}
 .platform-card-copy p{font-size:14px;line-height:1.55;max-width:310px;color:rgba(255,255,255,.78);margin:0}
-.platform-card-copy .platform-arrow{margin-top:auto;align-self:flex-end;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.38);font-size:24px;transition:background .3s,color .3s,transform .35s var(--ease)}
-.platform-card:hover .platform-arrow{background:#fff;color:#111;transform:translateX(4px)}
+.platform-card-copy .platform-arrow{display:none}
 .platform-card.design{background:#0A0C0D}
 .platform-card.design::before{content:"";position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F5B841,#E85A24 40%,#0C7669 72%,transparent 73%);left:50%;top:42%;transform:translate(-50%,-50%);filter:saturate(.9);animation:designOrb 7s ease-in-out infinite alternate;z-index:0}
 @keyframes designOrb{to{transform:translate(-46%,-54%) rotate(24deg) scale(1.08)}}
@@ -692,8 +821,6 @@ body.lightbox-open{overflow:hidden}
 @keyframes iconPop{from{opacity:0;transform:scale(.35) rotate(-18deg)}to{opacity:1;transform:none}}
 #process.inview .process .step{animation:processStep .9s var(--ease) both;animation-delay:var(--d,0ms)}
 @keyframes processStep{from{opacity:0;transform:translateY(34px) rotateX(12deg);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
-#process.inview .process::after{content:"";position:absolute;top:43px;left:6%;right:6%;height:3px;background:linear-gradient(90deg,var(--teal),var(--amber));transform-origin:left;animation:routeDraw 1.25s var(--ease) .28s both;pointer-events:none}
-@keyframes routeDraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 #about.inview .about-photo{animation:aboutFrameIn 1.05s var(--ease) both}
 #about.inview .about-grid>div:last-child{animation:aboutCopyIn .95s var(--ease) .16s both}
 @keyframes aboutFrameIn{from{opacity:0;transform:translateX(-54px) rotate(-2deg);clip-path:inset(0 100% 0 0 round 24px)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0 round 24px)}}
@@ -711,7 +838,7 @@ body.lightbox-open{overflow:hidden}
 #faq .faq-item:nth-child(1){--faq-i:0}#faq .faq-item:nth-child(2){--faq-i:1}#faq .faq-item:nth-child(3){--faq-i:2}#faq .faq-item:nth-child(4){--faq-i:3}#faq .faq-item:nth-child(5){--faq-i:4}
 @keyframes faqSweep{from{opacity:0;transform:translateX(-30px);clip-path:inset(0 100% 0 0 round 16px)}to{opacity:1;transform:none;clip-path:inset(0 0 0 0 round 16px)}}
 @media(max-width:560px){.gallery-lightbox{padding:8px}.lightbox-shell{width:100%;max-height:96vh;border-radius:18px}.lightbox-content{padding:10px}.lightbox-content .project-panel-copy{min-height:58vh}.project-panel::after{opacity:1;transform:none}.lightbox-title b{font-size:15px}}
-@media(prefers-reduced-motion:reduce){.lightbox-shell,.section.inview .hsc-card,#services.inview .service-icon,#process.inview .process .step,#process.inview .process::after,#about.inview .about-photo,#about.inview .about-grid>div:last-child,#work.inview .work-card img,#packages.inview .pkg,#packages.inview .compare-card,#brief.inview .builder-left,#brief.inview .builder-right,#faq.inview .faq-item{animation:none!important}}
+@media(prefers-reduced-motion:reduce){.lightbox-shell,.section.inview .hsc-card,#services.inview .service-icon,#process.inview .process .step,#about.inview .about-photo,#about.inview .about-grid>div:last-child,#work.inview .work-card img,#packages.inview .pkg,#packages.inview .compare-card,#brief.inview .builder-left,#brief.inview .builder-right,#faq.inview .faq-item{animation:none!important}}
 
 /* ===== REFERENCE-MATCHED MOTION FOR THE 8 SELECTED SECTIONS =====
    Entrance sequences stay attached to the actual cards, not a decorative block above them. */
@@ -742,11 +869,7 @@ body.lightbox-open{overflow:hidden}
 @keyframes serviceScan{0%{transform:scaleX(0);transform-origin:left}49%{transform:scaleX(1);transform-origin:left}50%{transform:scaleX(1);transform-origin:right}100%{transform:scaleX(0);transform-origin:right}}
 #services .service:hover{transform:translateY(-8px) rotateX(1.5deg);box-shadow:0 26px 62px rgba(17,20,23,.12)}
 
-/* 03 — Process: a route draws through the cards, then the steps click into place. */
-#process .process::before{background:var(--line);opacity:1;animation:none}
-#process .process::after{content:"";position:absolute;top:43px;left:6%;right:6%;height:3px;border-radius:999px;background:linear-gradient(90deg,var(--teal),var(--amber));transform:scaleX(0);transform-origin:left;z-index:0}
-#process.inview .process::after{animation:processRoute 1.45s var(--ease) .2s both}
-@keyframes processRoute{to{transform:scaleX(1)}}
+/* 03 — Process: steps click into place. */
 #process .process .step{opacity:0;transform:translateY(36px) scale(.97)}
 #process.inview .process .step{animation:processCard .8s var(--ease-bounce) both;animation-delay:calc(var(--pi,0)*150ms + 320ms)}
 #process .process .step:nth-child(1){--pi:0}#process .process .step:nth-child(2){--pi:1}#process .process .step:nth-child(3){--pi:2}#process .process .step:nth-child(4){--pi:3}
@@ -826,7 +949,6 @@ body.lightbox-open{overflow:hidden}
 #faq .faq-item.open .faq-q span::after{transform:rotate(0)}
 
 @media(max-width:900px){
-  #process .process::after{display:none}
   #packages .pkg:nth-child(1),#packages .pkg:nth-child(3){transform:translateY(38px)}
 }
 @media(max-width:560px){
@@ -839,8 +961,438 @@ body.lightbox-open{overflow:hidden}
 }
 @media(prefers-reduced-motion:reduce){
   #framework .hsc-card,#services .service,#process .step,#about .about-photo,#about .about-grid>div:last-child>*,#work .work-card,#work .work-card img,#work .work-body,#packages .pkg,#packages .compare-card,#brief .builder-left,#brief .builder-right,#faq .faq-item{opacity:1!important;transform:none!important;clip-path:none!important;animation:none!important}
-  #brief .builder-right::after,#framework .hsc-card::before,#process .process::after{display:none!important}
+  #brief .builder-right::after,#framework .hsc-card::before{display:none!important}
 }
+
+/* ===== SERVICES — dimensional capability wall, a darker counterpoint to Work ===== */
+.services-wall-section{position:relative;overflow:hidden;background:#091012;color:#F5F2EA;border-top:1px solid rgba(255,255,255,.09);border-bottom:1px solid rgba(255,255,255,.09);isolation:isolate}
+.services-wall-section::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 420px at 18% 18%,rgba(46,211,183,.16),transparent 66%),radial-gradient(680px 420px at 88% 76%,rgba(245,184,65,.10),transparent 68%);pointer-events:none;z-index:-1}
+.services-wall-head{margin-bottom:20px;align-items:start}
+.services-wall-head h2{color:#F8F5EE;max-width:760px;font-size:clamp(42px,5.6vw,76px);line-height:.9;letter-spacing:-.045em}
+.services-wall-head p{color:#9EABAE;margin-top:6px}
+.services-wall-head .kicker{color:#2ED3B7}.services-wall-head .kicker::before{background:#2ED3B7}
+.services-wall-stage{position:relative;max-width:1240px;height:690px;margin:0 auto;perspective:1700px;perspective-origin:50% 42%;overflow:visible;cursor:grab}
+.services-wall-stage:active{cursor:grabbing}
+.services-wall-stage::before{content:"";position:absolute;left:7%;right:7%;bottom:38px;height:90px;background:radial-gradient(ellipse,rgba(0,0,0,.78),transparent 70%);filter:blur(18px);pointer-events:none}
+.service-wall-grid{position:absolute;inset:32px 26px 72px;display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:22px!important;transform-style:preserve-3d;will-change:transform}
+.services-wall-section .section-head.reveal{opacity:1!important;transform:none!important;filter:none!important}.services-wall-section .motion-word{opacity:1!important;transform:none!important}
+#services .service-wall-card{--si:0;--depth:0px;--lift:0px;--ry:0deg;position:relative!important;inset:auto!important;min-width:0;padding:0!important;border:0!important;border-radius:6px!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;opacity:1;transform:translate3d(0,var(--lift),var(--depth)) rotateX(0) rotateY(var(--ry)) scale(1);transform-style:preserve-3d;will-change:transform,opacity;filter:none}
+#services.inview .service-wall-card{animation:serviceWallArrive 1.05s var(--ease) both!important;animation-delay:calc(var(--si)*105ms + 120ms)!important}
+@keyframes serviceWallArrive{from{opacity:0;filter:blur(7px);transform:translate3d(0,calc(var(--lift) + 108px),calc(var(--depth) - 170px)) rotateX(13deg) rotateY(var(--ry)) scale(.88)}to{opacity:1;filter:none;transform:translate3d(0,var(--lift),var(--depth)) rotateX(0) rotateY(var(--ry)) scale(1)}}
+#services .service-wall-card::before{display:none!important}
+.service-card-surface{height:100%;min-height:252px;padding:22px 22px 20px;display:grid;grid-template-columns:52px 1fr;grid-template-rows:auto auto 1fr auto;column-gap:16px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.14);border-radius:6px;background:var(--card-bg,#F3EFE6);color:var(--card-ink,#111417);box-shadow:0 28px 68px rgba(0,0,0,.38);transform-style:preserve-3d;transition:box-shadow .45s var(--ease),border-color .45s;animation:serviceWallDrift 6.2s ease-in-out infinite;animation-delay:var(--float,-1s)}
+.service-wall-card:nth-child(even) .service-card-surface{animation-direction:alternate-reverse}
+@keyframes serviceWallDrift{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.service-card-surface::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 28%,rgba(255,255,255,.28) 48%,transparent 67%);transform:translateX(-145%);pointer-events:none}
+#services.inview .service-wall-card:nth-child(2n) .service-card-surface::after{animation:serviceWallSweep 6.8s var(--ease) 1.5s infinite}
+#services.inview .service-wall-card:nth-child(2n+1) .service-card-surface::after{animation:serviceWallSweep 7.6s var(--ease) 3.1s infinite}
+@keyframes serviceWallSweep{0%,68%{transform:translateX(-145%)}92%,100%{transform:translateX(145%)}}
+.service-wall-card:hover .service-card-surface{box-shadow:0 40px 88px rgba(0,0,0,.52);border-color:var(--card-accent,#2ED3B7)}
+.service-wall-card:nth-child(2) .service-card-surface,.service-wall-card:nth-child(6) .service-card-surface{--card-bg:#11191C;--card-ink:#F6F2EA;border-color:rgba(255,255,255,.16)}
+.service-wall-card:nth-child(4) .service-card-surface{--card-bg:#0C7669;--card-ink:#fff;border-color:#2ED3B7}
+.service-glyph{grid-row:1/3;width:52px;height:52px;display:grid;place-items:center;border:1px solid color-mix(in srgb,var(--card-accent,#2ED3B7) 48%,transparent);color:var(--card-accent,#0C7669);background:color-mix(in srgb,var(--card-accent,#2ED3B7) 10%,transparent);transform:translateZ(22px)}
+.service-glyph svg{width:25px;height:25px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.service-wall-card:nth-child(4) .service-glyph{color:#fff;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.28)}
+.service-wall-card:nth-child(2) .service-glyph,.service-wall-card:nth-child(6) .service-glyph{color:#2ED3B7}
+#services .service-wall-card .service-num{align-self:start;color:color-mix(in srgb,var(--card-ink,#111417) 56%,transparent);font-size:10.5px;line-height:1.2;letter-spacing:.15em;transform:translateZ(14px)}
+#services .service-wall-card h3{grid-column:2;font-size:22px;line-height:1.02;margin:8px 0 12px;color:var(--card-ink,#111417);letter-spacing:-.025em;transform:translateZ(18px)}
+#services .service-wall-card p{grid-column:1/-1;color:color-mix(in srgb,var(--card-ink,#111417) 68%,transparent);font-size:13.6px;line-height:1.55;margin:4px 0 14px}
+#services .service-wall-card ul{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px 8px;align-self:end}
+#services .service-wall-card ul li{font-size:10.5px;line-height:1.25;letter-spacing:.05em;text-transform:uppercase;border:1px solid color-mix(in srgb,var(--card-ink,#111417) 17%,transparent);padding:6px 8px;font-weight:800}
+#services .service-wall-card ul li::before{display:none}
+.service-wall-card:nth-child(4) p{color:rgba(255,255,255,.76)!important}.service-wall-card:nth-child(4) .service-num{color:rgba(255,255,255,.58)!important}
+.service-wall-caption{position:absolute;left:26px;right:26px;bottom:22px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:#819094;font-size:12px;font-weight:700;letter-spacing:.02em}
+.service-wall-meter{width:min(300px,34vw);height:1px;background:rgba(255,255,255,.14);overflow:hidden}
+.service-wall-meter i{display:block;width:30%;height:100%;background:#2ED3B7;box-shadow:0 0 12px rgba(46,211,183,.8);animation:serviceMeter 4.8s var(--ease) infinite alternate}
+@keyframes serviceMeter{to{transform:translateX(235%)}}
+@media(max-width:900px){
+  .services-wall-stage{height:auto;cursor:default}
+  .service-wall-grid{position:relative;inset:auto;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important;transform:none!important}
+  #services .service-wall-card{opacity:1;filter:none;transform:perspective(1000px) rotateY(var(--tab-ry,1deg))!important}
+  #services .service-wall-card:nth-child(even){--tab-ry:-1deg}
+  #services.inview .service-wall-card{animation:serviceWallMobile .8s var(--ease) both!important;animation-delay:calc(var(--si)*80ms)!important}
+  @keyframes serviceWallMobile{from{opacity:0;transform:translateY(34px) scale(.96)!important}to{opacity:1;transform:perspective(1000px) rotateY(var(--tab-ry,1deg))!important}}
+  .service-card-surface{min-height:284px}
+  .service-wall-caption{position:relative;inset:auto;margin-top:24px}
+  .services-wall-stage::before{display:none}
+}
+@media(max-width:560px){
+  .services-wall-head h2{font-size:42px}.services-wall-head{margin-bottom:26px}
+  .service-wall-grid{grid-template-columns:1fr!important}
+  #services .service-wall-card{transform:none!important}
+  #services.inview .service-wall-card{animation-name:serviceWallPhone!important}
+  @keyframes serviceWallPhone{from{opacity:0;transform:translateY(28px)!important}to{opacity:1;transform:none!important}}
+  .service-card-surface{min-height:0;border-radius:4px;padding:20px}
+  .service-wall-caption{align-items:flex-start}.service-wall-caption span{max-width:220px}.service-wall-meter{width:76px;margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  #services .service-wall-card{opacity:1!important;filter:none!important;transform:none!important;animation:none!important}.service-card-surface,.service-card-surface::after,.service-wall-meter i{animation:none!important}.service-wall-grid{transform:none!important}
+}
+
+/* ===== WORK — scroll-driven Webflow-style 3D project wall ===== */
+.work-wall-section{overflow:hidden;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-top:72px;padding-bottom:28px}
+.client-experience-section{padding-top:32px;padding-bottom:72px}
+.work-wall-head{display:grid;justify-items:center;text-align:center;margin-bottom:0}
+.work-wall-head .kicker{justify-content:center}
+.work-wall-head h2{font-size:clamp(58px,8.7vw,116px);line-height:.82;letter-spacing:-.062em;max-width:none}
+.work-hash{color:var(--teal)}
+.work-wall-head p{max-width:680px;margin-top:18px}
+.work-wall-stage{height:650px;position:relative;perspective:1900px;perspective-origin:50% 44%;margin:12px calc(50% - 50vw) 0;overflow:hidden;isolation:isolate;cursor:grab;background:linear-gradient(180deg,var(--surface) 0%,var(--surface) 69%,var(--bg2) 100%)}
+.work-wall-stage:active{cursor:grabbing}
+.work-wall-stage::before{content:"";position:absolute;left:50%;bottom:34px;width:min(1180px,88vw);height:78px;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(17,20,23,.2),transparent 70%);filter:blur(18px);z-index:0}
+.work-wall-deck{position:absolute;inset:14px 0 42px;transform-style:preserve-3d;will-change:transform}
+.work-wall-panel{appearance:none;border:0;padding:0;background:none;color:inherit;font:inherit;text-align:left;cursor:zoom-in;position:absolute;left:50%;top:10px;width:clamp(218px,18.5vw,294px);height:372px;transform-style:preserve-3d;transform:translateX(calc(-50% + var(--x) + var(--scroll-x,0px))) translateY(calc(var(--y) + var(--scroll-y,0px))) translateZ(var(--z)) rotateY(var(--ry)) rotateZ(var(--rz));z-index:var(--zi);transition:filter .4s ease;filter:saturate(.9)}
+.work-wall-panel:hover{filter:saturate(1.08)}
+.work-wall-panel:focus-visible{outline:3px solid var(--teal);outline-offset:7px}
+.work-wall-panel::after{content:"View";position:absolute;right:10px;top:10px;padding:7px 10px;border-radius:999px;background:rgba(8,13,15,.82);color:#fff;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;opacity:0;transform:translateY(6px);transition:opacity .3s var(--ease),transform .3s var(--ease);z-index:5;pointer-events:none}
+.work-wall-panel:hover::after,.work-wall-panel:focus-visible::after{opacity:1;transform:none}
+.work-wall-panel-inner{height:100%;display:grid;grid-template-rows:47% 53%;overflow:hidden;background:var(--surface);border:1px solid color-mix(in srgb,var(--line) 76%,transparent);box-shadow:0 28px 68px rgba(17,20,23,.22);animation:workWallFloat 7s ease-in-out infinite;animation-delay:var(--delay);transform-origin:center}
+.work-wall-panel:nth-child(even) .work-wall-panel-inner{animation-direction:alternate-reverse}
+@keyframes workWallFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+.work-wall-panel img,.work-visual{width:100%;height:100%;object-fit:cover;transition:transform .85s var(--ease)}
+.work-wall-panel:hover img,.work-wall-panel:hover .work-visual{transform:scale(1.045)}
+.work-wall-copy{padding:17px 18px 19px;display:flex;flex-direction:column;background:var(--surface)}
+.work-wall-copy h3{font-size:19px;line-height:1.02;margin:9px 0 7px;letter-spacing:-.03em}
+.work-wall-copy p{font-size:12.6px;line-height:1.48;color:var(--muted);margin:0}
+.work-wall-copy .work-meta{margin-top:auto;order:3;padding-top:11px;border-top:1px solid var(--line2)}
+.work-wall-copy .work-meta+h3{margin-top:9px}
+.work-detail{display:none}
+.work-wall-panel:nth-child(3n) .work-wall-copy{background:#0B0F12;color:#fff}
+.work-wall-panel:nth-child(3n) .work-wall-copy p{color:rgba(255,255,255,.68)}
+.work-wall-panel:nth-child(3n) .work-meta{border-color:rgba(255,255,255,.14)}
+.work-wall-panel:nth-child(4n) .work-wall-copy{background:var(--teal);color:#fff}
+.work-wall-panel:nth-child(4n) .work-wall-copy p{color:rgba(255,255,255,.78)}
+.work-wall-panel:nth-child(4n) .work-meta{border-color:rgba(255,255,255,.22)}
+.work-wall-panel:nth-child(4n) .work-meta span:first-child{color:#fff}
+.work-visual{position:relative;overflow:hidden;background:#11181B;color:#fff;isolation:isolate}
+.work-visual::before{content:"";position:absolute;inset:14%;border:1px solid rgba(255,255,255,.24);transform:rotate(-5deg)}
+.work-visual b{position:absolute;left:18px;top:14px;font-family:"Bricolage Grotesque",sans-serif;font-size:54px;line-height:1;letter-spacing:-.08em;z-index:2}
+.work-visual i{position:absolute;display:block;background:currentColor;opacity:.82}
+.visual-cuts{background:#E85A24}.visual-cuts i:nth-of-type(1){left:18px;right:18px;bottom:25px;height:9px}.visual-cuts i:nth-of-type(2){left:18px;width:42%;bottom:42px;height:5px}.visual-cuts i:nth-of-type(3){right:18px;width:31%;bottom:42px;height:5px}
+.visual-captions{background:#0C7669}.visual-captions i{left:20px;right:20px;height:8px}.visual-captions i:nth-of-type(1){bottom:48px}.visual-captions i:nth-of-type(2){bottom:31px;right:54px}.visual-captions i:nth-of-type(3){bottom:14px;right:88px}
+.visual-ai{background:#152025}.visual-ai::before{inset:30px;border-radius:50%;border-color:#2ED3B7;box-shadow:0 0 0 18px rgba(46,211,183,.1)}.visual-ai i{width:10px;height:10px;border-radius:50%;background:#F5B841}.visual-ai i:nth-of-type(1){right:20%;top:21%}.visual-ai i:nth-of-type(2){left:22%;bottom:18%}.visual-ai i:nth-of-type(3){right:28%;bottom:24%}
+.visual-audit{background:#F0E8D8;color:#10201E}.visual-audit i{left:26px;bottom:24px;width:18px;border-radius:3px 3px 0 0}.visual-audit i:nth-of-type(1){height:45px}.visual-audit i:nth-of-type(2){height:77px;left:55px}.visual-audit i:nth-of-type(3){height:105px;left:84px;background:var(--teal)}
+.visual-thumb{background:#0B0F12}.visual-thumb::before{inset:24px;transform:none;box-shadow:70px 0 0 rgba(255,255,255,.08),0 58px 0 rgba(255,255,255,.08),70px 58px 0 rgba(232,90,36,.72)}.visual-thumb b{color:#F5B841}
+.visual-wave{background:#F5B841;color:#111}.visual-wave i{bottom:25px;width:7px;border-radius:999px}.visual-wave i:nth-of-type(1){left:28px;height:46px}.visual-wave i:nth-of-type(2){left:45px;height:84px}.visual-wave i:nth-of-type(3){left:62px;height:61px}.visual-wave::after{content:"";position:absolute;left:79px;right:24px;bottom:25px;height:72px;border-top:7px solid currentColor;border-bottom:7px solid currentColor}
+.work-wall-section.inview .work-wall-panel-inner{animation-name:workWallAssemble,workWallFloat;animation-duration:1s,7s;animation-timing-function:var(--ease),ease-in-out;animation-fill-mode:both,both;animation-iteration-count:1,infinite;animation-delay:calc(var(--zi)*48ms),calc(var(--delay) + 1.05s)}
+@keyframes workWallAssemble{from{opacity:0;transform:translateY(90px) scale(.84);filter:blur(7px)}to{opacity:1;transform:translateY(0) scale(1);filter:none}}
+.work-wall-beam{position:absolute;left:6%;right:6%;top:51%;height:2px;background:linear-gradient(90deg,transparent,var(--teal),var(--amber),transparent);box-shadow:0 0 20px color-mix(in srgb,var(--teal) 38%,transparent);transform:scaleX(0);transform-origin:left;z-index:20;pointer-events:none}
+.work-wall-section.inview .work-wall-beam{animation:workBeam 1.8s var(--ease) .55s both}
+@keyframes workBeam{0%{transform:scaleX(0);opacity:0}20%{opacity:1}76%{transform:scaleX(1);opacity:1}100%{transform:scaleX(1);opacity:0}}
+.work-wall-caption{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:18px;position:relative;z-index:10;color:var(--muted);font-size:13px;font-weight:650}
+.work-wall-progress{width:min(260px,30vw);height:3px;border-radius:999px;background:var(--line2);overflow:hidden}
+.work-wall-progress i{display:block;width:32%;height:100%;border-radius:999px;background:var(--teal);transform:translateX(var(--work-progress,0%));transition:transform .12s linear}
+.lightbox-content .work-wall-panel-inner{width:min(780px,100%);min-height:min(590px,68vh);height:auto;grid-template-columns:1.12fr .88fr;grid-template-rows:1fr;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.45);animation:none!important}
+.lightbox-content .work-wall-copy{padding:clamp(25px,4vw,46px)}
+.lightbox-content .work-wall-copy h3{font-size:clamp(30px,4.6vw,52px);margin:18px 0 14px}
+.lightbox-content .work-wall-copy p{font-size:15px}
+.lightbox-content .work-detail{display:block;margin-top:18px!important;padding-top:18px;border-top:1px solid rgba(127,127,127,.3)}
+@media(max-width:900px){
+  .work-wall-head h2{font-size:clamp(52px,10vw,78px)}
+  .work-wall-stage{height:auto;margin:30px 4% 0;background:transparent;overflow:visible;perspective:1300px}
+  .work-wall-stage::before,.work-wall-beam{display:none}
+  .work-wall-deck{position:relative;inset:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;transform:none!important}
+  .work-wall-panel{position:relative;left:auto;top:auto;width:auto;height:390px;transform:perspective(1100px) rotateY(var(--tablet-ry,1deg));z-index:auto}
+  .work-wall-panel:nth-child(even){--tablet-ry:-1deg}
+  .work-wall-panel-inner{box-shadow:0 20px 46px rgba(17,20,23,.14)}
+  .work-wall-caption{margin-top:26px}
+}
+@media(max-width:560px){
+  .work-wall-section{padding-top:56px;padding-bottom:32px}
+  .client-experience-section{padding-top:32px;padding-bottom:56px}
+  .work-wall-head h2{font-size:45px!important;overflow-wrap:anywhere}
+  .work-wall-head p{margin-top:14px}
+  .work-wall-stage{margin:24px 0 0}
+  .work-wall-deck{gap:10px}
+  .work-wall-panel{height:292px;transform:none!important}
+  .work-wall-panel-inner{grid-template-rows:43% 57%;border-radius:12px}
+  .work-wall-copy{padding:13px}.work-wall-copy h3{font-size:16px;margin:7px 0 5px}.work-wall-copy p{font-size:11.2px;display:none}.work-wall-copy .work-meta{font-size:8.5px;padding-top:8px}.work-visual b{font-size:38px}
+  .work-wall-caption{align-items:flex-start}.work-wall-caption span{max-width:230px}.work-wall-progress{width:72px;margin-top:9px}
+  .lightbox-content .work-wall-panel-inner{grid-template-columns:1fr;grid-template-rows:minmax(230px,38vh) auto;min-height:0}.lightbox-content .work-wall-copy p{display:block}.lightbox-content .work-wall-copy h3{font-size:30px}
+}
+@media(prefers-reduced-motion:reduce){
+  .work-wall-deck{transform:none!important}.work-wall-panel,.work-wall-panel-inner{animation:none!important}.work-wall-panel-inner{opacity:1!important;filter:none!important}.work-wall-beam{display:none!important}.work-wall-progress i{transition:none}
+}
+
+/* ===== REFINEMENT — click-to-zoom services, arrow-free creative carousel, process motion ===== */
+/* Each capability behaves like an individual zoomable object. */
+#services .service-wall-card{cursor:zoom-in}
+#services .service-wall-card:focus-visible{outline:3px solid #2ED3B7;outline-offset:8px}
+.service-wall-card::after{content:"Zoom"!important;position:absolute!important;right:12px!important;top:12px!important;inset:auto!important;width:auto!important;height:auto!important;padding:6px 9px!important;border-radius:999px!important;background:rgba(7,12,14,.78)!important;color:#fff!important;font-size:9px!important;line-height:1!important;letter-spacing:.11em!important;text-transform:uppercase!important;font-weight:800!important;opacity:0!important;transform:translateY(5px)!important;transition:opacity .3s var(--ease),transform .3s var(--ease)!important;z-index:6!important;pointer-events:none!important}
+.service-wall-card:hover::after,.service-wall-card:focus-visible::after{opacity:1!important;transform:none!important}
+.gallery-lightbox.service-mode .lightbox-bottom{display:none}
+.gallery-lightbox.service-mode .lightbox-content{padding:clamp(18px,4vw,42px)}
+.service-lightbox-card{--card-accent:#2ED3B7;width:min(760px,100%);min-height:min(560px,68vh);padding:clamp(26px,5vw,54px);display:grid;grid-template-columns:72px 1fr;grid-template-rows:auto auto 1fr auto;column-gap:22px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:18px;box-shadow:0 34px 95px rgba(0,0,0,.55);color:var(--card-ink,#111417);background:var(--card-bg,#F3EFE6)}
+.service-lightbox-card::after{content:"";position:absolute;inset:0;background:linear-gradient(112deg,transparent 30%,rgba(255,255,255,.25) 48%,transparent 66%);transform:translateX(-145%);animation:servicePopupSheen 2.2s var(--ease) .25s both;pointer-events:none}
+@keyframes servicePopupSheen{to{transform:translateX(145%)}}
+.service-lightbox-card .service-glyph{grid-row:1/3;width:72px;height:72px;color:var(--card-accent);border-color:color-mix(in srgb,var(--card-accent) 52%,transparent)}
+.service-lightbox-card .service-glyph svg{width:34px;height:34px}
+.service-lightbox-card .service-num{align-self:start;color:color-mix(in srgb,var(--card-ink) 56%,transparent);font-size:12px;letter-spacing:.16em}
+.service-lightbox-card h3{grid-column:2;font-size:clamp(34px,5vw,58px);line-height:.94;margin:10px 0 22px;color:var(--card-ink);letter-spacing:-.04em}
+.service-lightbox-card p{grid-column:1/-1;color:color-mix(in srgb,var(--card-ink) 70%,transparent);font-size:clamp(16px,2vw,20px);line-height:1.6;margin:16px 0 26px}
+.service-lightbox-card ul{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:9px;align-self:end;list-style:none;padding:0;margin:0}
+.service-lightbox-card li{border:1px solid color-mix(in srgb,var(--card-ink) 20%,transparent);padding:9px 11px;font-size:12px;line-height:1.2;letter-spacing:.07em;text-transform:uppercase;font-weight:800}
+.service-lightbox-card li::before{display:none}
+
+/* The feature cards now finish cleanly: no per-card arrow badges, more authored motion. */
+.platform-card{opacity:1;transform:none;transform-origin:50% 100%;box-shadow:0 28px 68px rgba(17,20,23,.14)}
+.platform-suite.inview .platform-card{animation:platformCardReveal .95s var(--ease) both;animation-delay:calc(var(--platform-i,0)*125ms + 140ms)}
+.platform-card:nth-child(1){--platform-i:0}.platform-card:nth-child(2){--platform-i:1}.platform-card:nth-child(3){--platform-i:2}.platform-card:nth-child(4){--platform-i:3}
+@keyframes platformCardReveal{0%{opacity:0;transform:translateY(54px) rotateX(7deg);filter:blur(6px)}72%{opacity:1;transform:translateY(-7px) rotateX(0);filter:none}100%{opacity:1;transform:none;filter:none}}
+.platform-card-copy{overflow:hidden}
+.platform-card-copy::before{content:"";position:absolute;left:25px;right:25px;bottom:24px;height:2px;background:linear-gradient(90deg,#2ED3B7,#F5B841,transparent);transform:scaleX(.16);transform-origin:left;opacity:.7;animation:platformSignal 4.6s var(--ease) infinite alternate;z-index:2}
+@keyframes platformSignal{to{transform:scaleX(1);opacity:1}}
+.platform-card-copy::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-90px;bottom:-100px;border:1px solid rgba(255,255,255,.2);box-shadow:0 0 0 24px rgba(255,255,255,.035),0 0 0 48px rgba(46,211,183,.03);animation:platformHalo 8s ease-in-out infinite alternate;pointer-events:none}
+@keyframes platformHalo{to{transform:translate(-18px,-16px) scale(1.08)}}
+.platform-card:first-child img{animation:platformImageDrift 12s ease-in-out infinite alternate}
+@keyframes platformImageDrift{to{transform:scale(1.07) translate3d(-1.5%,1%,0)}}
+.platform-card.identity .identity-badge{animation:identityFloat 5.5s ease-in-out infinite}
+@keyframes identityFloat{0%,100%{transform:translate(-50%,-50%) rotate(-2deg)}50%{transform:translate(-50%,calc(-50% - 10px)) rotate(2deg)}}
+.platform-card h3{transform:translateY(0);transition:transform .45s var(--ease)}
+.platform-card:hover h3{transform:translateY(-4px)}
+
+/* Process motion stays inside each card—no connector line—and cycles through the four phases. */
+#process .process{perspective:1300px}
+#process .process .step{isolation:isolate;overflow:hidden;box-shadow:0 12px 30px rgba(17,20,23,.055);transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .4s}
+#process .process .step::before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;right:-92px;top:-98px;background:var(--process-accent,var(--teal));opacity:.11;transform:scale(.7);box-shadow:0 0 0 18px color-mix(in srgb,var(--process-accent,var(--teal)) 10%,transparent);z-index:0}
+#process .process .step:nth-child(1){--process-accent:#0C7669}#process .process .step:nth-child(2){--process-accent:#E85A24}#process .process .step:nth-child(3){--process-accent:#F5B841}#process .process .step:nth-child(4){--process-accent:#2ED3B7}
+#process.inview .process .step::before{animation:processOrbitPulse 4.4s ease-in-out infinite;animation-delay:calc(var(--pi,0)*.52s + .8s)}
+@keyframes processOrbitPulse{0%,68%,100%{transform:scale(.7);opacity:.09}82%{transform:translate(-24px,22px) scale(1.22);opacity:.22}}
+#process .process .step::after{background:radial-gradient(280px circle at 15% 10%,color-mix(in srgb,var(--process-accent,var(--teal)) 18%,transparent),transparent 64%);opacity:.2;animation:processLight 5s ease-in-out infinite;animation-delay:calc(var(--pi,0)*.55s)}
+@keyframes processLight{0%,100%{opacity:.08;transform:translateX(-16px)}50%{opacity:.48;transform:translateX(12px)}}
+#process .process .step>*{position:relative;z-index:1}
+#process .process .step b{color:var(--process-accent,var(--teal));text-shadow:0 10px 30px color-mix(in srgb,var(--process-accent,var(--teal)) 25%,transparent)}
+#process .process .step:hover{transform:translateY(-9px) rotateX(2deg);box-shadow:0 24px 54px rgba(17,20,23,.13);border-color:color-mix(in srgb,var(--process-accent,var(--teal)) 48%,var(--line))}
+#process .audience-grid .step{overflow:hidden}
+#process .audience-grid .step::after{opacity:.2;animation:audienceGlow 5.5s ease-in-out infinite alternate;animation-delay:calc(var(--ai,0)*-.8s)}
+@keyframes audienceGlow{to{opacity:.58;transform:translateX(36px) scale(1.1)}}
+#process.inview .audience-grid .step h3{animation:audienceTitle 4.2s ease-in-out infinite;animation-delay:calc(var(--ai,0)*.5s + 1.2s)}
+@keyframes audienceTitle{0%,72%,100%{transform:none}84%{transform:translateX(5px)}}
+
+@media(max-width:560px){
+  .service-wall-card::after{opacity:1!important;transform:none!important}.service-lightbox-card{grid-template-columns:54px 1fr;column-gap:15px;min-height:68vh;padding:24px}.service-lightbox-card .service-glyph{width:54px;height:54px}.service-lightbox-card h3{font-size:32px;margin-top:7px}.service-lightbox-card p{font-size:15px;margin:13px 0 20px}.service-lightbox-card li{font-size:10px;padding:7px 8px}
+  .platform-card-copy::before{left:21px;right:21px;bottom:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .platform-card{opacity:1!important;transform:none!important;filter:none!important;animation:none!important}.platform-card-copy::before,.platform-card-copy::after,.platform-card:first-child img,.platform-card.identity .identity-badge,#process .process .step::before,#process .process .step::after,#process .audience-grid .step h3,.service-lightbox-card::after{animation:none!important}.service-wall-card::after{transform:none!important}
+}
+
+/* ===== SIX-POINT REFINEMENT: reliable zoom, smoother type, coverflow and client stories ===== */
+/* 01 — make every capability surface hit the same zoom target, including the three outer cards. */
+#services .service-wall-grid{pointer-events:none}
+#services .service-wall-card{z-index:1;isolation:isolate;pointer-events:auto}
+#services .service-wall-card:hover,#services .service-wall-card:focus-within{z-index:20}
+#services .service-wall-card>.service-card-surface{pointer-events:none}
+#services .service-wall-card::after{pointer-events:none!important}
+
+/* 02 — process reads as one animated sequence without reintroducing a connector line. */
+#process .process{counter-reset:process-step}
+#process .process .step{transform-origin:50% 100%}
+#process.inview .process .step{animation-name:processCard,processBreath!important;animation-duration:.9s,6s!important;animation-timing-function:var(--ease-bounce),ease-in-out!important;animation-iteration-count:1,infinite!important;animation-fill-mode:both,both!important;animation-delay:calc(var(--pi,0)*140ms + 180ms),calc(var(--pi,0)*-.7s + 1.4s)!important}
+@keyframes processBreath{0%,78%,100%{box-shadow:0 12px 30px rgba(17,20,23,.055)}88%{box-shadow:0 22px 52px color-mix(in srgb,var(--process-accent) 18%,transparent);transform:translateY(-5px)}}
+#process.inview .section-head h2 .motion-word{animation:processWordWave 5.6s ease-in-out infinite;animation-delay:calc(var(--wi,0)*90ms + 1s)}
+@keyframes processWordWave{0%,76%,100%{transform:translateY(0);color:inherit}86%{transform:translateY(-5px);color:var(--teal)}}
+
+/* 03 — hero headline resolves with a soft blur-to-focus cadence and subtle living accents. */
+.hero h1 .word{will-change:transform,opacity,filter;filter:blur(10px);transform:translateY(38px) rotate(2deg) scale(.96)}
+.js .hero h1 .word{animation:heroWordSilk 1.05s var(--ease) forwards;animation-delay:calc(var(--i)*105ms + 100ms)}
+.js .hero h1 .word.accent{animation:heroWordSilk 1.05s var(--ease) forwards,heroAccentDrift 5.2s ease-in-out 1.55s infinite}
+@keyframes heroWordSilk{0%{opacity:0;filter:blur(10px);transform:translateY(38px) rotate(2deg) scale(.96)}72%{opacity:1;filter:blur(0);transform:translateY(-3px) rotate(0) scale(1.01)}100%{opacity:1;filter:blur(0);transform:none}}
+@keyframes heroAccentDrift{0%,100%{transform:none}50%{transform:translateY(-5px)}}
+.hero h1 .underline::after{animation:heroUnderline 1.15s var(--ease) 1.05s both}
+@keyframes heroUnderline{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:.55}}
+
+/* 04 — authored Webflow-style feature movement: reveal, depth and responsive light. */
+.platform-suite{position:relative;isolation:isolate}
+.platform-suite::after{content:"";position:absolute;width:380px;height:380px;right:-150px;top:22%;border-radius:50%;border:1px solid color-mix(in srgb,var(--teal) 28%,transparent);box-shadow:0 0 0 62px color-mix(in srgb,var(--teal) 4%,transparent),0 0 0 124px color-mix(in srgb,var(--amber) 3%,transparent);animation:suiteOrbit 13s ease-in-out infinite alternate;z-index:-1}
+@keyframes suiteOrbit{to{transform:translate(-56px,44px) rotate(35deg) scale(1.08)}}
+.platform-card{--tilt-x:0deg;--tilt-y:0deg;transition:transform .55s var(--ease),filter .55s var(--ease),box-shadow .55s var(--ease)}
+.platform-card:hover{transform:perspective(1000px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x)) translateY(-8px);box-shadow:0 42px 88px rgba(17,20,23,.22)}
+.platform-suite.inview .platform-card-copy h3,.platform-suite.inview .platform-card-copy p{animation:platformCopyIn .85s var(--ease) both;animation-delay:calc(var(--platform-i,0)*120ms + 420ms)}
+.platform-suite.inview .platform-card-copy p{animation-delay:calc(var(--platform-i,0)*120ms + 530ms)}
+@keyframes platformCopyIn{from{opacity:0;transform:translateY(18px);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+
+/* 05 — horizontal coverflow: wheel or drag, with a clearly dominant center project. */
+.work-wall-stage{height:620px;touch-action:pan-y;outline:none;cursor:grab}
+.work-wall-stage.is-dragging{cursor:grabbing;user-select:none}
+.work-wall-deck{position:absolute!important;inset:0!important;display:block!important;transform-style:preserve-3d!important;transform:none!important}
+.work-wall-panel{position:absolute!important;left:50%!important;top:50%!important;width:clamp(250px,22vw,330px)!important;height:430px!important;margin:0!important;opacity:var(--cf-opacity,0);z-index:var(--cf-zindex,1)!important;filter:saturate(var(--cf-sat,.9));transform:translate(-50%,-50%) translate3d(var(--cf-x,0),var(--cf-y,0),var(--cf-z,0)) rotateY(var(--cf-ry,0)) scale(var(--cf-scale,.8))!important;transition:filter .4s ease,opacity .35s ease!important;will-change:transform,opacity}
+.work-wall-panel .work-wall-panel-inner{border-radius:16px;transition:box-shadow .45s var(--ease),border-color .45s var(--ease)}
+.work-wall-panel.is-center .work-wall-panel-inner{border-color:color-mix(in srgb,var(--teal) 54%,var(--line));box-shadow:0 42px 92px rgba(17,20,23,.3),0 0 0 1px color-mix(in srgb,var(--teal) 22%,transparent);animation:workCenterPulse 4.8s ease-in-out infinite!important}
+@keyframes workCenterPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.work-wall-panel:not(.is-center)::after{opacity:0!important}
+.work-wall-panel.is-center::after{content:"Open project";opacity:1;transform:none}
+.work-wall-caption>span{display:grid;gap:4px}.work-wall-caption strong{color:var(--ink);font-size:14px}.work-wall-caption small{font:inherit;color:var(--muted)}
+.work-wall-progress i{width:0;transform:none!important;transition:width .55s var(--ease);min-width:4px}
+@media(max-width:900px){
+  .work-wall-stage{height:540px!important;margin:22px calc(50% - 50vw) 0!important;overflow:hidden!important;background:linear-gradient(180deg,var(--surface),var(--bg2))!important;perspective:1500px!important}
+  .work-wall-stage::before{display:block!important}.work-wall-deck{display:block!important;position:absolute!important}
+  .work-wall-panel{width:min(54vw,300px)!important;height:400px!important;transform:translate(-50%,-50%) translate3d(var(--cf-x,0),var(--cf-y,0),var(--cf-z,0)) rotateY(var(--cf-ry,0)) scale(var(--cf-scale,.8))!important}
+}
+@media(max-width:560px){
+  .work-wall-stage{height:460px!important;margin-top:16px!important}.work-wall-panel{width:min(72vw,286px)!important;height:360px!important}.work-wall-panel-inner{grid-template-rows:45% 55%!important}.work-wall-copy p{display:block!important;font-size:11px}.work-wall-copy .work-detail{display:none!important}.work-wall-caption{margin-top:12px}.work-wall-caption small{font-size:11px;line-height:1.45}
+}
+
+/* 06 — clear, image-ready client stories with a distinct editorial stage. */
+.client-experience-section{position:relative;overflow:hidden;background:linear-gradient(145deg,#071012,#0D1C1B);color:#F4F1EA;padding-top:88px;padding-bottom:92px}
+.client-experience-section::before{content:"“";position:absolute;left:4vw;top:-80px;font-family:"Newsreader",serif;font-size:420px;line-height:1;color:rgba(46,211,183,.08);pointer-events:none}
+.client-experience-section .section-head h2{color:#fff;font-size:clamp(46px,6vw,76px)}
+.client-experience-section .kicker{color:#2ED3B7}.client-experience-section .kicker::before{background:#2ED3B7}
+.testi-wrap{max-width:1020px;position:relative}.testi-viewport{border-radius:28px;box-shadow:0 34px 90px rgba(0,0,0,.38)}
+.testi-slide{min-width:100%;min-height:430px;padding:clamp(28px,5vw,58px);border:1px solid rgba(255,255,255,.14);border-radius:28px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035));color:#fff;display:grid;grid-template-columns:minmax(220px,.38fr) minmax(0,.62fr);grid-template-rows:auto 1fr;gap:28px 48px;align-items:start;position:relative;overflow:hidden}
+.testi-slide::after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-105px;bottom:-145px;border:1px solid rgba(46,211,183,.25);box-shadow:0 0 0 36px rgba(46,211,183,.035),0 0 0 72px rgba(245,184,65,.025)}
+.testi-profile{grid-row:1/-1;display:grid;align-content:start;gap:20px;position:relative;z-index:2}.client-photo{width:150px;aspect-ratio:1;border-radius:50%;padding:10px;border:1px solid rgba(255,255,255,.24);background:linear-gradient(145deg,rgba(46,211,183,.24),rgba(245,184,65,.18));box-shadow:0 18px 48px rgba(0,0,0,.28);display:grid;place-items:center;position:relative}
+.client-photo::before{content:"";width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.25);box-shadow:0 44px 0 22px rgba(255,255,255,.16)}.client-photo span{position:absolute;inset:auto 0 17px;text-align:center;font-size:8px;letter-spacing:.12em;font-weight:800;color:rgba(255,255,255,.7)}
+.testi-slide .stars{color:#F5B841;font-size:17px}.testi-slide .who{margin-top:10px;color:#fff;font-size:14px}.client-meta{color:#91A2A5;font-size:12px;margin-top:4px}
+.testi-slide blockquote{grid-column:2;margin:0;color:#fff;font-size:clamp(27px,3.4vw,43px);line-height:1.18;letter-spacing:-.025em;position:relative;z-index:2}
+.review-result{grid-column:2;align-self:end;display:grid;gap:5px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16);position:relative;z-index:2}.review-result b{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#2ED3B7}.review-result span{color:#C1CBCE;font-size:13px}
+.testi-controls{position:relative;z-index:3}.testi-btn{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff}.testi-btn:hover{background:#F4F1EA;color:#071012}.testi-dots button{background:rgba(255,255,255,.22)}.testi-dots button.active{background:#2ED3B7;width:30px;border-radius:999px}.testi-note{color:#849497}.testi-orbit{position:absolute;inset:-30px -60px;pointer-events:none}.testi-orbit i{position:absolute;width:10px;height:10px;border-radius:50%;background:#2ED3B7;box-shadow:0 0 0 8px rgba(46,211,183,.08);animation:testiParticle 7s ease-in-out infinite}.testi-orbit i:nth-child(1){left:5%;top:16%}.testi-orbit i:nth-child(2){right:2%;top:43%;background:#F5B841;animation-delay:-2.2s}.testi-orbit i:nth-child(3){left:28%;bottom:2%;animation-delay:-4.1s}@keyframes testiParticle{50%{transform:translate(18px,-24px) scale(1.3)}}
+.client-experience-section .reveal{opacity:1!important;transform:none!important;filter:none!important}.client-experience-section .testi-wrap{animation:testiStageIn 1s var(--ease) both}@keyframes testiStageIn{from{opacity:0;transform:translateY(44px) scale(.97);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
+@media(max-width:700px){.client-experience-section{padding-top:62px;padding-bottom:66px}.testi-slide{min-height:0;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:22px;padding:25px}.testi-profile{grid-row:auto;grid-template-columns:82px 1fr;align-items:center;gap:16px}.client-photo{width:82px}.client-photo::before{width:29px;height:29px;box-shadow:0 25px 0 11px rgba(255,255,255,.16)}.client-photo span{bottom:8px;font-size:6px}.testi-slide blockquote,.review-result{grid-column:1}.testi-slide blockquote{font-size:25px}.testi-note{line-height:1.55}}
+@media(prefers-reduced-motion:reduce){.hero h1 .word{opacity:1!important;filter:none!important;transform:none!important}.platform-suite::after,.platform-card-copy h3,.platform-card-copy p,.work-wall-panel.is-center .work-wall-panel-inner,.testi-orbit i,.client-experience-section .testi-wrap,#process .process .step{animation:none!important}}
+
+/* ===== SERVICES INTERACTION POLISH — kinetic type + shared-origin morph zoom ===== */
+#services .service-wall-card{--spot-x:50%;--spot-y:50%}
+#services .service-wall-card h3{min-height:44px}
+#services .service-wall-card p{min-height:64px}
+#services .service-card-surface::before{content:"";position:absolute;inset:0;background:radial-gradient(260px circle at var(--spot-x) var(--spot-y),color-mix(in srgb,var(--card-accent,#2ED3B7) 22%,transparent),transparent 66%);opacity:0;transition:opacity .42s var(--ease);pointer-events:none;z-index:0}
+#services .service-wall-card:hover .service-card-surface::before,#services .service-wall-card:focus-visible .service-card-surface::before{opacity:1}
+#services .service-card-surface>*{position:relative;z-index:1}
+#services .service-wall-card::after{content:"Type · Morph"!important;letter-spacing:.1em!important}
+#services .service-wall-card.typing-title h3::after,#services .service-wall-card.typing-copy p::after{content:"";display:inline-block;width:2px;height:.9em;margin-left:4px;vertical-align:-.04em;background:var(--card-accent,#2ED3B7);animation:serviceCaret .65s steps(1,end) infinite}
+@keyframes serviceCaret{50%{opacity:0}}
+#services .service-wall-card.is-typing ul li{opacity:.32;transform:translateY(4px)}
+#services .service-wall-card.type-complete ul li{animation:serviceTermIn .48s var(--ease-bounce) both;animation-delay:calc(var(--term-i,0)*80ms)}
+#services .service-wall-card.type-complete .service-card-surface{animation:serviceTypeResolve .5s var(--ease-bounce) both}
+@keyframes serviceTermIn{from{opacity:.25;transform:translateY(7px) scale(.94)}to{opacity:1;transform:none}}
+@keyframes serviceTypeResolve{0%{transform:translateY(-4px) scale(.992)}100%{transform:translateY(0) scale(1)}}
+
+.gallery-lightbox.service-mode{--morph-x:0px;--morph-y:0px;--morph-scale:.38}
+.gallery-lightbox.service-mode .lightbox-backdrop{animation:serviceVeilIn .48s ease both}
+.gallery-lightbox.service-mode .lightbox-shell{transform-origin:50% 50%;animation:serviceMorphIn .74s cubic-bezier(.16,1,.3,1) both}
+.gallery-lightbox.service-mode.is-closing .lightbox-backdrop{animation:serviceVeilOut .36s ease both}
+.gallery-lightbox.service-mode.is-closing .lightbox-shell{animation:serviceMorphOut .4s cubic-bezier(.7,0,.84,0) both}
+@keyframes serviceVeilIn{from{opacity:0;backdrop-filter:blur(0)}to{opacity:1;backdrop-filter:blur(18px)}}
+@keyframes serviceVeilOut{from{opacity:1}to{opacity:0}}
+@keyframes serviceMorphIn{0%{opacity:0;transform:translate3d(var(--morph-x),var(--morph-y),0) scale(var(--morph-scale)) rotateX(7deg);border-radius:8px;filter:blur(4px)}68%{opacity:1;transform:translate3d(0,-7px,0) scale(1.012);filter:none}100%{opacity:1;transform:none;border-radius:24px;filter:none}}
+@keyframes serviceMorphOut{from{opacity:1;transform:none}to{opacity:0;transform:translate3d(var(--morph-x),var(--morph-y),0) scale(var(--morph-scale));filter:blur(3px)}}
+.service-lightbox-card{animation:serviceCardSettle .72s var(--ease) .08s both}
+@keyframes serviceCardSettle{from{opacity:.45;transform:scale(.96) translateY(12px)}to{opacity:1;transform:none}}
+.service-lightbox-card .service-glyph,.service-lightbox-card .service-num,.service-lightbox-card h3,.service-lightbox-card p,.service-lightbox-card li{animation:serviceDetailIn .62s var(--ease) both}
+.service-lightbox-card .service-glyph{animation-delay:.22s}.service-lightbox-card .service-num{animation-delay:.27s}.service-lightbox-card h3{animation-delay:.31s}.service-lightbox-card p{animation-delay:.39s}.service-lightbox-card li{animation-delay:calc(.47s + var(--term-i,0)*70ms)}
+@keyframes serviceDetailIn{from{opacity:0;transform:translateY(18px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+@media(max-width:560px){#services .service-wall-card h3,#services .service-wall-card p{min-height:0}.gallery-lightbox.service-mode{--morph-scale:.72}}
+@media(prefers-reduced-motion:reduce){#services .service-wall-card h3,#services .service-wall-card p{min-height:0}.gallery-lightbox.service-mode .lightbox-backdrop,.gallery-lightbox.service-mode .lightbox-shell,.service-lightbox-card,.service-lightbox-card .service-glyph,.service-lightbox-card .service-num,.service-lightbox-card h3,.service-lightbox-card p,.service-lightbox-card li{animation:none!important}#services .service-card-surface::before{display:none}}
+/* ===== CINEMATIC FRAMES — full-width dark dimensional gallery ===== */
+.cinematic-gallery{--gallery-accent:#60D8C3;background:#070A0C;color:#F6F3EC;overflow:hidden;padding:clamp(88px,10vw,144px) 0 72px;isolation:isolate}
+.cinematic-gallery::before{display:none!important}
+.cinematic-gallery::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,rgba(38,142,126,.18),transparent 43%),linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px);background-size:auto,72px 72px,72px 72px;mask-image:linear-gradient(transparent,#000 22%,#000 76%,transparent);z-index:-1}
+.cinematic-gallery-head{width:min(1180px,92%);margin:0 auto;display:grid;grid-template-columns:1fr minmax(260px,410px);gap:42px;align-items:end;position:relative;z-index:3}
+.cinematic-gallery .kicker{color:var(--gallery-accent)}
+.cinematic-gallery .kicker::before{background:var(--gallery-accent)!important}
+.cinematic-gallery h2{font-size:clamp(52px,8vw,108px);line-height:.82;letter-spacing:-.06em;max-width:760px}
+.cinematic-gallery-head p{color:rgba(246,243,236,.66);font-size:15px;line-height:1.7;margin:0 0 4px}
+.cinematic-gallery-head p strong{color:#fff}
+.cinematic-gallery-head .craft-accent{color:#55DCC8}
+.cinematic-gallery-head .craft-weight{font-weight:600;color:inherit}
+.cinematic-stage{height:clamp(540px,56vw,700px);position:relative;margin-top:36px;perspective:1400px;perspective-origin:50% 42%;cursor:grab;touch-action:pan-y;outline:none}
+.cinematic-stage:active,.cinematic-stage.is-dragging{cursor:grabbing}
+.cinematic-stage:focus-visible{outline:2px solid var(--gallery-accent);outline-offset:-8px}
+.cinematic-stage::before{content:"";position:absolute;left:50%;bottom:5%;width:min(840px,78vw);height:90px;transform:translateX(-50%);border-radius:50%;background:rgba(0,0,0,.8);filter:blur(24px)}
+.cinematic-track{position:absolute;inset:0;transform-style:preserve-3d}
+.cinematic-card{position:absolute;left:50%;top:5%;width:clamp(230px,25vw,370px);height:82%;padding:0;border:0;background:#101518;color:#fff;text-align:left;overflow:hidden;cursor:zoom-in;transform-style:preserve-3d;transform:translate3d(calc(-50% + var(--gx,0px)),var(--gy,0px),var(--gz,0px)) rotateY(var(--gry,0deg)) scale(var(--gs,.8));opacity:var(--go,.35);z-index:var(--gzi,1);filter:saturate(var(--gsat,.6)) brightness(var(--gbr,.65));box-shadow:0 34px 90px rgba(0,0,0,.58);transition:transform .72s var(--ease),opacity .58s ease,filter .58s ease,box-shadow .58s ease;will-change:transform}
+.cinematic-card::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 44%,rgba(4,7,8,.12) 58%,rgba(4,7,8,.94) 100%);pointer-events:none}
+.cinematic-card::after{content:"VIEW";position:absolute;right:18px;top:18px;z-index:4;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:rgba(7,10,12,.66);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(10px);font-size:9px;letter-spacing:.15em;font-weight:800;opacity:0;transform:scale(.72);transition:opacity .35s,transform .45s var(--ease)}
+.cinematic-card.is-active{box-shadow:0 44px 120px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.15)}
+.cinematic-card.is-active::after,.cinematic-card:focus-visible::after{opacity:1;transform:none}
+.cinematic-card:focus-visible{outline:3px solid var(--gallery-accent);outline-offset:5px}
+.cinematic-card img{width:100%;height:100%;object-fit:cover;transform:scale(1.055);transition:transform 1.1s var(--ease);pointer-events:none}
+.cinematic-card.is-active img{transform:scale(1)}
+.cinematic-card-copy{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:24px}
+.cinematic-card-copy small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gallery-accent);font-weight:800;margin-bottom:8px}
+.cinematic-card-copy b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(25px,2.8vw,38px);line-height:.92;letter-spacing:-.035em}
+.cinematic-card-copy span{display:block;color:rgba(255,255,255,.62);font-size:12px;margin-top:9px;opacity:0;transform:translateY(8px);transition:opacity .45s .16s,transform .45s .16s var(--ease)}
+.cinematic-card.is-active .cinematic-card-copy span{opacity:1;transform:none}
+.cinematic-gallery-controls{width:min(1180px,92%);margin:-2px auto 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px;position:relative;z-index:4}
+.cinematic-progress{height:1px;background:rgba(255,255,255,.18);position:relative;overflow:hidden}
+.cinematic-progress i{position:absolute;inset:0 auto 0 0;width:25%;background:var(--gallery-accent);transform:translateX(var(--gp,0%));transition:transform .65s var(--ease)}
+.cinematic-count{font:700 12px/1 "Public Sans",sans-serif;letter-spacing:.14em;color:rgba(255,255,255,.68);min-width:82px;text-align:center}
+.cinematic-arrows{display:flex;justify-content:flex-end;gap:9px}
+.cinematic-arrow{width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;font-size:22px;cursor:pointer;transition:background .3s,color .3s,transform .3s var(--ease)}
+.cinematic-arrow:hover{background:#fff;color:#080B0D;transform:translateY(-2px)}
+.cinematic-arrow:disabled{opacity:.26;cursor:default;transform:none;background:transparent;color:#fff}
+.cinematic-gallery-note{width:min(1180px,92%);margin:20px auto 0;color:rgba(255,255,255,.4);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.cinematic-modal[hidden]{display:none}
+.cinematic-modal{position:fixed;inset:0;z-index:11000;display:grid;place-items:center;padding:clamp(12px,3vw,38px)}
+.cinematic-modal-backdrop{position:absolute;inset:0;border:0;background:rgba(3,5,6,.92);backdrop-filter:blur(18px);cursor:zoom-out}
+.cinematic-modal-figure{position:relative;z-index:1;margin:0;width:min(820px,92vw);height:min(82vh,920px);background:#0A0D0F;overflow:hidden;box-shadow:0 42px 130px rgba(0,0,0,.85);animation:cinematicZoom .65s var(--ease) both}
+@keyframes cinematicZoom{from{opacity:0;transform:scale(.86) translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:none}}
+.cinematic-modal-figure img{width:100%;height:100%;object-fit:contain;background:#070A0C}
+.cinematic-modal-caption{position:absolute;left:0;right:0;bottom:0;padding:64px 22px 20px;background:linear-gradient(transparent,rgba(3,5,6,.92));display:flex;justify-content:space-between;align-items:end;gap:20px}
+.cinematic-modal-caption small{color:var(--gallery-accent);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}.cinematic-modal-caption b{display:block;font-family:"Bricolage Grotesque";font-size:26px}
+.cinematic-modal-close{position:absolute;right:16px;top:16px;z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(3,5,6,.72);color:#fff;font-size:24px;cursor:pointer;backdrop-filter:blur(10px)}
+@media(max-width:760px){
+  .cinematic-gallery{padding:80px 0 54px}.cinematic-gallery-head{grid-template-columns:1fr;gap:20px}.cinematic-gallery h2{font-size:56px}.cinematic-gallery-head p{max-width:520px}
+  .cinematic-stage{height:520px;margin-top:24px}.cinematic-card{width:min(68vw,290px);height:430px;top:7%}.cinematic-card-copy{padding:18px}.cinematic-card-copy span{font-size:11px}
+  .cinematic-gallery-controls{grid-template-columns:1fr auto;gap:16px}.cinematic-count{grid-column:1/2;grid-row:1;text-align:left}.cinematic-progress{grid-column:1/2;grid-row:2}.cinematic-arrows{grid-column:2;grid-row:1/3}.cinematic-gallery-note{margin-top:16px;padding:0 6%}
+}
+@media(max-width:430px){.cinematic-gallery h2{font-size:48px}.cinematic-stage{height:480px}.cinematic-card{width:72vw;height:398px}.cinematic-arrow{width:46px;height:46px}.cinematic-modal{padding:8px}.cinematic-modal-figure{width:100%;height:88vh}.cinematic-modal-caption{padding-left:16px;padding-right:16px}}
+@media(prefers-reduced-motion:reduce){.cinematic-card,.cinematic-card img,.cinematic-progress i{transition:none!important}.cinematic-modal-figure{animation:none!important}}
+
+/* LURO-matched eight-frame loop: one dominant front frame, matched side pairs,
+   and a complete rear return path. */
+.cinematic-gallery{padding-bottom:clamp(70px,8vw,110px)}
+.cinematic-stage{--ring-radius:clamp(600px,49vw,790px);height:clamp(610px,58vw,760px);margin-top:48px;perspective:1500px;perspective-origin:50% 45%;user-select:none;-webkit-user-select:none;cursor:grab;touch-action:pan-y;opacity:.2;transform:scale(.97);filter:blur(6px);transition:opacity 1s var(--ease),transform 1.1s var(--ease),filter 1s ease}
+.cinematic-stage.is-dragging{cursor:grabbing}
+.cinematic-stage::before{bottom:4%;width:min(1040px,88vw);height:92px;opacity:.86;background:rgba(0,0,0,.9);filter:blur(32px)}
+.cinematic-track{inset:0;transform-style:preserve-3d;will-change:transform}
+.cinematic-card{--ring-x:0px;--ring-z:0px;--ring-ry:0deg;--ring-scale:1;--ring-opacity:1;--ring-zindex:10;left:50%;top:3%;width:clamp(360px,34vw,520px);height:clamp(510px,45vw,680px);border:1px solid rgba(255,255,255,.14);border-radius:0;opacity:var(--ring-opacity);filter:saturate(1.04) brightness(1.04);z-index:var(--ring-zindex);overflow:hidden;cursor:inherit;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translate3d(calc(-50% + var(--ring-x)),0,var(--ring-z)) rotateY(var(--ring-ry)) scale(var(--ring-scale));transform-origin:50% 50%;transition:none;box-shadow:0 38px 96px rgba(0,0,0,.68);will-change:transform,opacity}
+.cinematic-card::after,.cinematic-card-copy,.cinematic-gallery-controls,.cinematic-modal,.cinematic-gallery-note{display:none!important}
+.cinematic-card::before{background:linear-gradient(180deg,rgba(4,7,8,.02),transparent 66%,rgba(4,7,8,.2));z-index:1}
+.cinematic-card img{width:100%;height:100%;object-fit:cover;transform:none;transition:none;pointer-events:none}
+.cinematic-drag-proxy{position:absolute;inset:0;z-index:20;cursor:grab;touch-action:pan-y}
+.cinematic-stage.is-dragging .cinematic-drag-proxy{cursor:grabbing}
+.cinematic-drag-badge{position:absolute;z-index:30;left:0;top:0;width:82px;height:82px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#F4F1EA;color:#090D0F;box-shadow:0 18px 44px rgba(0,0,0,.36);pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.72);transition:opacity .28s ease,transform .45s var(--ease);font:800 13px/1 "Public Sans",sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.cinematic-stage:hover .cinematic-drag-badge,.cinematic-stage.is-dragging .cinematic-drag-badge{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.cinematic-drag-badge span{height:13px;overflow:hidden;display:block}
+.cinematic-drag-badge i{display:block;font-style:normal;transition:transform .35s var(--ease)}
+.cinematic-drag-badge i::after{content:"DRAG";display:block;margin-top:10px}
+.cinematic-stage.is-dragging .cinematic-drag-badge i{transform:translateY(-23px)}
+.cinematic-gallery.ring-ready .cinematic-stage{opacity:1;transform:none;filter:none}
+@media(max-width:760px){
+  .cinematic-stage{--ring-radius:clamp(380px,102vw,470px);height:520px;margin-top:30px;perspective:950px;perspective-origin:50% 44%}.cinematic-card{width:min(76vw,320px);height:440px;top:6%}.cinematic-gallery-head p{max-width:520px}.cinematic-drag-badge{width:68px;height:68px;font-size:11px}
+}
+@media(max-width:430px){.cinematic-stage{--ring-radius:102vw;height:480px}.cinematic-card{width:76vw;height:410px}.cinematic-gallery h2{font-size:48px}}
+@media(prefers-reduced-motion:reduce){.cinematic-stage{opacity:1;transform:none;filter:none;transition:none}.cinematic-drag-badge{transition:none}}
+
+/* CREATIVE MANIFESTO — an editorial pause between the gallery and services */
+.manifesto-section{position:relative;overflow:hidden;background:var(--bg);isolation:isolate}
+.manifesto-section::after{content:"";position:absolute;width:460px;height:460px;right:-250px;top:18%;border-radius:50%;border:1px solid color-mix(in srgb,var(--teal) 28%,transparent);box-shadow:0 0 0 70px color-mix(in srgb,var(--teal) 4%,transparent),0 0 0 140px color-mix(in srgb,var(--amber) 3%,transparent);animation:manifestoOrbit 14s ease-in-out infinite alternate;z-index:-1;pointer-events:none}
+@keyframes manifestoOrbit{to{transform:translate(-52px,34px) rotate(28deg) scale(1.08)}}
+.manifesto-shell{border-top:4px solid var(--ink);border-bottom:1px solid var(--line);padding:22px 0 38px;position:relative}
+.manifesto-meta{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:clamp(50px,7vw,92px);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.manifesto-label{display:flex;align-items:center;gap:12px;color:var(--ink)}
+.manifesto-label::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 6px color-mix(in srgb,var(--teal) 12%,transparent);animation:manifestoPulse 2.8s ease-in-out infinite}
+@keyframes manifestoPulse{50%{box-shadow:0 0 0 12px transparent;transform:scale(.84)}}
+.manifesto-statement{margin:0;max-width:1120px;font-family:"Bricolage Grotesque","Public Sans",sans-serif;font-size:clamp(47px,7.4vw,96px);font-weight:800;letter-spacing:-.055em;line-height:.89}
+.manifesto-line{display:block;overflow:hidden;padding:.04em .04em .08em;margin-left:-.04em}
+.manifesto-line>span{display:block;transform:none;opacity:1;filter:none}
+.manifesto-line:nth-child(2){padding-left:8.5%}.manifesto-line:nth-child(4){padding-left:15%}
+.manifesto-statement em{font-family:"Newsreader",serif;font-weight:500;color:var(--teal);letter-spacing:-.035em}
+.manifesto-statement strong{color:var(--orange);font-weight:800}
+.manifesto-section.inview .manifesto-line>span{animation:manifestoLineIn 1.05s var(--ease) both;animation-delay:calc(var(--mi,0)*120ms + 120ms)}
+@keyframes manifestoLineIn{0%{transform:translateY(118%) rotate(1.8deg);opacity:0;filter:blur(7px)}72%{transform:translateY(-3%) rotate(0);opacity:1;filter:blur(0)}100%{transform:none;opacity:1;filter:none}}
+.manifesto-close{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);gap:clamp(32px,7vw,90px);align-items:end;margin-top:clamp(54px,7vw,92px);padding-top:24px;border-top:1px solid var(--line)}
+.manifesto-code{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.manifesto-code span{display:flex;align-items:center;gap:9px}.manifesto-code span::before{content:"";width:18px;height:2px;background:var(--teal)}
+.manifesto-close p{margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+.manifesto-close p strong{color:var(--ink)}
+@media(max-width:760px){
+  .manifesto-section::after{width:280px;height:280px;right:-180px;top:32%;box-shadow:0 0 0 44px color-mix(in srgb,var(--teal) 4%,transparent),0 0 0 88px color-mix(in srgb,var(--amber) 3%,transparent)}
+  .manifesto-shell{padding-top:18px;padding-bottom:28px}.manifesto-meta{margin-bottom:44px}.manifesto-statement{font-size:clamp(42px,12.5vw,67px);line-height:.91}.manifesto-line:nth-child(2){padding-left:5%}.manifesto-line:nth-child(4){padding-left:8%}.manifesto-close{grid-template-columns:1fr;margin-top:50px;gap:24px}.manifesto-code{display:grid;gap:11px}
+}
+@media(max-width:430px){.manifesto-meta{font-size:9px;letter-spacing:.11em}.manifesto-statement{font-size:clamp(38px,12vw,52px)}.manifesto-close p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.manifesto-section::after,.manifesto-label::before{animation:none!important}.manifesto-line>span{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
 </style>
 </head>
 <body>
@@ -875,21 +1427,53 @@ body.lightbox-open{overflow:hidden}
     <div aria-hidden="true" style="position:absolute;bottom:90px;left:4%;width:14px;height:14px;border-radius:50%;background:var(--amber);opacity:.7;animation:floatY 5s ease-in-out infinite"></div>
     <div aria-hidden="true" style="position:absolute;top:48%;left:46%;font-size:22px;opacity:.35;animation:floatY 6s ease-in-out infinite">✦</div>
     <div class="container hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow"><i></i> Available for new projects</span>
-        <h1><span class="word" style="--i:0">AI</span> <span class="word" style="--i:1">video</span> <span class="word" style="--i:2">that</span> <span class="word accent" style="--i:3">grows</span> <span class="word underline" style="--i:4">channels,</span> <span class="word serif" style="--i:5">not</span> <span class="word serif" style="--i:6">just</span> <span class="word serif" style="--i:7">views.</span></h1>
-        <p class="lead">I'm <strong>Mazahar</strong> — AI Video Production & Content Strategy Consultant. I help creators grow Facebook Pages & YouTube channels, reach US audiences, and turn views into revenue — backed by <strong>12+ years freelancing</strong>.</p>
-        <div class="hook-result" aria-label="Result focus"><span>⏱ <b>3-Second Hook Promise</b></span><span class="dotsep">•</span><span>12+ Years</span><span class="dotsep">•</span><span>100% Strategy</span><span class="dotsep">•</span><span>US Audience</span></div>
+        <h1 class="typewriter-heading" id="heroTypewriter"><span class="sr-only">AI video that grows channels, not just views.</span><span class="typewriter-visual" id="heroTypeText" aria-hidden="true"></span><span class="typewriter-caret" aria-hidden="true"></span></h1>
+        <div class="typewriter-sticker" aria-hidden="true">
+          <svg viewBox="0 0 150 112" role="img">
+            <g class="sticker-spark" fill="var(--amber)"><path d="M18 18l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5z"/><circle cx="132" cy="24" r="3"/></g>
+            <g class="sticker-bob">
+              <circle cx="91" cy="30" r="15" fill="#F2B99A"/>
+              <path d="M76 28c0-15 10-21 20-17 8 3 11 10 8 18-5-1-9-6-11-10-3 6-8 9-17 9z" fill="var(--ink)"/>
+              <circle cx="86" cy="31" r="1.6" fill="var(--ink)"/><circle cx="98" cy="31" r="1.6" fill="var(--ink)"/>
+              <path d="M88 38c3 2 6 2 9 0" fill="none" stroke="var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M72 72c2-22 9-28 20-28 14 0 21 10 23 30z" fill="var(--teal)"/>
+              <g class="sticker-hand"><path d="M80 55c-9 5-15 12-20 21" fill="none" stroke="#F2B99A" stroke-width="8" stroke-linecap="round"/><circle cx="60" cy="76" r="4.5" fill="#F2B99A"/></g>
+              <g class="sticker-hand sticker-hand-2"><path d="M103 55c7 5 11 11 13 18" fill="none" stroke="#F2B99A" stroke-width="8" stroke-linecap="round"/><circle cx="116" cy="74" r="4.5" fill="#F2B99A"/></g>
+            </g>
+            <g transform="translate(28 64)">
+              <!-- Rounded manual typewriter body, raised paper, carriage bar and old-style keys. -->
+              <g class="sticker-carriage">
+                <rect x="24" y="-31" width="48" height="36" rx="1.5" fill="var(--surface2)" stroke="var(--ink)" stroke-width="2"/>
+                <path class="sticker-line" d="M31-20h27M31-13h33M31-6h21" fill="none" stroke="var(--teal)" stroke-width="2.3" stroke-linecap="round"/>
+              </g>
+              <path d="M5 4h86" fill="none" stroke="#3C484E" stroke-width="5" stroke-linecap="round"/>
+              <circle cx="4" cy="4" r="3.6" fill="var(--orange)"/><circle cx="92" cy="4" r="3.6" fill="var(--orange)"/>
+              <path d="M17 7h62c5 0 8 3 9 8l6 29H2l6-29c1-5 4-8 9-8z" fill="var(--ink)"/>
+              <path d="M15 10h66l3 13H12z" fill="#2F3940"/>
+              <circle cx="29" cy="15" r="7" fill="#11171A" stroke="var(--amber)" stroke-width="1.5"/><circle cx="67" cy="15" r="7" fill="#11171A" stroke="var(--amber)" stroke-width="1.5"/>
+              <circle cx="29" cy="15" r="2.2" fill="#738087"/><circle cx="67" cy="15" r="2.2" fill="#738087"/>
+              <g fill="var(--surface)" stroke="#66737A" stroke-width=".7"><circle cx="18" cy="27" r="3"/><circle cx="28" cy="27" r="3"/><circle cx="38" cy="27" r="3"/><circle cx="48" cy="27" r="3"/><circle cx="58" cy="27" r="3"/><circle cx="68" cy="27" r="3"/><circle cx="78" cy="27" r="3"/><circle cx="23" cy="35" r="3"/><circle cx="33" cy="35" r="3"/><circle cx="43" cy="35" r="3"/><circle cx="53" cy="35" r="3"/><circle cx="63" cy="35" r="3"/><circle cx="73" cy="35" r="3"/></g>
+              <rect x="31" y="40" width="34" height="3.5" rx="1.75" fill="var(--orange)"/>
+              <path d="M8 44h80" stroke="#536067" stroke-width="3" stroke-linecap="round"/>
+            </g>
+          </svg>
+        </div>
+        <button class="typing-sound-toggle" id="typingSoundToggle" type="button" aria-label="Replay the headline with voice and typing sound"><i aria-hidden="true"></i><span id="typingSoundLabel">Play headline audio</span></button>
+        <audio id="heroHeadlineAudio" src="assets/ai-video.mp3" preload="metadata" hidden></audio>
+        <p class="lead">I'm <strong>Mazahar</strong> — an AI Video Production & Content Strategy Consultant. I help creators grow <span class="lead-keyword" style="--k:0">YouTube channels</span> and <span class="lead-keyword" style="--k:1">Facebook Pages</span> through strategic content, professional editing, <span class="lead-keyword" style="--k:2">SEO</span>, and <span class="lead-keyword" style="--k:3">US audience targeting</span>.</p>
+        <div class="hook-result" aria-label="Expertise"><span><b>Hook-Driven Editing</b></span><span class="dotsep">•</span><span>12+ Years' Experience</span><span class="dotsep">•</span><span>Content Strategy</span><span class="dotsep">•</span><span>US Audience Targeting</span></div>
         <div class="hero-actions">
           <a href="#brief" class="btn btn-teal">Build My Project Brief →</a>
           <a href="#services" class="btn btn-outline">Explore Services ↓</a>
         </div>
-        <div class="proof"><span style="--i:0">AI-powered production</span><span style="--i:1">YouTube SEO</span><span style="--i:2">Facebook growth</span><span style="--i:3">Monetization strategy</span></div>
+        <div class="proof"><span style="--i:0">AI-Powered Production</span><span style="--i:1">YouTube SEO</span><span style="--i:2">Facebook Growth</span><span style="--i:3">Monetization Strategy</span></div>
 
         <div class="stats" style="margin-top:26px">
-          <div class="stat"><b><span class="counter" data-target="12">12</span>+</b><span>Years Experience</span></div>
-          <div class="stat"><b><span class="counter" data-target="3">3</span></b><span>Platforms: FB • YT • Shorts</span></div>
-          <div class="stat"><b><span class="counter" data-target="100">100</span>%</b><span>Strategy + Production</span></div>
+          <div class="stat" aria-label="12+ Years Experience"><b>12+ Years</b><span>Experience</span></div>
+          <div class="stat" aria-label="Strategy + Production"><b>Strategy +</b><span>Production</span></div>
+          <div class="stat" aria-label="YouTube · Facebook · Instagram"><b>YouTube</b><span>Facebook · Instagram</span></div>
         </div>
       </div>
 
@@ -899,115 +1483,100 @@ body.lightbox-open{overflow:hidden}
           <div class="play-pill">▶ MOTION • AI • STRATEGY</div>
           <div class="photo-caption"><div><b>Mazahar</b><span>AI Video Production & Content Strategy Consultant</span></div><a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" style="background:#fff;color:#111;padding:9px 12px;border-radius:999px;font-weight:800;font-size:13px;white-space:nowrap">Follow ↗</a></div>
         </div>
-        <div class="badge-float badge-1"><b>12+ Years</b><span>Fiverr • Upwork • Direct Clients</span></div>
-        <div class="badge-float badge-2"><b>US Audience</b><span>Targeting & SEO Focus</span></div>
+        <div class="badge-float badge-2"><b>USA Audience</b><span>Targeting & SEO Focus</span></div>
       </div>
     </div>
 
     <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>AI Video Production ✦ Video Editing ✦ YouTube SEO ✦ Content Strategy ✦ Facebook Growth ✦ AI Automation ✦ Monetization ✦ &nbsp;</span><span>AI Video Production ✦ Video Editing ✦ YouTube SEO ✦ Content Strategy ✦ Facebook Growth ✦ AI Automation ✦ Monetization ✦ &nbsp;</span></div></div>
   </section>
 
-  <!-- SHOWREEL BANNER -->
-  <section class="section">
-    <div class="container">
-      <div class="showreel reveal wipe">
-        <video class="showreel-video" id="portfolioReel" src="assets/portfolio-48s.mp4" poster="assets/portfolio-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mazahar's 48-second professional motion graphics portfolio showreel"></video>
-        <span class="reel-soundless">48 sec • Motion portfolio</span>
-        <div class="showreel-content">
-          <div style="display:flex;gap:16px;align-items:flex-start"><button class="reel-play" id="reelToggle" type="button" aria-label="Pause portfolio showreel">❚❚</button><div><div class="kicker" style="color:#2ED3B7;margin-bottom:6px">Portfolio Showreel</div><h3>Hooks in 3 seconds.<br><span class="serif">Stories that hold.</span></h3></div></div>
-          <p style="margin-top:16px">A 48-second look at the professional motion-graphics style I bring to personal brands, creators and growth-focused channels.</p>
-          <div class="reel-tags"><span>Motion Graphics</span><span>Kinetic Type</span><span>Smooth Transitions</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DIMENSIONAL PROJECT WALL — inspired by the spatial rhythm in Webflow's showcase -->
-  <section class="section motion-wall" id="motionWall">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><div class="kicker">Selected Capabilities</div><h2 class="motion-wall-title"><span class="hash">#</span>MadeForMotion</h2></div>
-        <p class="motion-wall-note">Strategy, editing, personal-brand storytelling and growth systems — moving together as one connected production.</p>
-      </div>
-    </div>
-    <div class="project-stage" id="projectStage" aria-label="Animated gallery of Mazahar's video production capabilities. Select a card to open it full screen.">
-      <div class="project-deck" id="projectDeck">
-        <button type="button" class="project-panel" data-title="Editing Workspace" data-kicker="Production" data-src="assets/studio.webp" style="--x:-570px;--z:-150px;--ry:17deg;--rz:-1deg;--zi:1;--delay:-1.1s" aria-label="Open Editing Workspace in full view"><span class="project-panel-inner"><img src="assets/studio.webp" alt="Professional video editing workspace with an editing timeline and production equipment"/></span></button>
-        <button type="button" class="project-panel" data-title="Plan. Publish. Grow." data-kicker="Growth Strategy" style="--x:-385px;--z:-80px;--ry:12deg;--rz:1deg;--zi:2;--delay:-2.4s" aria-label="Open Growth Strategy card in full view"><span class="project-panel-inner"><span class="project-panel-copy light"><small>Growth Strategy</small><span><b>Plan.<br>Publish.<br>Grow.</b><p>A clear content system before production starts.</p></span><span class="panel-bars"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i></span></span></span></button>
-        <button type="button" class="project-panel" data-title="Creator Studio" data-kicker="Production" data-src="assets/creator-studio.webp" style="--x:-195px;--z:-25px;--ry:7deg;--rz:-.5deg;--zi:3;--delay:-.6s" aria-label="Open Creator Studio in full view"><span class="project-panel-inner"><img src="assets/creator-studio.webp" alt="Professional creator studio with camera, ring light and softbox"/></span></button>
-        <button type="button" class="project-panel" data-title="Mazahar Motion Portfolio" data-kicker="Personal Brand" data-src="assets/portfolio-poster.jpg" style="--x:0px;--z:60px;--ry:0deg;--rz:0deg;--zi:5;--delay:-3.2s" aria-label="Open Mazahar Motion Portfolio poster in full view"><span class="project-panel-inner"><img src="assets/portfolio-poster.jpg" alt="Mazahar motion portfolio poster in a blue grid design"/></span></button>
-        <button type="button" class="project-panel" data-title="Hook. Hold. Convert." data-kicker="Motion Graphics" style="--x:195px;--z:-25px;--ry:-7deg;--rz:.5deg;--zi:4;--delay:-1.7s" aria-label="Open Motion Graphics card in full view"><span class="project-panel-inner"><span class="project-panel-copy"><small>Motion Graphics</small><span><b>Hook.<br>Hold.<br>Convert.</b><p>Kinetic type, smooth transitions and focused pacing.</p></span><span class="panel-bars"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i></span></span></span></button>
-        <button type="button" class="project-panel" data-title="On the Road" data-kicker="Creator Story" data-src="assets/about-mazahar.jpg" style="--x:385px;--z:-80px;--ry:-12deg;--rz:-1deg;--zi:2;--delay:-2.8s" aria-label="Open On the Road portrait in full view"><span class="project-panel-inner"><img src="assets/about-mazahar.jpg" alt="Mazahar sitting on a mint-green scooter outdoors"/></span></button>
-        <button type="button" class="project-panel" data-title="Personal Brand" data-kicker="Identity" data-src="assets/mazahar.jpg" style="--x:570px;--z:-150px;--ry:-17deg;--rz:1deg;--zi:1;--delay:-.3s" aria-label="Open Personal Brand portrait in full view"><span class="project-panel-inner"><img src="assets/mazahar.jpg" alt="Mazahar outdoors wearing a white T-shirt"/></span></button>
-      </div>
-    </div>
-    <div class="container wall-caption"><span>Move your pointer to shift the perspective. Click any card to open full view.</span><div class="wall-scrub" aria-hidden="true"><i></i></div></div>
-  </section>
-
-  <!-- EVERYTHING IN ONE PLACE — visible feature carousel inspired by the supplied Squarespace reference -->
-  <section class="section platform-suite" id="platformSuite">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><div class="kicker">One Connected System</div><h2>Everything you need<br>in one creative partner.</h2></div>
-        <p>Strategy, production, packaging and growth work as one system — so your ideas move from a rough brief to published content without getting lost between specialists.</p>
-      </div>
-      <div class="platform-carousel reveal" aria-label="Creative services carousel">
-        <div class="platform-viewport" id="platformViewport" tabindex="0" aria-live="polite">
-          <div class="platform-track" id="platformTrack">
-            <article class="platform-card">
-              <img src="assets/studio.webp" alt="Professional video editing workspace with a timeline and production equipment">
-              <div class="platform-card-copy"><h3>Video Production</h3><p>AI-assisted concepts, premium editing, kinetic type and sound design — shaped for retention from the first frame.</p><span class="platform-arrow" aria-hidden="true">→</span></div>
-            </article>
-            <article class="platform-card design">
-              <div class="design-chips" aria-hidden="true"><span class="design-chip">Hook<br>in 3 sec.</span><span class="design-chip">US audience</span></div>
-              <div class="platform-card-copy"><h3>Creative Intelligence</h3><p>Audience-aware hooks, titles and visual directions turn a raw topic into content people choose to watch.</p><span class="platform-arrow" aria-hidden="true">→</span></div>
-            </article>
-            <article class="platform-card strategy">
-              <div class="strategy-board" aria-hidden="true"><i style="--w:88%"></i><i style="--w:66%"></i><i style="--w:76%"></i><i style="--w:52%"></i></div>
-              <div class="platform-card-copy"><h3>Content Strategy</h3><p>A clear roadmap for what to publish, how often, and how each video moves viewers toward a subscriber, lead or sale.</p><span class="platform-arrow" aria-hidden="true">→</span></div>
-            </article>
-            <article class="platform-card identity">
-              <img src="assets/about-mazahar.jpg" alt="Mazahar outdoors on a mint-green scooter">
-              <span class="identity-badge" aria-hidden="true">PERSONAL<br>BRAND</span>
-              <div class="platform-card-copy"><h3>Channel Growth</h3><p>YouTube SEO, Facebook page systems and US-audience positioning — measured, reviewed and improved over time.</p><span class="platform-arrow" aria-hidden="true">→</span></div>
-            </article>
+  <!-- SHOWREEL — one portfolio film plays across the full section background -->
+  <section class="section" id="showreel" aria-labelledby="showreelTitle">
+    <div class="showreel-stage">
+      <video class="showreel-backdrop" id="portfolioReel" src="assets/mazahar-showreel-26s.mp4" poster="assets/mazahar-showreel-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mazahar's 26-second professional motion graphics portfolio showreel"></video>
+      <div class="container">
+        <div class="showreel-shell">
+          <div class="showreel-intro reveal">
+            <div class="showreel-copy">
+              <div class="showreel-kicker">MAZAHAR • SHOWREEL</div>
+              <h2 id="showreelTitle">Ideas into motion.<span class="serif">Stories into growth.</span></h2>
+              <p>AI-powered video production, cinematic editing and motion graphics built to capture attention and keep audiences watching.</p>
+              <div class="reel-tags" aria-label="Showreel focus"><span>AI Video</span><span>Motion Design</span><span>YouTube Growth</span></div>
+            </div>
           </div>
-        </div>
-        <div class="platform-controls">
-          <div class="platform-dots" id="platformDots" aria-label="Choose carousel page"></div>
-          <div class="platform-arrows"><button class="platform-btn" id="platformPrev" type="button" aria-label="Previous feature">←</button><button class="platform-btn" id="platformNext" type="button" aria-label="Next feature">→</button></div>
+          <button class="reel-play" id="reelToggle" type="button" aria-haspopup="dialog" aria-controls="reelModal" aria-label="Play portfolio showreel in popup">▶</button>
+          <span class="reel-duration">26 sec • Play showreel</span>
+          <div class="showreel-signature">MAZAHAR · AI VIDEO PRODUCTION &amp; CONTENT STRATEGY</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOOK — STORY — CONVERSION -->
-  <section class="section" id="framework">
+  <div class="reel-modal" id="reelModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mazahar portfolio showreel">
+    <button class="reel-modal-backdrop" type="button" data-reel-close aria-label="Close showreel popup"></button>
+    <div class="reel-modal-shell">
+      <div class="reel-modal-slot" id="reelModalSlot"></div>
+      <button class="reel-modal-close" type="button" data-reel-close aria-label="Close showreel popup">×</button>
+    </div>
+  </div>
+
+  <!-- CINEMATIC FRAMES — full-width dark dimensional gallery -->
+  <section class="section cinematic-gallery" id="cinematicGallery" aria-labelledby="cinematicGalleryTitle">
+    <div class="cinematic-gallery-head">
+      <div><div class="kicker">SELECTED FRAMES · 01—08</div><h2 id="cinematicGalleryTitle">Inside the<br><span class="serif">creative process.</span></h2></div>
+      <p>A closer look at the craft behind every frame — from <span class="craft-accent">creative planning</span> and <span class="craft-weight">precision editing</span> to <span class="craft-accent">motion design</span> and final delivery. Every detail is shaped to tell a stronger story.</p>
+    </div>
+    <div class="cinematic-stage" id="cinematicStage" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Eight selected production frames in a continuous three-dimensional ring. Drag horizontally to rotate.">
+      <div class="cinematic-track" id="cinematicTrack" aria-hidden="true">
+        <figure class="cinematic-card"><img src="assets/gallery-edit-suite.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/gallery-camera-stage.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/gallery-motion-energy.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/gallery-production-kit.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/studio.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/gallery-color-grade.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/gallery-storyboard.webp" alt=""></figure>
+        <figure class="cinematic-card"><img src="assets/gallery-sound-design.webp" alt=""></figure>
+      </div>
+      <div class="cinematic-drag-proxy" id="cinematicDragProxy" aria-hidden="true"></div>
+      <div class="cinematic-drag-badge" id="cinematicDragBadge" aria-hidden="true"><span><i>DRAG</i></span></div>
+    </div>
+  </section>
+
+  <!-- CREATIVE MANIFESTO — a typography-led statement of how the work is approached -->
+  <section class="section platform-suite manifesto-section" id="platformSuite" aria-labelledby="manifestoTitle">
     <div class="container">
-      <div class="section-head reveal"><div><div class="kicker">Every Video Framework</div><h2>What goes into <span class="serif">every video</span></h2></div><p>A simple framework used on each project — so a video is not just polished, it is built to be clicked, watched and acted on.</p></div>
-      <div class="hsc">
-        <article class="hsc-card reveal"><span class="num">01</span><span class="tag">First 3 Seconds</span><h3>Hook</h3><p>A bold opening line, pattern interrupt and on-screen text that stops the scroll — before the viewer has a chance to swipe away.</p></article>
-        <article class="hsc-card dark reveal" style="--d:90ms"><span class="num">02</span><span class="tag">Middle</span><h3>Story</h3><p>Clear structure, pacing and visual changes every few seconds. No dead air — every segment gives the viewer a reason to keep watching.</p></article>
-        <article class="hsc-card reveal" style="--d:180ms"><span class="num">03</span><h3>Conversion</h3><p style="margin-top:8px"><span class="tag">End + Packaging</span></p><p>A natural call-to-action, end screen and next-video packaging — turning one view into a subscriber, lead or customer.</p></article>
+      <div class="manifesto-shell">
+        <div class="manifesto-meta"><span class="manifesto-label">A creative manifesto</span><span>Strategy · Production · Growth</span></div>
+        <h2 class="manifesto-statement" id="manifestoTitle">
+          <span class="manifesto-line" style="--mi:0"><span>Don't just <em>publish.</em></span></span>
+          <span class="manifesto-line" style="--mi:1"><span>Create to <strong>grow.</strong></span></span>
+        </h2>
+        <div class="manifesto-close">
+          <div class="manifesto-code" aria-label="Creative focus"><span>Video Production</span><span>YouTube Growth</span><span>Content Strategy</span></div>
+          <p>AI-powered video production, strategic editing and audience growth—working as one system to turn content into <strong>measurable progress.</strong></p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section class="section" id="services">
+  <!-- SERVICES — DIMENSIONAL CAPABILITY WALL -->
+  <section class="section services-wall-section" id="services">
     <div class="container">
-      <div class="section-head reveal">
-        <div><div class="kicker">What I Do</div><h2>Services built for creators who want <span class="serif">real growth</span></h2></div>
-        <p>Not just editing. Every video ships with a hook, a title strategy, and a distribution plan — so it has a reason to perform.</p>
+      <div class="section-head services-wall-head reveal">
+        <div><div class="kicker">What I Do</div><h2>A connected creative system for <span class="serif">real growth</span></h2></div>
+        <p>Six capabilities, one production system. Move across the wall to explore how strategy, editing and distribution work together.</p>
       </div>
 
-      <div class="services">
-        <article class="service reveal" style="--d:0ms"><div class="service-num">01 — PRODUCTION</div><div class="service-icon" style="background:#E6F4F1">🎬</div><h3>AI Video Production</h3><p>Cinematic + motion-graphics videos made with AI workflows — faster turnaround without losing the premium feel.</p><ul><li>AI-assisted concepts & scripts</li><li>Motion graphics & kinetic type</li><li>Shorts, Reels & long-form</li></ul></article>
-        <article class="service reveal" style="--d:80ms"><div class="service-num">02 — EDITING</div><div class="service-icon" style="background:#FFF0E8">✂️</div><h3>Video Editing</h3><p>Clean, professional edits with smooth transitions, sound design, captions and pacing built for retention.</p><ul><li>Retention-first pacing</li><li>Captions, SFX & light music</li><li>Thumbnails & end screens</li></ul></article>
-        <article class="service reveal" style="--d:160ms"><div class="service-num">03 — GROWTH</div><div class="service-icon" style="background:#FEF3C7">📈</div><h3>YouTube SEO & Growth</h3><p>Titles, descriptions, tags and packaging engineered to rank, get clicked, and reach US viewers.</p><ul><li>Keyword & competitor research</li><li>Title + thumbnail strategy</li><li>Channel optimization</li></ul></article>
-        <article class="service reveal" style="--d:240ms"><div class="service-num">04 — SOCIAL</div><div class="service-icon" style="background:#E0E7FF">👥</div><h3>Facebook Page Growth</h3><p>Build and grow a Facebook Page that actually converts — content pillars, posting rhythm, and audience targeting.</p><ul><li>Page setup & branding</li><li>Content pillars & calendar</li><li>US audience targeting</li></ul></article>
-        <article class="service reveal" style="--d:320ms"><div class="service-num">05 — STRATEGY</div><div class="service-icon" style="background:#ECFDF5">🧭</div><h3>Content Strategy</h3><p>A clear 30–90 day plan: what to post, why, and how it leads to subscribers, leads, or sales.</p><ul><li>Niche & positioning</li><li>30–90 day content roadmap</li><li>Monetization planning</li></ul></article>
-        <article class="service reveal" style="--d:400ms"><div class="service-num">06 — AUTOMATION</div><div class="service-icon" style="background:#FCE7F3">⚡</div><h3>AI Tools & Automation</h3><p>Systems that save you hours every week — idea → script → title → thumbnail brief → schedule, streamlined.</p><ul><li>AI workflow setup</li><li>Content pipeline systems</li><li>Tool stack consulting</li></ul></article>
+      <div class="services-wall-stage" id="serviceWallStage" aria-label="Animated 3D wall of creative services">
+        <div class="services service-wall-grid" id="serviceWallGrid">
+          <article class="service service-wall-card" style="--si:0;--depth:-55px;--lift:38px;--ry:3deg;--float:-1.6s;--card-accent:#0C7669"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="m17 10 4-2v8l-4-2zM7 9h6M7 13h4"/></svg></div><div class="service-num">01 — PRODUCTION</div><h3>AI Video Production</h3><p>Cinematic + motion-graphics videos made with AI workflows — faster turnaround without losing the premium feel.</p><ul><li>AI-assisted concepts &amp; scripts</li><li>Motion graphics &amp; kinetic type</li><li>Shorts, Reels &amp; long-form</li></ul></div></article>
+          <article class="service service-wall-card" style="--si:1;--depth:78px;--lift:-4px;--ry:-1deg;--float:-3.1s;--card-accent:#2ED3B7"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h16M4 17h8M16 4v6M9 14v6"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="12" r="2"/></svg></div><div class="service-num">02 — EDITING</div><h3>Video Editing</h3><p>Clean, professional edits with smooth transitions, sound design, captions and pacing built for retention.</p><ul><li>Retention-first pacing</li><li>Captions, SFX &amp; light music</li><li>Thumbnails &amp; end screens</li></ul></div></article>
+          <article class="service service-wall-card" style="--si:2;--depth:-25px;--lift:54px;--ry:-4deg;--float:-.8s;--card-accent:#E85A24"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 18 10 12l4 3 6-8M15 7h5v5"/><path d="M4 6v12h16"/></svg></div><div class="service-num">03 — GROWTH</div><h3>YouTube SEO &amp; Growth</h3><p>Titles, descriptions, tags and packaging engineered to rank, get clicked, and reach US viewers.</p><ul><li>Keyword &amp; competitor research</li><li>Title + thumbnail strategy</li><li>Channel optimization</li></ul></div></article>
+          <article class="service service-wall-card" style="--si:3;--depth:20px;--lift:-8px;--ry:4deg;--float:-2.4s;--card-accent:#F5B841"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2"/><path d="M3 19c.5-4 2.5-6 6-6s5.5 2 6 6M15 14c3 0 5 1.6 5.5 5"/></svg></div><div class="service-num">04 — SOCIAL</div><h3>Facebook Page Growth</h3><p>Build and grow a Facebook Page that converts — content pillars, posting rhythm and audience targeting.</p><ul><li>Page setup &amp; branding</li><li>Content pillars &amp; calendar</li><li>US audience targeting</li></ul></div></article>
+          <article class="service service-wall-card" style="--si:4;--depth:105px;--lift:-46px;--ry:1deg;--float:-4s;--card-accent:#0C7669"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m15 9-2 5-5 2 2-5z"/></svg></div><div class="service-num">05 — STRATEGY</div><h3>Content Strategy</h3><p>A clear 30–90 day plan: what to post, why, and how it leads to subscribers, leads or sales.</p><ul><li>Niche &amp; positioning</li><li>30–90 day roadmap</li><li>Monetization planning</li></ul></div></article>
+          <article class="service service-wall-card" style="--si:5;--depth:-38px;--lift:22px;--ry:-3deg;--float:-1.2s;--card-accent:#2ED3B7"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13 2-7 12h6l-1 8 7-12h-6z"/></svg></div><div class="service-num">06 — AUTOMATION</div><h3>AI Tools &amp; Automation</h3><p>Systems that save hours every week — idea → script → title → thumbnail brief → schedule, streamlined.</p><ul><li>AI workflow setup</li><li>Content pipeline systems</li><li>Tool stack consulting</li></ul></div></article>
+        </div>
+        <div class="service-wall-caption"><span>Hover for kinetic type. Click for a smooth morph zoom.</span><div class="service-wall-meter" aria-hidden="true"><i></i></div></div>
       </div>
     </div>
   </section>
@@ -1061,17 +1630,6 @@ body.lightbox-open{overflow:hidden}
 
   <div class="container"><div class="wave-divider" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span style="--i:31"></span></div></div>
 
-  <!-- SHOWCASE -->
-  <section class="section">
-    <div class="container showcase reveal mask-reveal">
-      <img class="showcase-main parallax-img" data-parallax="0.04" src="assets/studio.webp" alt="Professional video editing studio with timeline and color grading"/>
-      <div class="showcase-side">
-        <img src="assets/creator-studio.webp" alt="Content creator studio with camera and professional lighting"/>
-        <div class="info-card"><h3>From idea to published — one partner.</h3><p>You don't need a big team. Strategy, production, SEO and posting plan handled end-to-end, so you can focus on creating and running your business.</p><a href="#brief" style="display:inline-flex;margin-top:14px;background:#fff;color:#111;padding:10px 14px;border-radius:999px;font-weight:800;font-size:13.5px">Start yours →</a></div>
-      </div>
-    </div>
-  </section>
-
   <!-- PROCESS -->
   <section class="section" id="process" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
     <div class="container">
@@ -1087,19 +1645,6 @@ body.lightbox-open{overflow:hidden}
         <div class="step reveal" style="--d:360ms"><h3>🎥 Creator / YouTuber</h3><p>You post inconsistently or views are flat. You need packaging + strategy, not just edits.</p></div>
         <div class="step reveal" style="--d:450ms"><h3>💼 Coach / Business</h3><p>You want video that brings leads from the US market — without hiring an in-house team.</p></div>
         <div class="step reveal" style="--d:540ms"><h3>🚀 Facebook Page Owner</h3><p>You want to build a page from zero to monetization with a repeatable content system.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SCROLL STORY -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal"><div><div class="kicker">Scroll Story</div><h2>From first idea to <span class="serif">growing channel</span></h2></div><p>Scroll through how a single project moves — the same journey your channel follows.</p></div>
-      <div class="story-strip" id="storyStrip"><div class="story-fill" id="storyFill"></div>
-        <div class="story-step reveal"><h3>💡 Idea</h3><p>We start with your niche, US audience and a topic that already has demand — not a random upload.</p></div>
-        <div class="story-step reveal"><h3>🎯 Hook &amp; Packaging</h3><p>Title, thumbnail and the first 3 seconds are designed together, before editing begins.</p></div>
-        <div class="story-step reveal"><h3>🎬 Produce</h3><p>Motion graphics, captions, SFX and clean pacing turn the idea into a watchable, premium video.</p></div>
-        <div class="story-step reveal"><h3>📈 Publish &amp; Grow</h3><p>SEO, posting plan and performance review — then we double down on what your audience loves.</p></div>
       </div>
     </div>
   </section>
@@ -1121,33 +1666,70 @@ body.lightbox-open{overflow:hidden}
     </div>
   </section>
 
-  <!-- WORK / PROJECT TYPES -->
-  <section class="section" id="work">
+  <!-- WORK / PROJECT TYPES — 12 scroll-driven sample directions -->
+  <section class="section work-wall-section" id="work">
     <div class="container">
-      <div class="section-head reveal"><div><div class="kicker">Work &amp; Project Types</div><h2>Projects I build <span class="serif">for creators &amp; brands</span></h2></div><p>Examples of the project types I deliver for Fiverr, Upwork and direct clients. Specific client results are shared privately during a discovery chat.</p></div>
-      <div class="motion-prelude work-prelude reveal" aria-hidden="true"><span class="prelude-label">From raw footage to audience growth</span><div class="cut-track"></div><span class="cut-word">EDIT.</span><span class="cut-word">HOOK.</span><span class="cut-word">GROW.</span></div>
-      <div class="work-grid">
-        <article class="work-card reveal"><img src="assets/studio.webp" alt="YouTube long-form video editing timeline"/><div class="work-body"><div class="work-meta"><span>YouTube</span><span>Long-Form</span></div><h3>Creator Long-Form Videos</h3><p>Retention-first editing, chapters, captions and packaging for educational &amp; entertainment channels targeting US viewers.</p></div></article>
-        <article class="work-card reveal" style="--d:80ms"><img src="assets/creator-studio.webp" alt="Creator studio setup for Facebook and short-form video"/><div class="work-body"><div class="work-meta"><span>Facebook</span><span>Page Growth</span></div><h3>Facebook Page Build-Out</h3><p>Page branding, content pillars and a repeatable posting system designed to move a new page toward monetization.</p></div></article>
-        <article class="work-card reveal" style="--d:160ms"><img src="assets/mazahar.jpg" alt="Mazahar portrait for personal brand video projects"/><div class="work-body"><div class="work-meta"><span>Shorts / Reels</span><span>Daily System</span></div><h3>Shorts &amp; Reels System</h3><p>Hook-led short-form with kinetic text, captions and sound design — batched so you can post consistently every day.</p></div></article>
-        <article class="work-card reveal"><img src="assets/about-mazahar.jpg" alt="Mazahar on scooter outdoors for lifestyle creator content"/><div class="work-body"><div class="work-meta"><span>YouTube</span><span>Faceless / AI</span></div><h3>Faceless AI Channels</h3><p>AI visuals, voice and motion graphics for faceless formats — history, facts, finance explainers and storytelling.</p></div></article>
-        <article class="work-card reveal" style="--d:80ms"><img src="assets/creator-studio.webp" alt="Professional lighting for coach and business lead videos"/><div class="work-body"><div class="work-meta"><span>Business</span><span>Lead Videos</span></div><h3>Coach &amp; Business Videos</h3><p>Talking-head and promo videos polished for trust — lower thirds, b-roll, captions and a clear call-to-action.</p></div></article>
-        <article class="work-card reveal" style="--d:160ms"><img src="assets/studio.webp" alt="Channel audit and relaunch editing workspace"/><div class="work-body"><div class="work-meta"><span>Audit</span><span>Relaunch</span></div><h3>Channel Audit &amp; Relaunch</h3><p>Full review of titles, thumbnails, retention and SEO — plus a 30–90 day relaunch roadmap you can actually follow.</p></div></article>
+      <div class="section-head work-wall-head reveal">
+        <div><div class="kicker">Work &amp; Project Types</div><h2><span class="work-hash">#</span>BuiltByMazahar</h2></div>
+        <p>Explore 12 sample production directions for creators and brands. Scroll to move the wall; select any card for a closer view.</p>
       </div>
     </div>
+    <div class="work-wall-stage" id="workWallStage" aria-label="Interactive 3D wall with 12 sample project types">
+      <div class="work-wall-deck" id="workWallDeck">
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="YouTube · Long-Form" data-title="Creator Long-Form Videos" style="--x:-900px;--y:24px;--z:-240px;--ry:19deg;--rz:-1.2deg;--zi:1;--delay:-1.2s">
+          <div class="work-wall-panel-inner"><img src="assets/studio.webp" alt="Editing workspace representing YouTube long-form production"><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Long-Form</span></div><h3>Creator Long-Form Videos</h3><p>Retention-first edits with chapters, captions and purposeful pacing.</p><p class="work-detail">Sample scope: story edit, motion titles, audio polish, captions and platform-ready delivery.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Facebook · Growth" data-title="Facebook Page Build-Out" style="--x:-720px;--y:196px;--z:-165px;--ry:15deg;--rz:.8deg;--zi:2;--delay:-2.8s">
+          <div class="work-wall-panel-inner"><img src="assets/creator-studio.webp" alt="Creator studio representing Facebook page video production"><div class="work-wall-copy"><div class="work-meta"><span>Facebook</span><span>Page Growth</span></div><h3>Facebook Page Build-Out</h3><p>Brand system, content pillars and a repeatable publishing rhythm.</p><p class="work-detail">Sample scope: page direction, visual language, recurring formats and content calendar structure.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Short-Form · Editing" data-title="Shorts & Reels System" style="--x:-540px;--y:42px;--z:-105px;--ry:11deg;--rz:-.6deg;--zi:3;--delay:-.5s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-cuts" role="img" aria-label="Abstract short-form editing timeline"><b>15s</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Shorts / Reels</span><span>Daily</span></div><h3>Shorts &amp; Reels System</h3><p>Hook-led vertical cuts with text, captions and sound design.</p><p class="work-detail">Sample scope: repeatable hook template, kinetic captions, pattern interrupts and platform exports.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="AI · Storytelling" data-title="Faceless AI Channels" style="--x:-360px;--y:214px;--z:-45px;--ry:7deg;--rz:.5deg;--zi:4;--delay:-2s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-ai" role="img" aria-label="Abstract AI-assisted storytelling system"><b>AI</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Faceless</span></div><h3>Faceless AI Channels</h3><p>AI-assisted visuals, narration and motion-led storytelling.</p><p class="work-detail">Sample scope: format design, scene plan, asset workflow, edit and consistent channel packaging.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Personal Brand · Short-Form" data-title="Personal Brand Clips" style="--x:-180px;--y:18px;--z:40px;--ry:3deg;--rz:-.4deg;--zi:6;--delay:-3.3s">
+          <div class="work-wall-panel-inner"><img src="assets/mazahar.jpg" alt="Mazahar portrait representing personal-brand video content"><div class="work-wall-copy"><div class="work-meta"><span>Personal Brand</span><span>Clips</span></div><h3>Personal Brand Clips</h3><p>Confident, clean edits that turn expertise into clear moments.</p><p class="work-detail">Sample scope: selects, branded framing, punch-in rhythm, captions and a cohesive clip series.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Business · Conversion" data-title="Coach & Business Videos" style="--x:0px;--y:202px;--z:72px;--ry:-1deg;--rz:.5deg;--zi:8;--delay:-1.7s">
+          <div class="work-wall-panel-inner"><img src="assets/about-mazahar.jpg" alt="Professional portrait representing coach and business videos"><div class="work-wall-copy"><div class="work-meta"><span>Business</span><span>Lead Content</span></div><h3>Coach &amp; Business Videos</h3><p>Talking-head and promo edits built for trust and clarity.</p><p class="work-detail">Sample scope: message shaping, clean visual pacing, branded motion and call-to-action delivery.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Captions · Motion" data-title="Kinetic Caption Packs" style="--x:190px;--y:40px;--z:46px;--ry:-4deg;--rz:-.5deg;--zi:7;--delay:-2.2s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-captions" role="img" aria-label="Abstract kinetic caption layout"><b>TXT</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Motion</span><span>Captions</span></div><h3>Kinetic Caption Packs</h3><p>Reusable caption language for reels, ads and explainers.</p><p class="work-detail">Sample scope: type hierarchy, emphasis rules, motion timing and editable style templates.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Strategy · Audit" data-title="Channel Audit & Relaunch" style="--x:380px;--y:216px;--z:-20px;--ry:-7deg;--rz:.7deg;--zi:5;--delay:-.8s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-audit" role="img" aria-label="Abstract channel performance audit bars"><b>↑</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Audit</span><span>Relaunch</span></div><h3>Channel Audit &amp; Relaunch</h3><p>Titles, thumbnails, retention and SEO reviewed together.</p><p class="work-detail">Sample scope: content review, packaging diagnosis, priority fixes and a practical relaunch roadmap.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="YouTube · Packaging" data-title="Thumbnail Direction" style="--x:570px;--y:28px;--z:-88px;--ry:-11deg;--rz:-.8deg;--zi:4;--delay:-2.7s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-thumb" role="img" aria-label="Abstract thumbnail concept grid"><b>CTR</b></div><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Packaging</span></div><h3>Thumbnail Direction</h3><p>Clear concepts designed around curiosity and fast recognition.</p><p class="work-detail">Sample scope: concept routes, hierarchy, visual contrast and title-thumbnail pairing guidance.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Audio · Social" data-title="Video Podcast Cuts" style="--x:760px;--y:204px;--z:-150px;--ry:-15deg;--rz:.8deg;--zi:3;--delay:-1.4s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-wave" role="img" aria-label="Abstract podcast audio waveform"><b>VOX</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Podcast</span><span>Social Cuts</span></div><h3>Video Podcast Cuts</h3><p>Long conversations shaped into focused episodes and clips.</p><p class="work-detail">Sample scope: multicam pacing, audio cleanup, chapter moments and short social cutdowns.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Launch · Campaign" data-title="Product Launch Videos" style="--x:950px;--y:54px;--z:-215px;--ry:-19deg;--rz:-1deg;--zi:2;--delay:-3.1s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-cuts" role="img" aria-label="Abstract product launch motion sequence"><b>GO</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Campaign</span><span>Launch</span></div><h3>Product Launch Videos</h3><p>Fast, structured stories that make the offer easy to follow.</p><p class="work-detail">Sample scope: launch narrative, feature moments, social variants and conversion-focused endings.</p></div></div>
+        </article>
+        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="SEO · Content System" data-title="90-Day Content Plan" style="--x:1140px;--y:210px;--z:-275px;--ry:-22deg;--rz:1.1deg;--zi:1;--delay:-1.9s">
+          <div class="work-wall-panel-inner"><div class="work-visual visual-audit" role="img" aria-label="Abstract content roadmap graphic"><b>90</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Strategy</span><span>90 Days</span></div><h3>90-Day Content Plan</h3><p>Topics, formats and publishing rhythm connected to one goal.</p><p class="work-detail">Sample scope: content pillars, weekly cadence, platform roles and an executable production queue.</p></div></div>
+        </article>
+      </div>
+      <div class="work-wall-beam" aria-hidden="true"></div>
+    </div>
+    <div class="container work-wall-caption"><span><strong id="workWallStatus">05 / 12 — Personal Brand Clips</strong><small>Scroll over the wall or drag left/right. The centered project grows; click it for a smooth full view.</small></span><div class="work-wall-progress" aria-hidden="true"><i></i></div></div>
   </section>
 
   <!-- TESTIMONIALS CAROUSEL -->
-  <section class="section">
+  <section class="section client-experience-section">
     <div class="container">
       <div class="section-head reveal" style="justify-content:center;text-align:center"><div><div class="kicker" style="justify-content:center">Client Experience</div><h2>What working together <span class="serif">feels like</span></h2></div></div>
       <div class="testi-wrap reveal">
+        <div class="testi-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="testi-viewport"><div class="testi-track" id="testiTrack">
-          <div class="testi-slide"><div class="stars">★★★★★</div><blockquote>“Clear communication, strategy before editing, and videos that finally look premium — not just cut together.”</blockquote><div class="who">Creator Client — Growth Focus • YouTube</div><p style="font-size:13px;color:var(--muted);margin:10px 0 0">Theme from repeat creator work: packaging + consistency.</p></div>
-          <div class="testi-slide"><div class="stars">★★★★★</div><blockquote>“I came for editing and stayed for the plan — titles, hooks and a calendar I could actually follow every week.”</blockquote><div class="who">Business / Coach Client — Lead Content • Facebook + YouTube</div><p style="font-size:13px;color:var(--muted);margin:10px 0 0">Theme from direct clients: strategy + dependable delivery.</p></div>
-          <div class="testi-slide"><div class="stars">★★★★★</div><blockquote>“Fast turnaround on Shorts, captions and sound done properly, and honest advice on what will work for US viewers.”</blockquote><div class="who">Page Owner — Short-Form System • Facebook Page</div><p style="font-size:13px;color:var(--muted);margin:10px 0 0">Theme from Fiverr / Upwork work: speed + US audience focus.</p></div>
+          <article class="testi-slide"><div class="testi-profile"><div class="client-photo" aria-label="Reserved space for client photo or logo"><span>PHOTO<br>OR LOGO</span></div><div><div class="stars" aria-label="Five stars">★★★★★</div><div class="who">Creator Client</div><div class="client-meta">Growth Focus • YouTube</div></div></div><blockquote>“Clear communication, strategy before editing, and videos that finally look premium — not just cut together.”</blockquote><div class="review-result"><b>What stood out</b><span>Premium presentation • Clear strategy • Consistent delivery</span></div></article>
+          <article class="testi-slide"><div class="testi-profile"><div class="client-photo" aria-label="Reserved space for client photo or logo"><span>PHOTO<br>OR LOGO</span></div><div><div class="stars" aria-label="Five stars">★★★★★</div><div class="who">Business / Coach Client</div><div class="client-meta">Lead Content • Facebook + YouTube</div></div></div><blockquote>“I came for editing and stayed for the plan — titles, hooks and a calendar I could actually follow every week.”</blockquote><div class="review-result"><b>What stood out</b><span>Practical planning • Strong hooks • Dependable weekly system</span></div></article>
+          <article class="testi-slide"><div class="testi-profile"><div class="client-photo" aria-label="Reserved space for client photo or logo"><span>PHOTO<br>OR LOGO</span></div><div><div class="stars" aria-label="Five stars">★★★★★</div><div class="who">Page Owner</div><div class="client-meta">Short-Form System • Facebook Page</div></div></div><blockquote>“Fast turnaround on Shorts, captions and sound done properly, and honest advice on what will work for US viewers.”</blockquote><div class="review-result"><b>What stood out</b><span>Fast turnaround • Polished captions • US-audience focus</span></div></article>
         </div></div>
-        <div class="testi-controls"><button class="testi-btn" id="testiPrev" aria-label="Previous testimonial">‹</button><div class="testi-dots" id="testiDots"></div><button class="testi-btn" id="testiNext" aria-label="Next testimonial">›</button></div>
+        <div class="testi-controls"><button class="testi-btn" id="testiPrev" aria-label="Previous testimonial">←</button><div class="testi-dots" id="testiDots"></div><button class="testi-btn" id="testiNext" aria-label="Next testimonial">→</button></div>
         <p class="testi-note">Illustrative summaries of common client feedback themes across Fiverr, Upwork &amp; direct work — connect on <a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" style="font-weight:700;color:var(--teal)">Facebook</a> for references.</p>
       </div>
     </div>
@@ -1237,12 +1819,9 @@ It will include your platform, package, services, volume and goal, so Mazahar ca
     </div>
   </section>
 
-  <div class="marquee-outline" aria-hidden="true"><div class="marquee-track"><span>Create ✦ <b>Edit</b> ✦ Rank ✦ <b>Grow</b> ✦ Monetize ✦ <b>Automate</b> ✦ &nbsp;</span><span>Create ✦ <b>Edit</b> ✦ Rank ✦ <b>Grow</b> ✦ Monetize ✦ <b>Automate</b> ✦ &nbsp;</span></div></div>
-  <div class="container"><div class="wave-divider" aria-hidden="true"><span style="--i:16"></span><span style="--i:15"></span><span style="--i:14"></span><span style="--i:13"></span><span style="--i:12"></span><span style="--i:11"></span><span style="--i:10"></span><span style="--i:9"></span><span style="--i:8"></span><span style="--i:7"></span><span style="--i:6"></span><span style="--i:5"></span><span style="--i:4"></span><span style="--i:3"></span><span style="--i:2"></span><span style="--i:1"></span><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span></div></div>
-
   <!-- CTA -->
   <section class="section" style="padding-top:24px">
-    <div class="container"><div class="cta reveal wipe">
+    <div class="container"><div class="cta">
       <div><h2>Let's build your brand — one video at a time.</h2><p>Tell me where you want your channel or page to be in 90 days. I'll map the content, production and growth plan to get you there.</p><a href="#brief" class="btn" style="background:#fff;color:#0B3D36;margin-top:8px">Build Your Brief →</a></div>
       <div class="cta-card"><b style="font-size:15px">Connect directly</b><p style="font-size:14px;color:#555;margin:8px 0">Fastest reply is on Facebook — send your brief there:</p><a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener">facebook.com/mazahar007 ↗</a><p style="font-size:13px;color:#777;margin:12px 0 0">Fiverr • Upwork • Direct Clients<br>12+ years freelancing experience</p></div>
     </div></div>
@@ -1252,28 +1831,162 @@ It will include your platform, package, services, volume and goal, so Mazahar ca
 <div class="gallery-lightbox" id="galleryLightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxHeading">
   <button type="button" class="lightbox-backdrop" data-lightbox-close aria-label="Close full view"></button>
   <div class="lightbox-shell">
-    <div class="lightbox-top"><div class="lightbox-title"><small id="lightboxKicker">Selected Capability</small><b id="lightboxHeading">Full view</b></div><button type="button" class="lightbox-close" data-lightbox-close aria-label="Close full view">×</button></div>
+    <div class="lightbox-top"><div class="lightbox-title"><small id="lightboxKicker">Work &amp; Project Types</small><b id="lightboxHeading">Project sample</b></div><button type="button" class="lightbox-close" data-lightbox-close aria-label="Close project view">×</button></div>
     <div class="lightbox-content" id="lightboxContent"></div>
-    <div class="lightbox-bottom"><span class="lightbox-count" id="lightboxCount">01 / 07</span><div class="lightbox-controls"><button type="button" class="lightbox-nav" id="lightboxPrev" aria-label="Previous gallery card">‹</button><button type="button" class="lightbox-nav" id="lightboxNext" aria-label="Next gallery card">›</button></div></div>
+    <div class="lightbox-bottom"><span class="lightbox-count" id="lightboxCount">01 / 12</span><div class="lightbox-controls"><button type="button" class="lightbox-nav" id="lightboxPrev" aria-label="Previous project sample">‹</button><button type="button" class="lightbox-nav" id="lightboxNext" aria-label="Next project sample">›</button></div></div>
   </div>
 </div>
 
-<footer><div class="container footer-grid"><span>© 2026 Mazahar — AI Video Production & Content Strategy Consultant</span><span>AI Video • YouTube SEO • Facebook Growth • Content Strategy</span><a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" style="font-weight:700;color:var(--ink)">Facebook ↗</a></div></footer>
+<footer class="site-footer" id="contact">
+  <div class="footer-ticker" aria-hidden="true">
+    <div class="footer-ticker-track"><span>Strategy in. <b>Stories out.</b> Views into growth. ✦ &nbsp; AI Video Production • Motion Graphics • YouTube SEO • Facebook Growth • &nbsp;</span><span>Strategy in. <b>Stories out.</b> Views into growth. ✦ &nbsp; AI Video Production • Motion Graphics • YouTube SEO • Facebook Growth • &nbsp;</span></div>
+  </div>
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-pitch">
+        <span class="footer-status"><i aria-hidden="true"></i> Available for new projects</span>
+        <h2>Make your next idea <span>move.</span></h2>
+        <p>From the first three-second hook to the growth plan behind it — build content designed to be watched, remembered and acted on.</p>
+        <div class="footer-actions">
+          <a href="#brief" class="btn footer-primary">Start a Project →</a>
+          <a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" class="btn btn-outline footer-secondary">Message on Facebook ↗</a>
+        </div>
+      </div>
+      <div class="footer-motion" aria-hidden="true">
+        <div class="footer-orbit">
+          <i class="footer-satellite"></i><i class="footer-satellite two"></i>
+          <div class="footer-core"><div><b>12+</b><small>Years of<br>creative work</small></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-directory">
+      <div class="footer-brandline"><strong>Mazahar</strong>AI Video Production & Content Strategy Consultant helping creators turn better ideas into stronger channels.</div>
+      <nav class="footer-col" aria-label="Footer navigation"><h3>Explore</h3><div class="footer-links"><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#packages">Packages</a><a href="#faq">FAQ</a></div></nav>
+      <div class="footer-col"><h3>Capabilities</h3><div class="footer-links"><a href="#motion">Motion Graphics</a><a href="#services">AI Video</a><a href="#services">YouTube SEO</a><a href="#services">Content Strategy</a></div></div>
+    </div>
+
+    <div class="footer-bottom"><span>© 2026 Mazahar. All rights reserved.</span><span><b>AI Video • Strategy • Growth</b> &nbsp;—&nbsp; Built for creators ready to move.</span></div>
+  </div>
+</footer>
 
 <script>
 document.documentElement.classList.add('js');
+
+// The recorded voice has deliberate pauses, so the typewriter follows its real word timings
+// instead of using one generic per-character delay. This keeps the tactile key clicks while the
+// visible words land with the spoken words. Browsers still require one tap before audio can play.
+(function(){
+  const heading=document.getElementById('heroTypewriter');
+  const output=document.getElementById('heroTypeText');
+  const replay=document.getElementById('typingSoundToggle');
+  const label=document.getElementById('typingSoundLabel');
+  const voice=document.getElementById('heroHeadlineAudio');
+  if(!heading||!output||!replay||!voice) return;
+  const text='AI video that grows channels, not just views.';
+  // Cue points measured from this recording. The long pause before “not” is preserved on screen.
+  const cues=[
+    {text:'AI',start:.16,end:.53},
+    {text:' video',start:.55,end:.90},
+    {text:' that',start:.90,end:1.08},
+    {text:' grows',start:1.10,end:1.39},
+    {text:' channels,',start:1.39,end:2.12},
+    {text:' not',start:2.50,end:2.76},
+    {text:' just',start:2.77,end:3.05},
+    {text:' views.',start:3.08,end:3.60}
+  ];
+  const speechEnd=3.66;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let frame=0,loopTimer=0,runId=0,renderedLength=0,audio=null,soundEnabled=false;
+
+  function decorate(id){
+    if(id!==runId) return;
+    voice.pause();
+    output.innerHTML='AI video that <span class="typed-accent">grows channels,</span> <span class="typed-serif">not just views.</span>';
+    heading.classList.remove('is-typing');heading.classList.add('is-complete');
+    replay.classList.remove('is-playing');
+    label.textContent=soundEnabled?'Voice + typing synced · Replay':'Play headline audio';
+    if(!reduced) loopTimer=setTimeout(()=>play(soundEnabled),5000);
+  }
+  function keySound(character){
+    if(!soundEnabled||!audio||audio.state!=='running'||/\s/.test(character)) return;
+    const now=audio.currentTime,osc=audio.createOscillator(),gain=audio.createGain();
+    osc.type='triangle';osc.frequency.setValueAtTime(/[,.]/.test(character)?520:720+Math.random()*90,now);
+    gain.gain.setValueAtTime(.0001,now);gain.gain.exponentialRampToValueAtTime(.016,now+.003);gain.gain.exponentialRampToValueAtTime(.0001,now+.026);
+    osc.connect(gain);gain.connect(audio.destination);osc.start(now);osc.stop(now+.03);
+  }
+  function textAt(time){
+    let visible='';
+    cues.forEach(cue=>{
+      if(time<cue.start) return;
+      if(time>=cue.end){visible+=cue.text;return}
+      const progress=Math.max(0,Math.min(1,(time-cue.start)/(cue.end-cue.start)));
+      const count=Math.min(cue.text.length,Math.floor(progress*cue.text.length)+1);
+      visible+=cue.text.slice(0,count);
+    });
+    return visible;
+  }
+  function startVoice(id){
+    if(!soundEnabled) return;
+    voice.pause();voice.currentTime=0;voice.playbackRate=1;
+    const started=voice.play();
+    if(started&&typeof started.catch==='function') started.catch(()=>{
+      if(id!==runId) return;
+      soundEnabled=false;replay.classList.remove('is-playing');label.textContent='Tap to play headline audio';
+    });
+  }
+  function play(withSound){
+    cancelAnimationFrame(frame);clearTimeout(loopTimer);runId+=1;renderedLength=0;soundEnabled=!!withSound;
+    const id=runId,start=performance.now();
+    heading.classList.remove('is-complete');heading.classList.add('is-typing');output.textContent='';
+    replay.classList.toggle('is-playing',soundEnabled);label.textContent=soundEnabled?'Voice + typing playing…':'Play headline audio';
+    startVoice(id);
+    if(reduced){decorate(id);return}
+    function sync(){
+      if(id!==runId) return;
+      const elapsed=soundEnabled&&!voice.paused?voice.currentTime:(performance.now()-start)/1000;
+      const visible=textAt(elapsed);
+      if(visible.length>renderedLength){
+        for(let i=renderedLength;i<visible.length;i+=1) keySound(visible.charAt(i));
+        output.textContent=visible;renderedLength=visible.length;
+      }
+      if(elapsed>=speechEnd){decorate(id);return}
+      frame=requestAnimationFrame(sync);
+    }
+    frame=requestAnimationFrame(sync);
+  }
+  replay.addEventListener('click',()=>{
+    const AudioEngine=window.AudioContext||window.webkitAudioContext;
+    if(AudioEngine){audio=audio||new AudioEngine();if(audio.state==='suspended')audio.resume().catch(()=>{})}
+    play(true);
+  });
+  voice.addEventListener('ended',()=>replay.classList.remove('is-playing'));
+  play(false);
+})();
+
 const menuBtn=document.getElementById('menuBtn'), mobileMenu=document.getElementById('mobileMenu');
 menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
 
-// real portfolio showreel — autoplay muted, with an accessible play/pause control
-const portfolioReel=document.getElementById('portfolioReel'), reelToggle=document.getElementById('reelToggle');
-if(portfolioReel&&reelToggle){
-  function paintReel(){const paused=portfolioReel.paused;reelToggle.textContent=paused?'▶':'❚❚';reelToggle.setAttribute('aria-label',(paused?'Play':'Pause')+' portfolio showreel')}
-  reelToggle.addEventListener('click',()=>{if(portfolioReel.paused){portfolioReel.play().catch(()=>{});}else{portfolioReel.pause()}paintReel()});
-  portfolioReel.addEventListener('play',paintReel);portfolioReel.addEventListener('pause',paintReel);
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) portfolioReel.pause();
-  paintReel();
+// One showreel element: muted section background, then moved into a 16:9 popup on click.
+const portfolioReel=document.getElementById('portfolioReel'),reelToggle=document.getElementById('reelToggle'),reelModal=document.getElementById('reelModal'),reelModalSlot=document.getElementById('reelModalSlot');
+if(portfolioReel&&reelToggle&&reelModal&&reelModalSlot){
+  const home=portfolioReel.parentNode,homeNext=portfolioReel.nextSibling,reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
+  let lastFocus=null;
+  function openReel(){
+    lastFocus=document.activeElement;portfolioReel.pause();reelModalSlot.appendChild(portfolioReel);portfolioReel.controls=true;portfolioReel.muted=false;
+    reelModal.hidden=false;reelModal.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');
+    portfolioReel.play().catch(()=>{});requestAnimationFrame(()=>reelModal.querySelector('.reel-modal-close').focus());
+  }
+  function closeReel(){
+    portfolioReel.pause();portfolioReel.controls=false;portfolioReel.muted=true;home.insertBefore(portfolioReel,homeNext);
+    reelModal.hidden=true;reelModal.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open');
+    if(!reduced.matches)portfolioReel.play().catch(()=>{});if(lastFocus)lastFocus.focus();
+  }
+  reelToggle.addEventListener('click',openReel);
+  reelModal.querySelectorAll('[data-reel-close]').forEach(button=>button.addEventListener('click',closeReel));
+  document.addEventListener('keydown',event=>{if(!reelModal.hidden&&event.key==='Escape')closeReel()});
+  if(reduced.matches)portfolioReel.pause();
 }
 
 // scroll progress + parallax orbs
@@ -1291,16 +2004,6 @@ window.addEventListener('scroll',()=>{
     ticking=false;
   });
 },{passive:true});
-// photo tilt — desktop, pointer fine only
-const frame=document.getElementById('photoFrame');
-if(frame && window.matchMedia('(pointer:fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-  const wrap=document.getElementById('heroVisual');
-  wrap.addEventListener('mousemove',e=>{
-    const r=frame.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width-.5; const y=(e.clientY-r.top)/r.height-.5;
-    frame.style.transform='perspective(900px) rotateY('+(x*5)+'deg) rotateX('+(-y*5)+'deg)';
-  });
-  wrap.addEventListener('mouseleave',()=>{frame.style.transform=''});
-}
 // counters — smooth ease-out count-up
 const counters=document.querySelectorAll('.counter');
 const cObs=new IntersectionObserver(es=>{es.forEach(e=>{
@@ -1455,10 +2158,72 @@ const style=document.createElement('style');style.textContent='@media(max-width:
   window.addEventListener('pagehide',()=>cancelAnimationFrame(raf),{once:true});
 })();
 
-// ===== MadeForMotion full-view gallery =====
+// ===== Services capability wall: pointer + scroll perspective =====
+(function(){
+  const stage=document.getElementById('serviceWallStage'),grid=document.getElementById('serviceWallGrid');
+  if(!stage||!grid||window.matchMedia('(prefers-reduced-motion: reduce)').matches||window.matchMedia('(max-width: 900px)').matches) return;
+  let targetX=0,targetY=0,currentX=0,currentY=0,scrollShift=0,raf=0;
+  function paint(){
+    currentX+=(targetX-currentX)*.075;currentY+=(targetY-currentY)*.075;
+    grid.style.transform='rotateX('+(5.5-currentY*2.8)+'deg) rotateY('+(-3+currentX*5.8)+'deg) translateY('+(scrollShift*10+currentY*5)+'px)';
+    raf=requestAnimationFrame(paint);
+  }
+  stage.addEventListener('pointermove',e=>{const r=stage.getBoundingClientRect();targetX=((e.clientX-r.left)/r.width-.5)*2;targetY=((e.clientY-r.top)/r.height-.5)*2});
+  stage.addEventListener('pointerleave',()=>{targetX=0;targetY=0});
+  function updateScroll(){const r=stage.getBoundingClientRect();scrollShift=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight))}
+  window.addEventListener('scroll',updateScroll,{passive:true});updateScroll();paint();
+  window.addEventListener('pagehide',()=>cancelAnimationFrame(raf),{once:true});
+})();
+
+// ===== Work project coverflow: wheel, drag, keyboard and center emphasis =====
+(function(){
+  const stage=document.getElementById('workWallStage'),deck=document.getElementById('workWallDeck');
+  if(!stage||!deck) return;
+  const panels=[...deck.querySelectorAll('.work-wall-panel')],meter=document.querySelector('.work-wall-progress i'),status=document.getElementById('workWallStatus');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let target=Math.min(4,panels.length-1),position=target,raf=0,dragging=false,startX=0,startTarget=0,dragMoved=false,downPanel=null,openedOnRelease=false;
+  const clamp=value=>Math.max(0,Math.min(panels.length-1,value));
+  function render(){
+    position+=reduced?(target-position):(target-position)*.13;
+    panels.forEach((panel,index)=>{
+      const d=index-position,ad=Math.abs(d),side=d<0?-1:1;
+      const x=side*Math.min(ad,3.4)*(innerWidth<560?118:innerWidth<900?170:238);
+      const y=Math.min(ad,3)*9;
+      const z=230-Math.min(ad,4)*145;
+      const ry=d===0?0:-side*Math.min(58,ad*19);
+      const scale=Math.max(.72,1.13-Math.min(ad,4)*.12);
+      const opacity=ad>3.45?0:Math.max(.2,1-ad*.18);
+      panel.style.setProperty('--cf-x',x+'px');panel.style.setProperty('--cf-y',y+'px');panel.style.setProperty('--cf-z',z+'px');panel.style.setProperty('--cf-ry',ry+'deg');panel.style.setProperty('--cf-scale',scale);panel.style.setProperty('--cf-opacity',opacity);panel.style.setProperty('--cf-sat',String(.72+opacity*.36));panel.style.setProperty('--cf-zindex',String(100-Math.round(ad*10)));
+      panel.classList.toggle('is-center',ad<.46);panel.setAttribute('aria-hidden',ad>3.45?'true':'false');
+    });
+    const active=Math.round(position),activePanel=panels[active];
+    if(status&&activePanel) status.textContent=String(active+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0')+' — '+(activePanel.dataset.title||'Project');
+    if(meter) meter.style.width=((active/(panels.length-1))*100)+'%';
+    if(Math.abs(target-position)>.002||dragging) raf=requestAnimationFrame(render);else position=target;
+  }
+  function go(value){target=clamp(value);cancelAnimationFrame(raf);raf=requestAnimationFrame(render)}
+  stage.tabIndex=0;
+  stage.addEventListener('wheel',e=>{
+    const delta=Math.abs(e.deltaY)>Math.abs(e.deltaX)?e.deltaY:e.deltaX;
+    if(!delta)return;
+    const next=clamp(target+Math.sign(delta));
+    if(next!==target){e.preventDefault();go(next)}
+  },{passive:false});
+  stage.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();go(Math.round(target)-1)}if(e.key==='ArrowRight'){e.preventDefault();go(Math.round(target)+1)}});
+  stage.addEventListener('pointerdown',e=>{dragging=true;dragMoved=false;openedOnRelease=false;downPanel=e.target.closest('.work-wall-panel');startX=e.clientX;startTarget=target;stage.classList.add('is-dragging');stage.setPointerCapture(e.pointerId)});
+  stage.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-startX;if(Math.abs(dx)>7)dragMoved=true;go(startTarget-dx/(innerWidth<560?145:210))});
+  function finish(e){if(!dragging)return;dragging=false;stage.classList.remove('is-dragging');if(stage.hasPointerCapture(e.pointerId))stage.releasePointerCapture(e.pointerId);go(Math.round(target));if(e.type==='pointerup'&&!dragMoved&&downPanel){openedOnRelease=true;downPanel.dispatchEvent(new CustomEvent('work-open-request'))}downPanel=null;setTimeout(()=>{dragMoved=false;openedOnRelease=false},0)}
+  stage.addEventListener('pointerup',finish);stage.addEventListener('pointercancel',finish);
+  stage.addEventListener('click',e=>{if(dragMoved||openedOnRelease){e.preventDefault();e.stopImmediatePropagation()}},true);
+  panels.forEach((panel,index)=>panel.addEventListener('focus',()=>go(index)));
+  window.addEventListener('resize',()=>go(target),{passive:true});render();
+  window.addEventListener('pagehide',()=>cancelAnimationFrame(raf),{once:true});
+})();
+
+// ===== Work sample full-view gallery =====
 (function(){
   const modal=document.getElementById('galleryLightbox');
-  const panels=[...document.querySelectorAll('#projectDeck .project-panel')];
+  const panels=[...document.querySelectorAll('#workWallDeck .work-wall-panel')];
   const content=document.getElementById('lightboxContent');
   const heading=document.getElementById('lightboxHeading');
   const kicker=document.getElementById('lightboxKicker');
@@ -1468,30 +2233,26 @@ const style=document.createElement('style');style.textContent='@media(max-width:
   function render(index){
     active=(index+panels.length)%panels.length;
     const panel=panels[active];
-    heading.textContent=panel.dataset.title||'Full view';
-    kicker.textContent=panel.dataset.kicker||'Selected Capability';
+    heading.textContent=panel.dataset.title||'Project sample';
+    kicker.textContent=panel.dataset.kicker||'Work & Project Types';
     count.textContent=String(active+1).padStart(2,'0')+' / '+String(panels.length).padStart(2,'0');
-    content.replaceChildren();
-    if(panel.dataset.src){
-      const img=document.createElement('img');
-      const source=panel.querySelector('img');
-      img.src=panel.dataset.src;img.alt=source?source.alt:'';content.appendChild(img);
-    }else{
-      const card=panel.querySelector('.project-panel-copy').cloneNode(true);
-      content.appendChild(card);
-    }
+    content.replaceChildren(panel.querySelector('.work-wall-panel-inner').cloneNode(true));
   }
   function open(index){
-    lastFocus=document.activeElement;render(index);modal.hidden=false;modal.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');
+    lastFocus=document.activeElement;modal.dataset.mode='work';modal.classList.remove('service-mode');render(index);modal.hidden=false;modal.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');
     requestAnimationFrame(()=>modal.querySelector('.lightbox-close').focus());
   }
-  function close(){modal.hidden=true;modal.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open');if(lastFocus)lastFocus.focus()}
-  panels.forEach((panel,index)=>panel.addEventListener('click',()=>open(index)));
-  modal.querySelectorAll('[data-lightbox-close]').forEach(btn=>btn.addEventListener('click',close));
+  function close(){modal.hidden=true;modal.setAttribute('aria-hidden','true');modal.dataset.mode='';document.body.classList.remove('lightbox-open');if(lastFocus)lastFocus.focus()}
+  panels.forEach((panel,index)=>{
+    panel.addEventListener('click',()=>open(index));
+    panel.addEventListener('work-open-request',()=>open(index));
+    panel.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(index)}});
+  });
+  modal.querySelectorAll('[data-lightbox-close]').forEach(btn=>btn.addEventListener('click',()=>{if(modal.dataset.mode==='work')close()}));
   document.getElementById('lightboxPrev').addEventListener('click',()=>render(active-1));
   document.getElementById('lightboxNext').addEventListener('click',()=>render(active+1));
   document.addEventListener('keydown',e=>{
-    if(modal.hidden)return;
+    if(modal.hidden||modal.dataset.mode!=='work')return;
     if(e.key==='Escape')close();
     if(e.key==='ArrowLeft')render(active-1);
     if(e.key==='ArrowRight')render(active+1);
@@ -1500,6 +2261,101 @@ const style=document.createElement('style');style.textContent='@media(max-width:
       if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}
     }
   });
+})();
+
+// ===== Service cards: kinetic-type hover + shared-origin morph zoom =====
+(function(){
+  const modal=document.getElementById('galleryLightbox');
+  const cards=[...document.querySelectorAll('#serviceWallGrid .service-wall-card')];
+  const content=document.getElementById('lightboxContent');
+  const heading=document.getElementById('lightboxHeading');
+  const kicker=document.getElementById('lightboxKicker');
+  const stage=document.getElementById('serviceWallStage');
+  if(!modal||!cards.length||!content||!stage) return;
+  const canType=window.matchMedia('(hover:hover) and (pointer:fine)').matches&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const jobs=new WeakMap();
+  let lastFocus=null,closeTimer=0;
+
+  function originals(card){
+    const title=card.querySelector('h3'),copy=card.querySelector('p');
+    if(title&&!title.dataset.fullText)title.dataset.fullText=title.textContent.trim();
+    if(copy&&!copy.dataset.fullText)copy.dataset.fullText=copy.textContent.trim();
+    return {title,copy,titleText:title?.dataset.fullText||'',copyText:copy?.dataset.fullText||''};
+  }
+  function cancelTyping(card,restore=true){
+    (jobs.get(card)||[]).forEach(clearTimeout);jobs.delete(card);
+    const data=originals(card);
+    if(restore){if(data.title)data.title.textContent=data.titleText;if(data.copy)data.copy.textContent=data.copyText}
+    card.classList.remove('is-typing','typing-title','typing-copy','type-complete');
+  }
+  function typeLine(card,node,text,speed,phase,done){
+    let index=0;card.classList.remove('typing-title','typing-copy');card.classList.add(phase);node.textContent='';
+    const timers=jobs.get(card)||[];
+    function tick(){
+      if(index<text.length){node.textContent=text.slice(0,++index);timers.push(setTimeout(tick,speed))}
+      else{card.classList.remove(phase);if(done)done()}
+    }
+    timers.push(setTimeout(tick,60));jobs.set(card,timers);
+  }
+  function startTyping(card){
+    if(!canType)return;
+    cancelTyping(card,true);
+    const data=originals(card);card.classList.add('is-typing');
+    typeLine(card,data.title,data.titleText,38,'typing-title',()=>{
+      typeLine(card,data.copy,data.copyText,12,'typing-copy',()=>{
+        card.classList.remove('is-typing','typing-copy');card.classList.add('type-complete');
+      });
+    });
+  }
+  cards.forEach(card=>{
+    const data=originals(card);
+    card.setAttribute('role','button');card.setAttribute('tabindex','0');card.setAttribute('aria-label','Open '+(data.titleText||'service')+' detail');
+    card.querySelectorAll('li').forEach((term,index)=>term.style.setProperty('--term-i',index));
+    card.addEventListener('pointerenter',()=>startTyping(card));
+    card.addEventListener('pointerleave',()=>cancelTyping(card,true));
+    card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--spot-x',((e.clientX-r.left)/Math.max(r.width,1)*100).toFixed(1)+'%');card.style.setProperty('--spot-y',((e.clientY-r.top)/Math.max(r.height,1)*100).toFixed(1)+'%')});
+  });
+
+  function open(card){
+    clearTimeout(closeTimer);cancelTyping(card,true);lastFocus=document.activeElement;
+    const surface=card.querySelector('.service-card-surface'),clone=surface.cloneNode(true),styles=getComputedStyle(surface),rect=card.getBoundingClientRect();
+    clone.className='service-lightbox-card';
+    clone.querySelectorAll('li').forEach((term,index)=>term.style.setProperty('--term-i',index));
+    ['--card-bg','--card-ink','--card-accent'].forEach(name=>{const value=styles.getPropertyValue(name).trim()||getComputedStyle(card).getPropertyValue(name).trim();if(value)clone.style.setProperty(name,value)});
+    const title=card.querySelector('h3')?.dataset.fullText||card.querySelector('h3')?.textContent||'Service';
+    const popupTitle=clone.querySelector('h3'),popupCopy=clone.querySelector('p');
+    if(popupTitle)popupTitle.textContent=title;if(popupCopy)popupCopy.textContent=card.querySelector('p')?.dataset.fullText||popupCopy.textContent;
+    heading.textContent=title;kicker.textContent='Creative Services · Morph View';content.replaceChildren(clone);
+    const targetWidth=Math.min(1040,innerWidth*.94),scale=Math.max(.3,Math.min(.64,rect.width/Math.max(targetWidth,1)));
+    modal.style.setProperty('--morph-x',(rect.left+rect.width/2-innerWidth/2)+'px');modal.style.setProperty('--morph-y',(rect.top+rect.height/2-innerHeight/2)+'px');modal.style.setProperty('--morph-scale',scale.toFixed(3));
+    modal.dataset.mode='service';modal.classList.remove('is-closing');modal.classList.add('service-mode');modal.hidden=false;modal.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open');
+    void modal.offsetWidth;
+    requestAnimationFrame(()=>modal.querySelector('.lightbox-close').focus());
+  }
+  function finishClose(){
+    modal.hidden=true;modal.setAttribute('aria-hidden','true');modal.dataset.mode='';modal.classList.remove('service-mode','is-closing');document.body.classList.remove('lightbox-open');if(lastFocus)lastFocus.focus();
+  }
+  function close(){
+    if(modal.classList.contains('is-closing'))return;
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){finishClose();return}
+    modal.classList.add('is-closing');closeTimer=setTimeout(finishClose,410);
+  }
+  function cardAtPoint(x,y){
+    const matches=cards.map(card=>{
+      const r=card.getBoundingClientRect();
+      if(x<r.left||x>r.right||y<r.top||y>r.bottom)return null;
+      const nx=(x-(r.left+r.width/2))/Math.max(r.width,1),ny=(y-(r.top+r.height/2))/Math.max(r.height,1);
+      return {card,distance:nx*nx+ny*ny};
+    }).filter(Boolean).sort((a,b)=>a.distance-b.distance);
+    return matches[0]?.card||null;
+  }
+  stage.addEventListener('click',e=>{
+    const card=cardAtPoint(e.clientX,e.clientY)||e.target.closest('.service-wall-card');
+    if(!card)return;e.preventDefault();e.stopPropagation();open(card);
+  },true);
+  cards.forEach(card=>card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(card)}}));
+  modal.querySelectorAll('[data-lightbox-close]').forEach(btn=>btn.addEventListener('click',()=>{if(modal.dataset.mode==='service')close()}));
+  document.addEventListener('keydown',e=>{if(!modal.hidden&&modal.dataset.mode==='service'&&e.key==='Escape')close()});
 })();
 
 // ===== Everything-in-one-place feature carousel =====
@@ -1523,7 +2379,8 @@ const style=document.createElement('style');style.textContent='@media(max-width:
   prev.addEventListener('click',()=>go(index-1));next.addEventListener('click',()=>go(index+1));
   viewport.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();go(index-1)}if(e.key==='ArrowRight'){e.preventDefault();go(index+1)}});
   viewport.addEventListener('pointerdown',e=>{startX=e.clientX;dragX=startX;viewport.setPointerCapture(e.pointerId)});
-  viewport.addEventListener('pointermove',e=>{if(!viewport.hasPointerCapture(e.pointerId))return;dragX=e.clientX});
+  viewport.addEventListener('pointermove',e=>{const card=e.target.closest('.platform-card');if(card&&window.matchMedia('(pointer:fine)').matches){const r=card.getBoundingClientRect();card.style.setProperty('--tilt-x',(((e.clientX-r.left)/r.width-.5)*7)+'deg');card.style.setProperty('--tilt-y',(((e.clientY-r.top)/r.height-.5)*-5)+'deg')}if(!viewport.hasPointerCapture(e.pointerId))return;dragX=e.clientX});
+  viewport.addEventListener('pointerleave',()=>track.querySelectorAll('.platform-card').forEach(card=>{card.style.setProperty('--tilt-x','0deg');card.style.setProperty('--tilt-y','0deg')}));
   viewport.addEventListener('pointerup',e=>{const delta=dragX-startX;if(Math.abs(delta)>45)go(index+(delta<0?1:-1));viewport.releasePointerCapture(e.pointerId)});
   let resizeTimer;window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{rebuildDots();paint()},120)});
   rebuildDots();requestAnimationFrame(paint);
@@ -1565,12 +2422,112 @@ const style=document.createElement('style');style.textContent='@media(max-width:
   let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
   window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px'},{passive:true});
   (function loop(){rx+=(mx-rx)*0.16;ry+=(my-ry)*0.16;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop)})();
-  document.querySelectorAll('a,button,.chip,.faq-q,.project-panel').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('grow'));el.addEventListener('mouseleave',()=>ring.classList.remove('grow'))});
+  document.querySelectorAll('a,button,.chip,.faq-q,.project-panel,.work-wall-panel,.service-wall-card').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('grow'));el.addEventListener('mouseleave',()=>ring.classList.remove('grow'))});
   document.querySelectorAll('.btn,.pkg-btn').forEach(el=>{
     el.classList.add('magnetic');
     el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*0.14;const y=(e.clientY-r.top-r.height/2)*0.22;el.style.transform='translate('+x+'px,'+y+'px)'});
     el.addEventListener('mouseleave',()=>{el.style.transform=''});
   });
+})();
+// ===== Cinematic Frames: LURO-style full 360° eight-frame ring =====
+(function(){
+  const section=document.getElementById('cinematicGallery');
+  const stage=document.getElementById('cinematicStage');
+  const track=document.getElementById('cinematicTrack');
+  const proxy=document.getElementById('cinematicDragProxy');
+  const badge=document.getElementById('cinematicDragBadge');
+  if(!section||!stage||!track||!proxy)return;
+  const cards=[...track.querySelectorAll('.cinematic-card')];
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const step=360/cards.length;
+  const dragDegreesPerPx=360/3000;
+  const autoDegreesPerMs=-360/80000;
+  let rotation=0,dragging=false,startX=0,startRotation=0,lastX=0,lastMove=0;
+  let throwVelocity=0,resumeAt=0,lastFrame=performance.now();
+
+  function radius(){
+    const value=getComputedStyle(stage).getPropertyValue('--ring-radius').trim();
+    if(value.endsWith('px'))return parseFloat(value);
+    const probe=document.createElement('span');
+    probe.style.cssText='position:absolute;width:'+value+';visibility:hidden;pointer-events:none';
+    stage.appendChild(probe);const result=probe.getBoundingClientRect().width;probe.remove();return result;
+  }
+  function normalize(value){return ((value%360)+360)%360}
+  function render(){
+    const r=radius();
+    cards.forEach((card,index)=>{
+      const angle=normalize(index*step+rotation);
+      const signed=angle>180?angle-360:angle;
+      const rad=angle*Math.PI/180;
+      const depth=Math.cos(rad);
+      const front=Math.max(0,depth);
+      const distance=Math.abs(signed);
+      /* Real circular coordinates create the rear return. Perspective makes the
+         middle image dominant while both side positions stay perfectly matched. */
+      const x=Math.sin(rad)*r;
+      const focal=Math.pow(front,10);
+      const z=(depth-1)*r+focal*110;
+      const emphasis=.72+focal*.42;
+      const opacity=distance<=98?.68+front*.32:distance<124?.68*(124-distance)/26:0;
+      card.style.setProperty('--ring-x',x.toFixed(2)+'px');
+      card.style.setProperty('--ring-z',z.toFixed(2)+'px');
+      card.style.setProperty('--ring-ry',(signed*.48).toFixed(3)+'deg');
+      card.style.setProperty('--ring-scale',emphasis.toFixed(3));
+      card.style.setProperty('--ring-opacity',Math.max(0,opacity).toFixed(3));
+      card.style.setProperty('--ring-zindex',String(10+Math.round(front*90)));
+    });
+  }
+  function frame(now){
+    const dt=Math.min(34,now-lastFrame);lastFrame=now;
+    if(!dragging){
+      if(Math.abs(throwVelocity)>.0006){
+        rotation+=throwVelocity*dt;
+        throwVelocity*=Math.pow(.992,dt);
+      }else{
+        if(throwVelocity!==0)throwVelocity=0;
+        if(!reduce&&now>=resumeAt)rotation+=autoDegreesPerMs*dt;
+      }
+      render();
+    }
+    requestAnimationFrame(frame);
+  }
+  function moveBadge(e){
+    const rect=stage.getBoundingClientRect();
+    const x=Math.max(46,Math.min(rect.width-46,e.clientX-rect.left));
+    const y=Math.max(46,Math.min(rect.height-46,e.clientY-rect.top));
+    badge.style.left=x+'px';badge.style.top=y+'px';
+  }
+  proxy.addEventListener('pointermove',e=>{
+    moveBadge(e);
+    if(!dragging)return;
+    const now=performance.now(),dx=e.clientX-startX,elapsed=Math.max(1,now-lastMove);
+    rotation=startRotation+dx*dragDegreesPerPx;
+    throwVelocity=(e.clientX-lastX)*dragDegreesPerPx/elapsed;
+    lastX=e.clientX;lastMove=now;render();
+  });
+  proxy.addEventListener('pointerenter',moveBadge);
+  proxy.addEventListener('pointerdown',e=>{
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    dragging=true;startX=lastX=e.clientX;startRotation=rotation;lastMove=performance.now();
+    throwVelocity=0;resumeAt=Infinity;stage.classList.add('is-dragging');proxy.setPointerCapture(e.pointerId);moveBadge(e);
+  });
+  function release(e){
+    if(!dragging)return;
+    dragging=false;stage.classList.remove('is-dragging');
+    if(proxy.hasPointerCapture(e.pointerId))proxy.releasePointerCapture(e.pointerId);
+    throwVelocity=Math.max(-.34,Math.min(.34,throwVelocity));
+    resumeAt=performance.now()+1000;
+    if(Math.abs(throwVelocity)<=.0006)throwVelocity=0;
+  }
+  proxy.addEventListener('pointerup',release);
+  proxy.addEventListener('pointercancel',release);
+  stage.addEventListener('keydown',e=>{
+    if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
+    e.preventDefault();rotation+=e.key==='ArrowRight'?step:-step;throwVelocity=0;resumeAt=performance.now()+1000;render();
+  });
+  window.addEventListener('resize',render,{passive:true});
+  const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){section.classList.add('ring-ready');observer.disconnect()}},{threshold:.18});
+  observer.observe(stage);render();requestAnimationFrame(frame);
 })();
 </script>
 </body>
