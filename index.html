@@ -6,7 +6,16 @@
 <meta name="color-scheme" content="light dark"/>
 <link rel="icon" href="data:,"/>
 <title>Mazahar — AI Video Production & Content Strategy Consultant</title>
-<meta name="description" content="AI-powered video production, YouTube & Facebook growth, SEO and monetization strategy for creators and brands targeting US audiences."/>
+<meta name="description" content="AI-powered video production, YouTube & Facebook Page growth, SEO and monetization strategy for creators and brands targeting US audiences."/>
+<meta property="og:title" content="Mazahar — AI Video Production & Content Strategy Consultant"/>
+<meta property="og:description" content="AI video production and content strategy that grows YouTube channels and Facebook Pages — built for US audiences."/>
+<meta property="og:image" content="https://mazahar.vercel.app/og-image.jpg"/>
+<meta property="og:url" content="https://mazahar.vercel.app"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Mazahar — AI Video Production & Content Strategy Consultant"/>
+<meta name="twitter:description" content="AI video production and content strategy that grows YouTube channels and Facebook Pages — built for US audiences."/>
+<meta name="twitter:image" content="https://mazahar.vercel.app/og-image.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,500&display=swap" rel="stylesheet">
@@ -86,7 +95,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .mobile-menu a{display:block;padding:10px 0;font-weight:700;border-bottom:1px solid var(--line2)}
 
 /* HERO */
-.hero{padding:88px 0 64px;overflow:hidden;position:relative}
+.hero{overflow:hidden;position:relative}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:start;position:relative;z-index:2}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;animation:popIn .8s var(--ease-bounce) both}
 .eyebrow i{width:8px;height:8px;border-radius:50%;background:#22C55E;display:block;animation:pulseDot 2s infinite}
@@ -107,7 +116,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .hero-actions .btn{padding:14px 22px;font-size:15px}
 .proof{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13.5px;color:var(--muted);font-weight:600}
 .proof span{display:flex;gap:6px;align-items:center}
-.proof span:before{content:"✓";width:18px;height:18px;border-radius:50%;background:var(--teal-light);color:var(--teal);display:grid;place-items:center;font-size:11px}
+.proof span:before{content:"✓";width:18px;height:18px;border-radius:50%;background:var(--teal-light);color:var(--teal);display:grid;place-items:center;font-size:11px;font-family:"Noto Sans Symbols 2","Segoe UI Symbol",sans-serif}
 
 .hero-visual{position:relative;will-change:transform}
 .photo-frame{border-radius:28px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-lg);background:var(--surface);position:relative;will-change:transform,box-shadow;animation:heroFrameBreathe 8.4s ease-in-out .2s infinite}
@@ -162,7 +171,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 @media (prefers-reduced-motion: reduce){.marquee-track{animation:none}}
 
 /* SECTIONS */
-.section{padding:128px 0}
+.section{}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
 .section-head h2{font-size:clamp(32px,4vw,48px);max-width:620px}
 .section-head p{color:var(--muted);max-width:480px;font-size:16.5px;margin:0}
@@ -234,7 +243,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .pkg .desc{font-size:14.5px;color:var(--muted);line-height:1.6}
 .pkg ul{list-style:none;padding:0;margin:18px 0 22px;display:grid;gap:10px;flex:1}
 .pkg li{font-size:14.2px;display:flex;gap:9px;line-height:1.45}
-.pkg li:before{content:"✓";font-weight:800;color:var(--teal)}
+.pkg li:before{content:"✓";font-weight:800;color:var(--teal);font-family:"Noto Sans Symbols 2","Segoe UI Symbol",sans-serif}
 .pkg .btn{width:100%}
 
 /* BUILDER */
@@ -408,9 +417,9 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 }
 @media(max-width:560px){
   .services,.packages,.process,.stats{grid-template-columns:1fr}
-  .hero{padding-top:28px}
+  .hero{}
   .hero h1{font-size:46px}
-  .section{padding:84px 0}
+  .section{}
   .cta{padding:24px}
   .builder-left,.builder-right{padding:20px}
   .logo span small{display:none}
@@ -498,7 +507,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 @media(max-width:560px){.typewriter-heading{min-height:3.8em}.typewriter-sticker{position:relative;top:auto;right:auto;width:86px;margin:-24px 4px 8px auto;padding:4px}.typing-sound-toggle{margin-top:0}.js .hero-actions{opacity:1;animation:none;transform:none}}
 @media(prefers-reduced-motion:reduce){.typewriter-caret,.typing-sound-toggle.is-playing i,.typewriter-heading .typed-accent::after,.typewriter-sticker svg,.typewriter-sticker *{animation:none!important}.typewriter-sticker{display:none}}
 /* 2 — MotionFlow-inspired showreel: a compact copy capsule leaves the film in view */
-#showreel{padding:0;overflow:hidden;background:#05090A}
+#showreel{overflow:hidden;background:#05090A}
 .showreel-stage{position:relative;width:100%;aspect-ratio:16/9;min-height:680px;display:grid;align-items:center;isolation:isolate;overflow:hidden}
 .showreel-backdrop{position:absolute;inset:-3%;width:106%;height:106%;object-fit:cover;background:#05090A;filter:saturate(.94) brightness(.54);transform:scale(1.02);z-index:-3}
 .showreel-stage::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,6,7,.62),rgba(2,6,7,.08) 48%,rgba(2,6,7,.28));z-index:-2;pointer-events:none}
@@ -612,9 +621,9 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 .compare-card h4{margin:0 0 12px;font-family:"Bricolage Grotesque",sans-serif;font-size:19px}
 .compare-card ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
 .compare-card li{font-size:13.8px;display:flex;gap:8px;line-height:1.45;color:var(--ink2)}
-.compare-card li.yes:before{content:"✓";color:var(--teal);font-weight:800}
+.compare-card li.yes:before{content:"✓";color:var(--teal);font-weight:800;font-family:"Noto Sans Symbols 2","Segoe UI Symbol",sans-serif}
 .compare-card li.no{color:var(--muted2)}
-.compare-card li.no:before{content:"—";color:var(--muted2)}
+.compare-card li.no:before{content:"✕";color:var(--muted2);font-family:"Noto Sans Symbols 2","Segoe UI Symbol",sans-serif}
 /* 7 — Scroll storytelling */
 .story-strip{position:relative;max-width:860px;margin:0 auto;padding-left:28px}
 .story-strip::before{content:"";position:absolute;left:8px;top:8px;bottom:8px;width:3px;border-radius:999px;background:var(--line2)}
@@ -648,7 +657,7 @@ body.has-cursor .cursor-dot,body.has-cursor .cursor-ring{display:block}
 @media(max-width:560px){.hsc,.work-grid,.compare{grid-template-columns:1fr}.slot-bar{width:100%}.testi-slide{padding:20px}.testi-slide blockquote{font-size:18px}}
 /* ===== SECTION TRANSITIONS + SPACING RHYTHM — Zajno motion × MZ Media whitespace ===== */
 /* one generous, consistent vertical rhythm for every section (MZ Media style) */
-html{scroll-padding-top:96px}
+html{scroll-padding-top:calc(var(--header-h) + 16px)}
 main .section{position:relative}
 .services,.work-grid,.hsc,.packages,.compare{gap:22px}
 /* hairline that draws itself across the top as a section arrives (Zajno-style section handoff) */
@@ -1030,8 +1039,8 @@ body.lightbox-open{overflow:hidden}
 }
 
 /* ===== WORK — scroll-driven Webflow-style 3D project wall ===== */
-.work-wall-section{overflow:hidden;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-top:72px;padding-bottom:28px}
-.client-experience-section{padding-top:32px;padding-bottom:72px}
+.work-wall-section{overflow:hidden;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.client-experience-section{}
 .work-wall-head{display:grid;justify-items:center;text-align:center;margin-bottom:0}
 .work-wall-head .kicker{justify-content:center}
 .work-wall-head h2{font-size:clamp(58px,8.7vw,116px);line-height:.82;letter-spacing:-.062em;max-width:none}
@@ -1098,8 +1107,8 @@ body.lightbox-open{overflow:hidden}
   .work-wall-caption{margin-top:26px}
 }
 @media(max-width:560px){
-  .work-wall-section{padding-top:56px;padding-bottom:32px}
-  .client-experience-section{padding-top:32px;padding-bottom:56px}
+  .work-wall-section{}
+  .client-experience-section{}
   .work-wall-head h2{font-size:45px!important;overflow-wrap:anywhere}
   .work-wall-head p{margin-top:14px}
   .work-wall-stage{margin:24px 0 0}
@@ -1190,7 +1199,7 @@ body.lightbox-open{overflow:hidden}
 #process .process .step{transform-origin:50% 100%}
 #process.inview .process .step{animation-name:processCard,processBreath!important;animation-duration:.9s,6s!important;animation-timing-function:var(--ease-bounce),ease-in-out!important;animation-iteration-count:1,infinite!important;animation-fill-mode:both,both!important;animation-delay:calc(var(--pi,0)*140ms + 180ms),calc(var(--pi,0)*-.7s + 1.4s)!important}
 @keyframes processBreath{0%,78%,100%{box-shadow:0 12px 30px rgba(17,20,23,.055)}88%{box-shadow:0 22px 52px color-mix(in srgb,var(--process-accent) 18%,transparent);transform:translateY(-5px)}}
-#process.inview .section-head h2 .motion-word{animation:processWordWave 5.6s ease-in-out infinite;animation-delay:calc(var(--wi,0)*90ms + 1s)}
+#process.inview .cinematic-gallery-head h2 .motion-word{animation:processWordWave 5.6s ease-in-out infinite;animation-delay:calc(var(--wi,0)*90ms + 1s)}
 @keyframes processWordWave{0%,76%,100%{transform:translateY(0);color:inherit}86%{transform:translateY(-5px);color:var(--teal)}}
 
 /* 03 — hero headline resolves with a soft blur-to-focus cadence and subtle living accents. */
@@ -1234,7 +1243,7 @@ body.lightbox-open{overflow:hidden}
 }
 
 /* 06 — clear, image-ready client stories with a distinct editorial stage. */
-.client-experience-section{position:relative;overflow:hidden;background:linear-gradient(145deg,#071012,#0D1C1B);color:#F4F1EA;padding-top:88px;padding-bottom:92px}
+.client-experience-section{position:relative;overflow:hidden;background:linear-gradient(145deg,#071012,#0D1C1B);color:#F4F1EA;}
 .client-experience-section::before{content:"“";position:absolute;left:4vw;top:-80px;font-family:"Newsreader",serif;font-size:420px;line-height:1;color:rgba(46,211,183,.08);pointer-events:none}
 .client-experience-section .section-head h2{color:#fff;font-size:clamp(46px,6vw,76px)}
 .client-experience-section .kicker{color:#2ED3B7}.client-experience-section .kicker::before{background:#2ED3B7}
@@ -1248,7 +1257,7 @@ body.lightbox-open{overflow:hidden}
 .review-result{grid-column:2;align-self:end;display:grid;gap:5px;padding-top:20px;border-top:1px solid rgba(255,255,255,.16);position:relative;z-index:2}.review-result b{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#2ED3B7}.review-result span{color:#C1CBCE;font-size:13px}
 .testi-controls{position:relative;z-index:3}.testi-btn{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#fff}.testi-btn:hover{background:#F4F1EA;color:#071012}.testi-dots button{background:rgba(255,255,255,.22)}.testi-dots button.active{background:#2ED3B7;width:30px;border-radius:999px}.testi-note{color:#849497}.testi-orbit{position:absolute;inset:-30px -60px;pointer-events:none}.testi-orbit i{position:absolute;width:10px;height:10px;border-radius:50%;background:#2ED3B7;box-shadow:0 0 0 8px rgba(46,211,183,.08);animation:testiParticle 7s ease-in-out infinite}.testi-orbit i:nth-child(1){left:5%;top:16%}.testi-orbit i:nth-child(2){right:2%;top:43%;background:#F5B841;animation-delay:-2.2s}.testi-orbit i:nth-child(3){left:28%;bottom:2%;animation-delay:-4.1s}@keyframes testiParticle{50%{transform:translate(18px,-24px) scale(1.3)}}
 .client-experience-section .reveal{opacity:1!important;transform:none!important;filter:none!important}.client-experience-section .testi-wrap{animation:testiStageIn 1s var(--ease) both}@keyframes testiStageIn{from{opacity:0;transform:translateY(44px) scale(.97);filter:blur(7px)}to{opacity:1;transform:none;filter:none}}
-@media(max-width:700px){.client-experience-section{padding-top:62px;padding-bottom:66px}.testi-slide{min-height:0;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:22px;padding:25px}.testi-profile{grid-row:auto;grid-template-columns:82px 1fr;align-items:center;gap:16px}.client-photo{width:82px}.client-photo::before{width:29px;height:29px;box-shadow:0 25px 0 11px rgba(255,255,255,.16)}.client-photo span{bottom:8px;font-size:6px}.testi-slide blockquote,.review-result{grid-column:1}.testi-slide blockquote{font-size:25px}.testi-note{line-height:1.55}}
+@media(max-width:700px){.client-experience-section{}.testi-slide{min-height:0;grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:22px;padding:25px}.testi-profile{grid-row:auto;grid-template-columns:82px 1fr;align-items:center;gap:16px}.client-photo{width:82px}.client-photo::before{width:29px;height:29px;box-shadow:0 25px 0 11px rgba(255,255,255,.16)}.client-photo span{bottom:8px;font-size:6px}.testi-slide blockquote,.review-result{grid-column:1}.testi-slide blockquote{font-size:25px}.testi-note{line-height:1.55}}
 @media(prefers-reduced-motion:reduce){.hero h1 .word{opacity:1!important;filter:none!important;transform:none!important}.platform-suite::after,.platform-card-copy h3,.platform-card-copy p,.work-wall-panel.is-center .work-wall-panel-inner,.testi-orbit i,.client-experience-section .testi-wrap,#process .process .step{animation:none!important}}
 
 /* ===== SERVICES INTERACTION POLISH — kinetic type + shared-origin morph zoom ===== */
@@ -1284,7 +1293,7 @@ body.lightbox-open{overflow:hidden}
 @media(max-width:560px){#services .service-wall-card h3,#services .service-wall-card p{min-height:0}.gallery-lightbox.service-mode{--morph-scale:.72}}
 @media(prefers-reduced-motion:reduce){#services .service-wall-card h3,#services .service-wall-card p{min-height:0}.gallery-lightbox.service-mode .lightbox-backdrop,.gallery-lightbox.service-mode .lightbox-shell,.service-lightbox-card,.service-lightbox-card .service-glyph,.service-lightbox-card .service-num,.service-lightbox-card h3,.service-lightbox-card p,.service-lightbox-card li{animation:none!important}#services .service-card-surface::before{display:none}}
 /* ===== CINEMATIC FRAMES — full-width dark dimensional gallery ===== */
-.cinematic-gallery{--gallery-accent:#60D8C3;background:#070A0C;color:#F6F3EC;overflow:hidden;padding:clamp(88px,10vw,144px) 0 72px;isolation:isolate}
+.cinematic-gallery{--gallery-accent:#60D8C3;background:#070A0C;color:#F6F3EC;overflow:hidden;isolation:isolate}
 .cinematic-gallery::before{display:none!important}
 .cinematic-gallery::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 30%,rgba(38,142,126,.18),transparent 43%),linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px);background-size:auto,72px 72px,72px 72px;mask-image:linear-gradient(transparent,#000 22%,#000 76%,transparent);z-index:-1}
 .cinematic-gallery-head{width:min(1180px,92%);margin:0 auto;display:grid;grid-template-columns:1fr minmax(260px,410px);gap:42px;align-items:end;position:relative;z-index:3}
@@ -1332,7 +1341,7 @@ body.lightbox-open{overflow:hidden}
 .cinematic-modal-caption small{color:var(--gallery-accent);font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:800}.cinematic-modal-caption b{display:block;font-family:"Bricolage Grotesque";font-size:26px}
 .cinematic-modal-close{position:absolute;right:16px;top:16px;z-index:3;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(3,5,6,.72);color:#fff;font-size:24px;cursor:pointer;backdrop-filter:blur(10px)}
 @media(max-width:760px){
-  .cinematic-gallery{padding:80px 0 54px}.cinematic-gallery-head{grid-template-columns:1fr;gap:20px}.cinematic-gallery h2{font-size:56px}.cinematic-gallery-head p{max-width:520px}
+  .cinematic-gallery{}.cinematic-gallery-head{grid-template-columns:1fr;gap:20px}.cinematic-gallery h2{font-size:56px}.cinematic-gallery-head p{max-width:520px}
   .cinematic-stage{height:520px;margin-top:24px}.cinematic-card{width:min(68vw,290px);height:430px;top:7%}.cinematic-card-copy{padding:18px}.cinematic-card-copy span{font-size:11px}
   .cinematic-gallery-controls{grid-template-columns:1fr auto;gap:16px}.cinematic-count{grid-column:1/2;grid-row:1;text-align:left}.cinematic-progress{grid-column:1/2;grid-row:2}.cinematic-arrows{grid-column:2;grid-row:1/3}.cinematic-gallery-note{margin-top:16px;padding:0 6%}
 }
@@ -1341,8 +1350,8 @@ body.lightbox-open{overflow:hidden}
 
 /* LURO-matched eight-frame loop: one dominant front frame, matched side pairs,
    and a complete rear return path. */
-.cinematic-gallery{padding-bottom:clamp(70px,8vw,110px)}
-.cinematic-stage{--ring-radius:clamp(600px,49vw,790px);height:clamp(610px,58vw,760px);margin-top:48px;perspective:1500px;perspective-origin:50% 45%;user-select:none;-webkit-user-select:none;cursor:grab;touch-action:pan-y;opacity:.2;transform:scale(.97);filter:blur(6px);transition:opacity 1s var(--ease),transform 1.1s var(--ease),filter 1s ease}
+.cinematic-gallery{}
+.cinematic-stage{--ring-radius:clamp(600px,49vw,790px);height:clamp(610px,58vw,760px);margin-top:48px;perspective:5000px;perspective-origin:50% 45%;user-select:none;-webkit-user-select:none;cursor:grab;touch-action:pan-y;opacity:.2;transform:scale(.97);filter:blur(6px);transition:opacity 1s var(--ease),transform 1.1s var(--ease),filter 1s ease}
 .cinematic-stage.is-dragging{cursor:grabbing}
 .cinematic-stage::before{bottom:4%;width:min(1040px,88vw);height:92px;opacity:.86;background:rgba(0,0,0,.9);filter:blur(32px)}
 .cinematic-track{inset:0;transform-style:preserve-3d;will-change:transform}
@@ -1393,6 +1402,104 @@ body.lightbox-open{overflow:hidden}
 }
 @media(max-width:430px){.manifesto-meta{font-size:9px;letter-spacing:.11em}.manifesto-statement{font-size:clamp(38px,12vw,52px)}.manifesto-close p{font-size:14px}}
 @media(prefers-reduced-motion:reduce){.manifesto-section::after,.manifesto-label::before{animation:none!important}.manifesto-line>span{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}}
+/* ===== PHASE 1 FOUNDATION — unified responsive rhythm ===== */
+:root{
+  --section-y: clamp(56px, 6vw + 20px, 96px);
+  --head-gap:  clamp(40px, 4vw + 8px, 56px);
+  --card-gap:  clamp(16px, 2vw, 24px);
+  --gutter:    clamp(20px, 3vw, 32px);
+  --header-h:  72px;
+}
+:root{--hero-top:64px}
+section{padding-block:var(--section-y);scroll-margin-top:calc(var(--header-h) + 16px)}
+.container{max-width:1200px;margin-inline:auto;padding-inline:var(--gutter);width:100%}
+.section-head{margin-bottom:var(--head-gap);row-gap:clamp(12px,1vw,16px)}
+.cards{display:grid;gap:var(--card-gap)}
+.services,.packages,.process,.hsc,.work-grid,.compare,.service-wall-grid{gap:var(--card-gap)}
+.hero{padding-block:var(--section-y);padding-top:var(--hero-top)}
+@media(max-width:560px){:root{--hero-top:32px}.section-head{row-gap:12px}}
+/* ===== PHASE 3 — section consolidation (15 → 10 sections) ===== */
+:root{--hero-top:48px}
+@media(max-width:560px){:root{--hero-top:32px}}
+.hero-actions{margin:20px 0 16px}
+/* manifesto line preserved as Services intro */
+.manifesto-kicker{display:flex;justify-content:center;margin-bottom:20px;text-align:center}
+.manifesto-kicker span{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.manifesto-kicker em{font-style:normal;color:var(--teal)}
+/* motion demos: one row */
+.motion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+/* process: dark cinematic steps (gallery style) */
+#process .process-dark{margin-top:clamp(36px,4vw,56px)}
+#process .process-dark .step{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);border-radius:20px}
+#process .process-dark .step:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(85,220,200,.35)}
+#process .process-dark .step h3{color:#F6F3EC}
+#process .process-dark .step p{color:rgba(246,243,236,.62)}
+#process .process-dark .step b{color:#55DCC8}
+@media(max-width:900px){#process .process-dark{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){#process .process-dark{grid-template-columns:1fr}}
+/* merged contact footer (~500px) */
+.footer-merged{max-width:860px;margin-inline:auto;text-align:center;padding:70px 0 6px}
+.footer-merged .footer-status{margin-bottom:16px}
+.footer-merged h2{font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-.02em;color:#F4F1EA;margin:0 0 14px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}
+.footer-merged h2 span{color:#2ED3B7}
+.footer-merged>p{color:#AAB4B8;font-size:16.5px;max-width:620px;margin:0 auto}
+.footer-merged .footer-actions{justify-content:center;margin-top:26px}
+.footer-merged-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}
+.footer-merged-links a{color:#AAB4B8;font-size:13.5px;font-weight:600;text-decoration:none}
+.footer-merged-links a:hover{color:#2ED3B7}
+/* ===== Contact / social links (About + footer) ===== */
+.about-contact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:18px;font-size:14px;color:var(--muted)}
+.about-contact a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}
+.about-contact a:hover{color:var(--teal-dark);border-color:var(--teal-dark)}
+.footer-contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:20px}
+.footer-contact-links a{color:#AAB4B8;font-size:13.5px;font-weight:600;text-decoration:none}
+.footer-contact-links a:hover{color:#2ED3B7}
+.footer-merged .footer-bottom{border-top:0;padding:18px 0 24px;justify-content:center;gap:6px 20px;flex-wrap:wrap;text-align:center}
+@media(max-width:760px){.footer-merged{padding:54px 0 6px}.footer-merged .footer-actions{display:grid}.footer-merged .footer-actions .btn{width:100%}}
+
+/* ===== PHASE 4 — interaction polish ===== */
+.primary-cta{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.primary-cta:hover{background:var(--teal-dark);border-color:var(--teal-dark);color:#fff}
+.nav-links a.active,.mobile-menu a.active{color:var(--teal)}
+.nav-links a.active::after{transform:scaleX(1)}
+.mobile-menu a.active{background:var(--teal-light);padding-inline:10px;border-radius:8px}
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid var(--teal)!important;outline-offset:3px!important}
+.field-error{display:block;margin-top:6px;color:#C62828;font-size:12px;font-weight:700;line-height:1.35}
+.field.has-error .input,.field.has-error .select{border-color:#C62828!important;box-shadow:0 0 0 3px color-mix(in srgb,#C62828 14%,transparent)!important}
+.pkg.selected-package{border-color:var(--teal);box-shadow:0 0 0 2px color-mix(in srgb,var(--teal) 24%,transparent),var(--shadow)}
+.mobile-cta-bar{display:none}
+
+/* One reveal language everywhere: 24px upward travel, 500ms ease, once. */
+.js .reveal,.js .reveal-left,.js .reveal-right,.js .reveal-scale,.js .reveal-blur{
+  opacity:0!important;transform:translateY(24px)!important;filter:none!important;clip-path:none!important;
+  transition:opacity 500ms ease,transform 500ms ease!important;transition-delay:0ms!important;animation:none!important
+}
+.js .reveal.visible{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}
+.motion-word{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}
+.js .wipe,.js .wipe.visible{clip-path:none!important;transition:none!important}
+.js #process .process .step.reveal,.js #process .audience-grid .step.reveal,
+.js #packages .pkg.reveal,.js #faq .faq-item.reveal,.js #about .about-photo.reveal{animation:none!important}
+#brief.inview .builder-left,#brief.inview .builder-right{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
+#services.inview .service-wall-card{animation:none!important;opacity:1!important;filter:none!important}
+.work-wall-section.inview .work-wall-panel-inner{animation:workWallFloat 7s ease-in-out infinite!important;opacity:1!important;filter:none!important}
+
+@media(max-width:768px){
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  .mobile-cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:9000;display:none;width:100%;box-sizing:border-box;padding:8px var(--gutter);padding-bottom:calc(8px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);backdrop-filter:blur(14px)}
+  .mobile-cta-bar.visible{display:flex}
+  .mobile-cta-bar .btn{width:100%;padding:11px 18px}
+  .hero .hero-visual.reveal{opacity:1!important;transform:none!important}
+  .work-wall-stage{height:auto!important;margin:24px 0 0!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;cursor:auto!important;scrollbar-width:none}
+  .work-wall-stage::-webkit-scrollbar{display:none}
+  .work-wall-stage::before,.work-wall-beam{display:none!important}
+  .work-wall-deck{position:relative!important;inset:auto!important;display:flex!important;gap:16px!important;width:max-content!important;transform:none!important;padding:8px var(--gutter) 20px!important}
+  .work-wall-panel{position:relative!important;left:auto!important;top:auto!important;flex:0 0 min(82vw,320px)!important;width:min(82vw,320px)!important;height:390px!important;opacity:1!important;filter:none!important;transform:none!important;scroll-snap-align:center;scroll-snap-stop:always;z-index:auto!important}
+  .work-wall-panel-inner{animation:none!important}
+  .work-wall-caption{padding-inline:var(--gutter)}
+}
+@media(prefers-reduced-motion:reduce){
+  .js .reveal,.js .reveal-left,.js .reveal-right,.js .reveal-scale,.js .reveal-blur{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}
+}
 </style>
 </head>
 <body>
@@ -1404,16 +1511,16 @@ body.lightbox-open{overflow:hidden}
     <div class="nav">
       <a href="#" class="logo"><span class="logo-mark">M</span><span><b>MAZAHAR</b><small>Video • Strategy • Growth</small></span></a>
       <nav class="nav-links">
-        <a href="#services">Services</a><a href="#motion">Motion</a><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#packages">Packages</a><a href="#faq">FAQ</a>
+        <a href="#showreel">Motion</a><a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a><a href="#work">Work</a><a href="#packages">Packages</a><a href="#faq">FAQ</a>
       </nav>
       <div class="nav-cta">
         <a class="btn btn-outline" href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener">Facebook ↗</a>
-        <a class="btn btn-primary" href="#brief">Start a Project →</a>
+        <a class="btn btn-primary primary-cta" href="#brief">Build My Brief</a>
         <button class="menu-btn" id="menuBtn" aria-label="Menu">☰</button>
       </div>
     </div>
     <div class="mobile-menu" id="mobileMenu">
-      <a href="#services">Services</a><a href="#motion">Motion</a><a href="#process">Process</a><a href="#about">About</a><a href="#packages">Packages</a><a href="#brief">Start a Project</a>
+      <a href="#showreel">Motion</a><a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a><a href="#work">Work</a><a href="#packages">Packages</a><a href="#faq">FAQ</a><a class="primary-cta-link" href="#brief">Build My Brief</a>
     </div>
   </div>
 </header>
@@ -1463,14 +1570,14 @@ body.lightbox-open{overflow:hidden}
         <button class="typing-sound-toggle" id="typingSoundToggle" type="button" aria-label="Replay the headline with voice and typing sound"><i aria-hidden="true"></i><span id="typingSoundLabel">Play headline audio</span></button>
         <audio id="heroHeadlineAudio" src="assets/ai-video.mp3" preload="metadata" hidden></audio>
         <p class="lead">I'm <strong>Mazahar</strong> — an AI Video Production & Content Strategy Consultant. I help creators grow <span class="lead-keyword" style="--k:0">YouTube channels</span> and <span class="lead-keyword" style="--k:1">Facebook Pages</span> through strategic content, professional editing, <span class="lead-keyword" style="--k:2">SEO</span>, and <span class="lead-keyword" style="--k:3">US audience targeting</span>.</p>
-        <div class="hook-result" aria-label="Expertise"><span><b>Hook-Driven Editing</b></span><span class="dotsep">•</span><span>12+ Years' Experience</span><span class="dotsep">•</span><span>Content Strategy</span><span class="dotsep">•</span><span>US Audience Targeting</span></div>
+        <div class="hook-result" aria-label="Expertise"><span><b>Hook-Driven Editing</b></span><span class="dotsep">•</span><span>12+ Years of Experience</span><span class="dotsep">•</span><span>Content Strategy</span><span class="dotsep">•</span><span>US Audience Targeting</span></div>
         <div class="hero-actions">
-          <a href="#brief" class="btn btn-teal">Build My Project Brief →</a>
+          <a href="#brief" class="btn btn-primary primary-cta">Build My Brief</a>
           <a href="#services" class="btn btn-outline">Explore Services ↓</a>
         </div>
-        <div class="proof"><span style="--i:0">AI-Powered Production</span><span style="--i:1">YouTube SEO</span><span style="--i:2">Facebook Growth</span><span style="--i:3">Monetization Strategy</span></div>
+        <div class="proof"><span style="--i:0">AI-Powered Production</span><span style="--i:1">YouTube SEO</span></div>
 
-        <div class="stats" style="margin-top:26px">
+        <div class="stats" style="margin-top:20px">
           <div class="stat" aria-label="12+ Years Experience"><b>12+ Years</b><span>Experience</span></div>
           <div class="stat" aria-label="Strategy + Production"><b>Strategy +</b><span>Production</span></div>
           <div class="stat" aria-label="YouTube · Facebook · Instagram"><b>YouTube</b><span>Facebook · Instagram</span></div>
@@ -1479,7 +1586,7 @@ body.lightbox-open{overflow:hidden}
 
       <div class="hero-visual reveal reveal-right" id="heroVisual">
         <div class="photo-frame" id="photoFrame">
-          <img src="assets/mazahar.jpg" alt="Mazahar — AI Video Production & Content Strategy Consultant portrait"/>
+          <img src="assets/mazahar.jpg" alt="Mazahar in a studio portrait"/>
           <div class="play-pill">▶ MOTION • AI • STRATEGY</div>
           <div class="photo-caption"><div><b>Mazahar</b><span>AI Video Production & Content Strategy Consultant</span></div><a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" style="background:#fff;color:#111;padding:9px 12px;border-radius:999px;font-weight:800;font-size:13px;white-space:nowrap">Follow ↗</a></div>
         </div>
@@ -1487,13 +1594,18 @@ body.lightbox-open{overflow:hidden}
       </div>
     </div>
 
-    <div class="marquee" aria-hidden="true"><div class="marquee-track"><span>AI Video Production ✦ Video Editing ✦ YouTube SEO ✦ Content Strategy ✦ Facebook Growth ✦ AI Automation ✦ Monetization ✦ &nbsp;</span><span>AI Video Production ✦ Video Editing ✦ YouTube SEO ✦ Content Strategy ✦ Facebook Growth ✦ AI Automation ✦ Monetization ✦ &nbsp;</span></div></div>
   </section>
 
-  <!-- SHOWREEL — one portfolio film plays across the full section background -->
-  <section class="section" id="showreel" aria-labelledby="showreelTitle">
+  <!-- SHOWREEL + MOTION — one section: the film on top, live motion demos below -->
+  <section class="section" id="showreel" aria-labelledby="motionSectionTitle">
+    <div class="container">
+      <div class="section-head reveal">
+        <div><div class="kicker">Showreel • Motion Graphics</div><h2 id="motionSectionTitle">Motion that stops the scroll</h2></div>
+        <p>Watch the showreel — then see the motion style live on this page: kinetic type, shapes and smooth easing, exactly like the motion graphics I make for your videos.</p>
+      </div>
+    </div>
     <div class="showreel-stage">
-      <video class="showreel-backdrop" id="portfolioReel" src="assets/mazahar-showreel-26s.mp4" poster="assets/mazahar-showreel-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Mazahar's 26-second professional motion graphics portfolio showreel"></video>
+      <video class="showreel-backdrop" id="portfolioReel" src="assets/mazahar-showreel-26s.mp4" poster="assets/portfolio-poster.jpg" autoplay muted loop playsinline preload="none" aria-label="Mazahar's 26-second professional motion graphics portfolio showreel"></video>
       <div class="container">
         <div class="showreel-shell">
           <div class="showreel-intro reveal">
@@ -1510,7 +1622,47 @@ body.lightbox-open{overflow:hidden}
         </div>
       </div>
     </div>
-  </section>
+      <div class="container" style="margin-top:var(--card-gap)">
+      <div class="motion-grid">
+              <!-- Card 1 Kinetic Type -->
+              <div class="reveal reveal-scale" style="background:#0B0F12;color:#fff;border-radius:22px;padding:22px;min-height:260px;position:relative;overflow:hidden">
+                <div aria-hidden="true" style="position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#0C7669,transparent 70%);top:-60px;right:-40px;opacity:.9;animation:orbFloat1 9s ease-in-out infinite alternate"></div>
+                <span style="font-size:11px;letter-spacing:.14em;font-weight:800;opacity:.6">01 — KINETIC TYPE</span>
+                <div style="margin-top:22px;line-height:.95;font-family:'Bricolage Grotesque',sans-serif;font-weight:800">
+                  <div class="kinetic-line" style="font-size:38px">BUILD.</div>
+                  <div class="kinetic-line" style="font-size:38px;color:#2ED3B7;animation-delay:.7s">GROW.</div>
+                  <div class="kinetic-line" style="font-size:38px;color:#F5B841;animation-delay:1.4s">MONETIZE.</div>
+                </div>
+                <p style="font-size:13.5px;opacity:.72;margin-top:16px;position:relative">Bold words slide &amp; pop in rhythm — perfect for hooks, intros &amp; Shorts.</p>
+                <style>.kinetic-line{opacity:0;transform:translateX(-18px);animation:kineticIn 3.6s cubic-bezier(.16,1,.3,1) infinite}@keyframes kineticIn{0%{opacity:0;transform:translateX(-18px)}12%,82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}} .motion-grid .kinetic-line:nth-child(2){}</style>
+              </div>
+              <!-- Card 2 Shapes -->
+              <div class="reveal reveal-scale" style="--d:90ms;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;min-height:260px;position:relative;overflow:hidden">
+                <span style="font-size:11px;letter-spacing:.14em;font-weight:800;color:var(--muted)">02 — SHAPES &amp; TRANSITIONS</span>
+                <div style="height:118px;position:relative;margin-top:14px" aria-hidden="true">
+                  <div style="position:absolute;left:8px;top:18px;width:64px;height:64px;border-radius:16px;background:var(--teal);animation:shapeMorph 5s ease-in-out infinite"></div>
+                  <div style="position:absolute;left:92px;top:8px;width:52px;height:52px;border-radius:50%;background:var(--amber);animation:floatY 4s ease-in-out infinite"></div>
+                  <div style="position:absolute;right:18px;top:28px;width:0;height:0;border-left:28px solid transparent;border-right:28px solid transparent;border-bottom:48px solid var(--orange);opacity:.9;animation:floatY 5.5s ease-in-out infinite"></div>
+                  <div style="position:absolute;left:18px;right:18px;bottom:8px;height:2px;background:var(--line)"><div style="height:100%;width:40%;background:var(--teal);border-radius:999px;animation:slideBar 2.8s cubic-bezier(.16,1,.3,1) infinite alternate"></div></div>
+                </div>
+                <style>@keyframes shapeMorph{0%,100%{border-radius:16px;transform:rotate(0)}50%{border-radius:50%;transform:rotate(90deg) scale(1.06)}}@keyframes slideBar{from{transform:translateX(0)}to{transform:translateX(130%)}}</style>
+                <p style="font-size:13.5px;color:var(--muted);margin-top:8px">Smooth ease-in-out, fades &amp; slides — no hard cuts. Premium, corporate feel in every transition.</p>
+              </div>
+              <!-- Card 3 Counter / Lower third -->
+              <div class="reveal reveal-scale" style="--d:180ms;background:linear-gradient(135deg,var(--teal),#095E54);color:#fff;border-radius:22px;padding:22px;min-height:260px;position:relative;overflow:hidden">
+                <span style="font-size:11px;letter-spacing:.14em;font-weight:800;opacity:.7">03 — LOWER THIRDS &amp; DATA</span>
+                <div style="margin-top:18px;background:rgba(255,255,255,.96);color:#111;border-radius:14px;padding:14px 16px;animation:lowerThird 4.5s cubic-bezier(.16,1,.3,1) infinite">
+                  <b style="font-size:17px;line-height:1">MAZAHAR</b><span style="display:block;font-size:12.5px;color:#666;margin-top:3px">AI Video Production &amp; Content Strategy</span>
+                  <div style="height:3px;background:#E9E2D6;border-radius:999px;margin-top:10px;overflow:hidden"><div style="height:100%;background:#0C7669;animation:fillBar 4.5s linear infinite"></div></div>
+                </div>
+                <div style="display:flex;gap:18px;margin-top:18px"><div><b style="font-size:28px;font-family:'Bricolage Grotesque',sans-serif;line-height:1">12+</b><span style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700">Years</span></div><div><b style="font-size:28px;font-family:'Bricolage Grotesque',sans-serif;line-height:1">8</b><span style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700">Skills</span></div><div><b style="font-size:28px;font-family:'Bricolage Grotesque',sans-serif;line-height:1">3</b><span style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700">Platforms</span></div></div>
+                <style>@keyframes lowerThird{0%{opacity:0;transform:translateX(-16px)}10%,88%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}@keyframes fillBar{from{width:0}to{width:100%}}@media(max-width:900px){.motion-grid{grid-template-columns:1fr !important}}</style>
+              </div>
+            </div>
+      
+      <p style="text-align:center;margin-top:16px"><a href="#brief" class="btn btn-primary primary-cta">Build My Brief</a></p>
+    </div>
+</section>
 
   <div class="reel-modal" id="reelModal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mazahar portfolio showreel">
     <button class="reel-modal-backdrop" type="button" data-reel-close aria-label="Close showreel popup"></button>
@@ -1520,54 +1672,18 @@ body.lightbox-open{overflow:hidden}
     </div>
   </div>
 
-  <!-- CINEMATIC FRAMES — full-width dark dimensional gallery -->
-  <section class="section cinematic-gallery" id="cinematicGallery" aria-labelledby="cinematicGalleryTitle">
-    <div class="cinematic-gallery-head">
-      <div><div class="kicker">SELECTED FRAMES · 01—08</div><h2 id="cinematicGalleryTitle">Inside the<br><span class="serif">creative process.</span></h2></div>
-      <p>A closer look at the craft behind every frame — from <span class="craft-accent">creative planning</span> and <span class="craft-weight">precision editing</span> to <span class="craft-accent">motion design</span> and final delivery. Every detail is shaped to tell a stronger story.</p>
-    </div>
-    <div class="cinematic-stage" id="cinematicStage" tabindex="0" role="group" aria-roledescription="carousel" aria-label="Eight selected production frames in a continuous three-dimensional ring. Drag horizontally to rotate.">
-      <div class="cinematic-track" id="cinematicTrack" aria-hidden="true">
-        <figure class="cinematic-card"><img src="assets/gallery-edit-suite.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/gallery-camera-stage.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/gallery-motion-energy.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/gallery-production-kit.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/studio.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/gallery-color-grade.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/gallery-storyboard.webp" alt=""></figure>
-        <figure class="cinematic-card"><img src="assets/gallery-sound-design.webp" alt=""></figure>
-      </div>
-      <div class="cinematic-drag-proxy" id="cinematicDragProxy" aria-hidden="true"></div>
-      <div class="cinematic-drag-badge" id="cinematicDragBadge" aria-hidden="true"><span><i>DRAG</i></span></div>
-    </div>
-  </section>
+  <div class="container"><div class="wave-divider" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span style="--i:31"></span></div></div>
 
-  <!-- CREATIVE MANIFESTO — a typography-led statement of how the work is approached -->
-  <section class="section platform-suite manifesto-section" id="platformSuite" aria-labelledby="manifestoTitle">
-    <div class="container">
-      <div class="manifesto-shell">
-        <div class="manifesto-meta"><span class="manifesto-label">A creative manifesto</span><span>Strategy · Production · Growth</span></div>
-        <h2 class="manifesto-statement" id="manifestoTitle">
-          <span class="manifesto-line" style="--mi:0"><span>Don't just <em>publish.</em></span></span>
-          <span class="manifesto-line" style="--mi:1"><span>Create to <strong>grow.</strong></span></span>
-        </h2>
-        <div class="manifesto-close">
-          <div class="manifesto-code" aria-label="Creative focus"><span>Video Production</span><span>YouTube Growth</span><span>Content Strategy</span></div>
-          <p>AI-powered video production, strategic editing and audience growth—working as one system to turn content into <strong>measurable progress.</strong></p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES — DIMENSIONAL CAPABILITY WALL -->
+      <!-- SERVICES — DIMENSIONAL CAPABILITY WALL -->
   <section class="section services-wall-section" id="services">
     <div class="container">
+      <div class="manifesto-kicker reveal"><span>Don't just publish. <em>Create to grow.</em></span></div>
       <div class="section-head services-wall-head reveal">
         <div><div class="kicker">What I Do</div><h2>A connected creative system for <span class="serif">real growth</span></h2></div>
         <p>Six capabilities, one production system. Move across the wall to explore how strategy, editing and distribution work together.</p>
       </div>
 
-      <div class="services-wall-stage" id="serviceWallStage" aria-label="Animated 3D wall of creative services">
+      <div class="services-wall-stage reveal" id="serviceWallStage" aria-label="Animated 3D wall of creative services">
         <div class="services service-wall-grid" id="serviceWallGrid">
           <article class="service service-wall-card" style="--si:0;--depth:-55px;--lift:38px;--ry:3deg;--float:-1.6s;--card-accent:#0C7669"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="14" height="14" rx="2"/><path d="m17 10 4-2v8l-4-2zM7 9h6M7 13h4"/></svg></div><div class="service-num">01 — PRODUCTION</div><h3>AI Video Production</h3><p>Cinematic + motion-graphics videos made with AI workflows — faster turnaround without losing the premium feel.</p><ul><li>AI-assisted concepts &amp; scripts</li><li>Motion graphics &amp; kinetic type</li><li>Shorts, Reels &amp; long-form</li></ul></div></article>
           <article class="service service-wall-card" style="--si:1;--depth:78px;--lift:-4px;--ry:-1deg;--float:-3.1s;--card-accent:#2ED3B7"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h16M4 17h8M16 4v6M9 14v6"/><circle cx="16" cy="12" r="2"/><circle cx="9" cy="12" r="2"/></svg></div><div class="service-num">02 — EDITING</div><h3>Video Editing</h3><p>Clean, professional edits with smooth transitions, sound design, captions and pacing built for retention.</p><ul><li>Retention-first pacing</li><li>Captions, SFX &amp; light music</li><li>Thumbnails &amp; end screens</li></ul></div></article>
@@ -1576,75 +1692,7 @@ body.lightbox-open{overflow:hidden}
           <article class="service service-wall-card" style="--si:4;--depth:105px;--lift:-46px;--ry:1deg;--float:-4s;--card-accent:#0C7669"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="m15 9-2 5-5 2 2-5z"/></svg></div><div class="service-num">05 — STRATEGY</div><h3>Content Strategy</h3><p>A clear 30–90 day plan: what to post, why, and how it leads to subscribers, leads or sales.</p><ul><li>Niche &amp; positioning</li><li>30–90 day roadmap</li><li>Monetization planning</li></ul></div></article>
           <article class="service service-wall-card" style="--si:5;--depth:-38px;--lift:22px;--ry:-3deg;--float:-1.2s;--card-accent:#2ED3B7"><div class="service-card-surface"><div class="service-glyph" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m13 2-7 12h6l-1 8 7-12h-6z"/></svg></div><div class="service-num">06 — AUTOMATION</div><h3>AI Tools &amp; Automation</h3><p>Systems that save hours every week — idea → script → title → thumbnail brief → schedule, streamlined.</p><ul><li>AI workflow setup</li><li>Content pipeline systems</li><li>Tool stack consulting</li></ul></div></article>
         </div>
-        <div class="service-wall-caption"><span>Hover for kinetic type. Click for a smooth morph zoom.</span><div class="service-wall-meter" aria-hidden="true"><i></i></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MOTION GRAPHICS SHOWCASE -->
-  <section class="section" id="motion">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><div class="kicker">Motion Graphics • Live on this page</div><h2>Motion that makes people <span class="serif">stop scrolling</span></h2></div>
-        <p>This section is animated live — no video file. Kinetic type, shapes and smooth easing, exactly like the motion graphics I make for your videos.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px" class="motion-grid">
-        <!-- Card 1 Kinetic Type -->
-        <div class="reveal reveal-scale" style="background:#0B0F12;color:#fff;border-radius:22px;padding:22px;min-height:260px;position:relative;overflow:hidden">
-          <div aria-hidden="true" style="position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#0C7669,transparent 70%);top:-60px;right:-40px;opacity:.9;animation:orbFloat1 9s ease-in-out infinite alternate"></div>
-          <span style="font-size:11px;letter-spacing:.14em;font-weight:800;opacity:.6">01 — KINETIC TYPE</span>
-          <div style="margin-top:22px;line-height:.95;font-family:'Bricolage Grotesque',sans-serif;font-weight:800">
-            <div class="kinetic-line" style="font-size:38px">BUILD.</div>
-            <div class="kinetic-line" style="font-size:38px;color:#2ED3B7;animation-delay:.7s">GROW.</div>
-            <div class="kinetic-line" style="font-size:38px;color:#F5B841;animation-delay:1.4s">MONETIZE.</div>
-          </div>
-          <p style="font-size:13.5px;opacity:.72;margin-top:16px;position:relative">Bold words slide &amp; pop in rhythm — perfect for hooks, intros &amp; Shorts.</p>
-          <style>.kinetic-line{opacity:0;transform:translateX(-18px);animation:kineticIn 3.6s cubic-bezier(.16,1,.3,1) infinite}@keyframes kineticIn{0%{opacity:0;transform:translateX(-18px)}12%,82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}} .motion-grid .kinetic-line:nth-child(2){}</style>
-        </div>
-        <!-- Card 2 Shapes -->
-        <div class="reveal reveal-scale" style="--d:90ms;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;min-height:260px;position:relative;overflow:hidden">
-          <span style="font-size:11px;letter-spacing:.14em;font-weight:800;color:var(--muted)">02 — SHAPES &amp; TRANSITIONS</span>
-          <div style="height:118px;position:relative;margin-top:14px" aria-hidden="true">
-            <div style="position:absolute;left:8px;top:18px;width:64px;height:64px;border-radius:16px;background:var(--teal);animation:shapeMorph 5s ease-in-out infinite"></div>
-            <div style="position:absolute;left:92px;top:8px;width:52px;height:52px;border-radius:50%;background:var(--amber);animation:floatY 4s ease-in-out infinite"></div>
-            <div style="position:absolute;right:18px;top:28px;width:0;height:0;border-left:28px solid transparent;border-right:28px solid transparent;border-bottom:48px solid var(--orange);opacity:.9;animation:floatY 5.5s ease-in-out infinite"></div>
-            <div style="position:absolute;left:18px;right:18px;bottom:8px;height:2px;background:var(--line)"><div style="height:100%;width:40%;background:var(--teal);border-radius:999px;animation:slideBar 2.8s cubic-bezier(.16,1,.3,1) infinite alternate"></div></div>
-          </div>
-          <style>@keyframes shapeMorph{0%,100%{border-radius:16px;transform:rotate(0)}50%{border-radius:50%;transform:rotate(90deg) scale(1.06)}}@keyframes slideBar{from{transform:translateX(0)}to{transform:translateX(130%)}}</style>
-          <p style="font-size:13.5px;color:var(--muted);margin-top:8px">Smooth ease-in-out, fades &amp; slides — no hard cuts. Premium, corporate feel in every transition.</p>
-        </div>
-        <!-- Card 3 Counter / Lower third -->
-        <div class="reveal reveal-scale" style="--d:180ms;background:linear-gradient(135deg,var(--teal),#095E54);color:#fff;border-radius:22px;padding:22px;min-height:260px;position:relative;overflow:hidden">
-          <span style="font-size:11px;letter-spacing:.14em;font-weight:800;opacity:.7">03 — LOWER THIRDS &amp; DATA</span>
-          <div style="margin-top:18px;background:rgba(255,255,255,.96);color:#111;border-radius:14px;padding:14px 16px;animation:lowerThird 4.5s cubic-bezier(.16,1,.3,1) infinite">
-            <b style="font-size:17px;line-height:1">MAZAHAR</b><span style="display:block;font-size:12.5px;color:#666;margin-top:3px">AI Video Production &amp; Content Strategy</span>
-            <div style="height:3px;background:#E9E2D6;border-radius:999px;margin-top:10px;overflow:hidden"><div style="height:100%;background:#0C7669;animation:fillBar 4.5s linear infinite"></div></div>
-          </div>
-          <div style="display:flex;gap:18px;margin-top:18px"><div><b style="font-size:28px;font-family:'Bricolage Grotesque',sans-serif;line-height:1">12+</b><span style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700">Years</span></div><div><b style="font-size:28px;font-family:'Bricolage Grotesque',sans-serif;line-height:1">8</b><span style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700">Skills</span></div><div><b style="font-size:28px;font-family:'Bricolage Grotesque',sans-serif;line-height:1">3</b><span style="display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700">Platforms</span></div></div>
-          <style>@keyframes lowerThird{0%{opacity:0;transform:translateX(-16px)}10%,88%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}@keyframes fillBar{from{width:0}to{width:100%}}@media(max-width:900px){.motion-grid{grid-template-columns:1fr !important}}</style>
-        </div>
-      </div>
-      <p style="text-align:center;margin-top:16px"><a href="#brief" class="btn btn-teal">Want this motion style in your video? Build your brief →</a></p>
-    </div>
-  </section>
-
-  <div class="container"><div class="wave-divider" aria-hidden="true"><span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span><span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span><span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span><span style="--i:12"></span><span style="--i:13"></span><span style="--i:14"></span><span style="--i:15"></span><span style="--i:16"></span><span style="--i:17"></span><span style="--i:18"></span><span style="--i:19"></span><span style="--i:20"></span><span style="--i:21"></span><span style="--i:22"></span><span style="--i:23"></span><span style="--i:24"></span><span style="--i:25"></span><span style="--i:26"></span><span style="--i:27"></span><span style="--i:28"></span><span style="--i:29"></span><span style="--i:30"></span><span style="--i:31"></span></div></div>
-
-  <!-- PROCESS -->
-  <section class="section" id="process" style="background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="container">
-      <div class="section-head reveal"><div><div class="kicker">How It Works</div><h2>A simple process. <span class="serif">No guesswork.</span></h2></div><p>Most projects start with a short brief (use the builder below) and a discovery chat on Facebook Messenger.</p></div>
-      <div class="process">
-        <div class="step reveal" style="--d:0ms"><b>01</b><h3>Discover</h3><p>We clarify your niche, audience (especially US), goals, and what success looks like in 90 days.</p></div>
-        <div class="step reveal" style="--d:90ms"><b>02</b><h3>Strategy</h3><p>Content pillars, hooks, titles and a posting roadmap — before we edit a single frame.</p></div>
-        <div class="step reveal" style="--d:180ms"><b>03</b><h3>Produce</h3><p>AI + professional editing: motion graphics, captions, SFX and thumbnails, with smooth revisions.</p></div>
-        <div class="step reveal" style="--d:270ms"><b>04</b><h3>Grow & Optimize</h3><p>Publish with SEO, watch retention & CTR, and double down on what works. Monetization next.</p></div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px" class="audience-grid">
-        <div class="step reveal" style="--d:360ms"><h3>🎥 Creator / YouTuber</h3><p>You post inconsistently or views are flat. You need packaging + strategy, not just edits.</p></div>
-        <div class="step reveal" style="--d:450ms"><h3>💼 Coach / Business</h3><p>You want video that brings leads from the US market — without hiring an in-house team.</p></div>
-        <div class="step reveal" style="--d:540ms"><h3>🚀 Facebook Page Owner</h3><p>You want to build a page from zero to monetization with a repeatable content system.</p></div>
+        <div class="service-wall-caption"><span>Tap a card to explore</span><div class="service-wall-meter" aria-hidden="true"><i></i></div></div>
       </div>
     </div>
   </section>
@@ -1652,35 +1700,73 @@ body.lightbox-open{overflow:hidden}
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container about-grid">
-      <div class="about-photo reveal reveal-left mask-reveal"><img src="assets/about-mazahar.jpg" alt="Mazahar outdoors on a mint-green scooter, wearing a white polo shirt and glasses"/><span class="about-chip about-chip-1"><i></i> On the road — creating daily</span><span class="about-chip about-chip-2">✦ 12+ Years Freelancing</span></div>
+      <div class="about-photo reveal reveal-left mask-reveal"><img src="assets/about-mazahar.jpg" alt="Mazahar on a mint scooter" loading="lazy"/><span class="about-chip about-chip-1"><i></i> On the road — creating daily</span><span class="about-chip about-chip-2">✦ 12+ Years Freelancing</span></div>
       <div class="reveal">
         <div class="kicker">About Mazahar</div>
         <h2 style="font-size:clamp(32px,3.8vw,46px);line-height:1">12+ years freelancing.<br><span class="serif" style="font-size:.92em">Now all-in on video.</span></h2>
-        <p style="color:var(--muted);font-size:16.5px;margin:16px 0">I'm a Video Editor, AI Expert, Content Creator and Digital Content Consultant. For 12–13 years I've worked on Fiverr, Upwork and with many direct clients. Today I focus entirely on video content — combining AI tools, sharp editing, and proven growth strategy.</p>
+        <p style="color:var(--muted);font-size:16.5px;margin:16px 0">I'm a Video Editor, AI Expert, Content Creator and Digital Content Consultant. For 12+ years I've worked on Fiverr, Upwork and with many direct clients. Today I focus entirely on video content — combining AI tools, sharp editing, and proven growth strategy.</p>
         <p style="color:var(--muted);font-size:16.5px">My specialty is helping creators target US audiences: the hooks, titles, pacing and SEO that US viewers actually click and watch — and the monetization path behind it.</p>
         <div class="skills" id="skillsRow">
           <span class="pill" style="--i:0">AI Video Production</span><span class="pill" style="--i:1">Video Editing</span><span class="pill" style="--i:2">AI Content Creation</span><span class="pill" style="--i:3">YouTube SEO</span><span class="pill" style="--i:4">Content Strategy</span><span class="pill" style="--i:5">Social Media Growth</span><span class="pill" style="--i:6">AI Tools &amp; Automation</span><span class="pill" style="--i:7">Digital Consulting</span>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:22px"><a class="btn btn-primary" href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener">Connect on Facebook ↗</a><a class="btn btn-outline" href="#packages">See Packages</a></div>
+        <div class="about-contact reveal" aria-label="Contact and freelance profiles"><span>Find me on</span><a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener">Facebook ↗</a><a href="mailto:mamadamkoto@gmail.com">Email ↗</a><!-- DEMO: replace with Mazahar's real Fiverr profile URL --><a href="https://www.fiverr.com/" target="_blank" rel="noopener">Fiverr ↗</a><!-- DEMO: replace with Mazahar's real Upwork profile URL --><a href="https://www.upwork.com/" target="_blank" rel="noopener">Upwork ↗</a></div>
       </div>
     </div>
   </section>
 
-  <!-- WORK / PROJECT TYPES — 12 scroll-driven sample directions -->
+
+  
+
+  
+
+  <!-- PROCESS -->
+  <section class="section cinematic-gallery" id="process">
+    <div class="cinematic-gallery-head reveal">
+      <div><div class="kicker">How It Works</div><h2>A simple process. <span class="serif">No guesswork.</span></h2></div>
+      <p>A closer look at the craft behind every frame — from <span class="craft-accent">creative planning</span> and <span class="craft-weight">precision editing</span> to <span class="craft-accent">motion design</span> and final delivery. Every detail is shaped to tell a stronger story.</p>
+    </div>
+    <div class="container">
+      <div class="process process-dark">
+        <div class="step reveal" style="--d:0ms"><b>01</b><h3>Discover</h3><p>We clarify your niche, audience (especially US), goals, and what success looks like in 90 days.</p></div>
+        <div class="step reveal" style="--d:90ms"><b>02</b><h3>Strategy</h3><p>Content pillars, hooks, titles and a posting roadmap — before we edit a single frame.</p></div>
+        <div class="step reveal" style="--d:180ms"><b>03</b><h3>Produce</h3><p>AI + professional editing: motion graphics, captions, SFX and thumbnails, with smooth revisions.</p></div>
+        <div class="step reveal" style="--d:270ms"><b>04</b><h3>Grow &amp; Optimize</h3><p>Publish with SEO, watch retention &amp; CTR, and double down on what works. Monetization next.</p></div>
+      </div>
+    </div>
+    <div class="cinematic-stage" id="processRingStage" tabindex="0" role="region" aria-label="Selected frames gallery. Drag to rotate, or use left and right arrow keys.">
+      <div class="cinematic-track" id="processRingTrack">
+        <div class="cinematic-card"><img src="assets/gallery-camera-stage.webp" alt="Camera and lenses arranged on a dark production desk" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/gallery-color-grade.webp" alt="Color grading suite with dual monitors in teal and amber" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/gallery-edit-suite.webp" alt="Video editing timeline on a large display" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/gallery-motion-energy.webp" alt="Abstract teal and amber motion light streaks" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/gallery-production-kit.webp" alt="Camera gear and shot list ready for production" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/gallery-sound-design.webp" alt="Sound design session with mixer and headphones" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/gallery-storyboard.webp" alt="Storyboard sketches planning video scenes" loading="lazy"></div>
+        <div class="cinematic-card"><img src="assets/studio.webp" alt="Professional video editing workspace" loading="lazy"></div>
+      </div>
+      <div class="cinematic-drag-proxy"></div>
+      <div class="cinematic-drag-badge" aria-hidden="true"><span><i>Drag</i></span></div>
+    </div>
+  </section>
+
+  
+
+  <!-- WORK / PROJECT TYPES — 6 scroll-driven sample directions -->
   <section class="section work-wall-section" id="work">
     <div class="container">
       <div class="section-head work-wall-head reveal">
         <div><div class="kicker">Work &amp; Project Types</div><h2><span class="work-hash">#</span>BuiltByMazahar</h2></div>
-        <p>Explore 12 sample production directions for creators and brands. Scroll to move the wall; select any card for a closer view.</p>
+        <p>Explore 6 sample production directions for creators and brands. Scroll to move the wall; select any card for a closer view.</p>
       </div>
     </div>
-    <div class="work-wall-stage" id="workWallStage" aria-label="Interactive 3D wall with 12 sample project types">
+    <div class="work-wall-stage reveal" id="workWallStage" aria-label="Interactive 3D wall with 6 sample project types">
       <div class="work-wall-deck" id="workWallDeck">
         <article class="work-wall-panel" role="button" tabindex="0" data-kicker="YouTube · Long-Form" data-title="Creator Long-Form Videos" style="--x:-900px;--y:24px;--z:-240px;--ry:19deg;--rz:-1.2deg;--zi:1;--delay:-1.2s">
-          <div class="work-wall-panel-inner"><img src="assets/studio.webp" alt="Editing workspace representing YouTube long-form production"><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Long-Form</span></div><h3>Creator Long-Form Videos</h3><p>Retention-first edits with chapters, captions and purposeful pacing.</p><p class="work-detail">Sample scope: story edit, motion titles, audio polish, captions and platform-ready delivery.</p></div></div>
+          <div class="work-wall-panel-inner"><img src="assets/studio.webp" alt="Professional video editing workspace" loading="lazy"><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Long-Form</span></div><h3>Creator Long-Form Videos</h3><p>Retention-first edits with chapters, captions and purposeful pacing.</p><p class="work-detail">Sample scope: story edit, motion titles, audio polish, captions and platform-ready delivery.</p></div></div>
         </article>
         <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Facebook · Growth" data-title="Facebook Page Build-Out" style="--x:-720px;--y:196px;--z:-165px;--ry:15deg;--rz:.8deg;--zi:2;--delay:-2.8s">
-          <div class="work-wall-panel-inner"><img src="assets/creator-studio.webp" alt="Creator studio representing Facebook page video production"><div class="work-wall-copy"><div class="work-meta"><span>Facebook</span><span>Page Growth</span></div><h3>Facebook Page Build-Out</h3><p>Brand system, content pillars and a repeatable publishing rhythm.</p><p class="work-detail">Sample scope: page direction, visual language, recurring formats and content calendar structure.</p></div></div>
+          <div class="work-wall-panel-inner"><img src="assets/creator-studio.webp" alt="Camera and studio lighting setup" loading="lazy"><div class="work-wall-copy"><div class="work-meta"><span>Facebook</span><span>Page Growth</span></div><h3>Facebook Page Build-Out</h3><p>Brand system, content pillars and a repeatable publishing rhythm.</p><p class="work-detail">Sample scope: page direction, visual language, recurring formats and content calendar structure.</p></div></div>
         </article>
         <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Short-Form · Editing" data-title="Shorts & Reels System" style="--x:-540px;--y:42px;--z:-105px;--ry:11deg;--rz:-.6deg;--zi:3;--delay:-.5s">
           <div class="work-wall-panel-inner"><div class="work-visual visual-cuts" role="img" aria-label="Abstract short-form editing timeline"><b>15s</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Shorts / Reels</span><span>Daily</span></div><h3>Shorts &amp; Reels System</h3><p>Hook-led vertical cuts with text, captions and sound design.</p><p class="work-detail">Sample scope: repeatable hook template, kinetic captions, pattern interrupts and platform exports.</p></div></div>
@@ -1689,69 +1775,29 @@ body.lightbox-open{overflow:hidden}
           <div class="work-wall-panel-inner"><div class="work-visual visual-ai" role="img" aria-label="Abstract AI-assisted storytelling system"><b>AI</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Faceless</span></div><h3>Faceless AI Channels</h3><p>AI-assisted visuals, narration and motion-led storytelling.</p><p class="work-detail">Sample scope: format design, scene plan, asset workflow, edit and consistent channel packaging.</p></div></div>
         </article>
         <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Personal Brand · Short-Form" data-title="Personal Brand Clips" style="--x:-180px;--y:18px;--z:40px;--ry:3deg;--rz:-.4deg;--zi:6;--delay:-3.3s">
-          <div class="work-wall-panel-inner"><img src="assets/mazahar.jpg" alt="Mazahar portrait representing personal-brand video content"><div class="work-wall-copy"><div class="work-meta"><span>Personal Brand</span><span>Clips</span></div><h3>Personal Brand Clips</h3><p>Confident, clean edits that turn expertise into clear moments.</p><p class="work-detail">Sample scope: selects, branded framing, punch-in rhythm, captions and a cohesive clip series.</p></div></div>
+          <div class="work-wall-panel-inner"><img src="assets/mazahar.jpg" alt="Mazahar in a studio portrait" loading="lazy"><div class="work-wall-copy"><div class="work-meta"><span>Personal Brand</span><span>Clips</span></div><h3>Personal Brand Clips</h3><p>Confident, clean edits that turn expertise into clear moments.</p><p class="work-detail">Sample scope: selects, branded framing, punch-in rhythm, captions and a cohesive clip series.</p></div></div>
         </article>
         <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Business · Conversion" data-title="Coach & Business Videos" style="--x:0px;--y:202px;--z:72px;--ry:-1deg;--rz:.5deg;--zi:8;--delay:-1.7s">
-          <div class="work-wall-panel-inner"><img src="assets/about-mazahar.jpg" alt="Professional portrait representing coach and business videos"><div class="work-wall-copy"><div class="work-meta"><span>Business</span><span>Lead Content</span></div><h3>Coach &amp; Business Videos</h3><p>Talking-head and promo edits built for trust and clarity.</p><p class="work-detail">Sample scope: message shaping, clean visual pacing, branded motion and call-to-action delivery.</p></div></div>
+          <div class="work-wall-panel-inner"><img src="assets/about-mazahar.jpg" alt="Mazahar on a mint scooter" loading="lazy"><div class="work-wall-copy"><div class="work-meta"><span>Business</span><span>Lead Content</span></div><h3>Coach &amp; Business Videos</h3><p>Talking-head and promo edits built for trust and clarity.</p><p class="work-detail">Sample scope: message shaping, clean visual pacing, branded motion and call-to-action delivery.</p></div></div>
         </article>
-        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Captions · Motion" data-title="Kinetic Caption Packs" style="--x:190px;--y:40px;--z:46px;--ry:-4deg;--rz:-.5deg;--zi:7;--delay:-2.2s">
-          <div class="work-wall-panel-inner"><div class="work-visual visual-captions" role="img" aria-label="Abstract kinetic caption layout"><b>TXT</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Motion</span><span>Captions</span></div><h3>Kinetic Caption Packs</h3><p>Reusable caption language for reels, ads and explainers.</p><p class="work-detail">Sample scope: type hierarchy, emphasis rules, motion timing and editable style templates.</p></div></div>
-        </article>
-        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Strategy · Audit" data-title="Channel Audit & Relaunch" style="--x:380px;--y:216px;--z:-20px;--ry:-7deg;--rz:.7deg;--zi:5;--delay:-.8s">
-          <div class="work-wall-panel-inner"><div class="work-visual visual-audit" role="img" aria-label="Abstract channel performance audit bars"><b>↑</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Audit</span><span>Relaunch</span></div><h3>Channel Audit &amp; Relaunch</h3><p>Titles, thumbnails, retention and SEO reviewed together.</p><p class="work-detail">Sample scope: content review, packaging diagnosis, priority fixes and a practical relaunch roadmap.</p></div></div>
-        </article>
-        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="YouTube · Packaging" data-title="Thumbnail Direction" style="--x:570px;--y:28px;--z:-88px;--ry:-11deg;--rz:-.8deg;--zi:4;--delay:-2.7s">
-          <div class="work-wall-panel-inner"><div class="work-visual visual-thumb" role="img" aria-label="Abstract thumbnail concept grid"><b>CTR</b></div><div class="work-wall-copy"><div class="work-meta"><span>YouTube</span><span>Packaging</span></div><h3>Thumbnail Direction</h3><p>Clear concepts designed around curiosity and fast recognition.</p><p class="work-detail">Sample scope: concept routes, hierarchy, visual contrast and title-thumbnail pairing guidance.</p></div></div>
-        </article>
-        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Audio · Social" data-title="Video Podcast Cuts" style="--x:760px;--y:204px;--z:-150px;--ry:-15deg;--rz:.8deg;--zi:3;--delay:-1.4s">
-          <div class="work-wall-panel-inner"><div class="work-visual visual-wave" role="img" aria-label="Abstract podcast audio waveform"><b>VOX</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Podcast</span><span>Social Cuts</span></div><h3>Video Podcast Cuts</h3><p>Long conversations shaped into focused episodes and clips.</p><p class="work-detail">Sample scope: multicam pacing, audio cleanup, chapter moments and short social cutdowns.</p></div></div>
-        </article>
-        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="Launch · Campaign" data-title="Product Launch Videos" style="--x:950px;--y:54px;--z:-215px;--ry:-19deg;--rz:-1deg;--zi:2;--delay:-3.1s">
-          <div class="work-wall-panel-inner"><div class="work-visual visual-cuts" role="img" aria-label="Abstract product launch motion sequence"><b>GO</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Campaign</span><span>Launch</span></div><h3>Product Launch Videos</h3><p>Fast, structured stories that make the offer easy to follow.</p><p class="work-detail">Sample scope: launch narrative, feature moments, social variants and conversion-focused endings.</p></div></div>
-        </article>
-        <article class="work-wall-panel" role="button" tabindex="0" data-kicker="SEO · Content System" data-title="90-Day Content Plan" style="--x:1140px;--y:210px;--z:-275px;--ry:-22deg;--rz:1.1deg;--zi:1;--delay:-1.9s">
-          <div class="work-wall-panel-inner"><div class="work-visual visual-audit" role="img" aria-label="Abstract content roadmap graphic"><b>90</b><i></i><i></i><i></i></div><div class="work-wall-copy"><div class="work-meta"><span>Strategy</span><span>90 Days</span></div><h3>90-Day Content Plan</h3><p>Topics, formats and publishing rhythm connected to one goal.</p><p class="work-detail">Sample scope: content pillars, weekly cadence, platform roles and an executable production queue.</p></div></div>
-        </article>
-      </div>
       <div class="work-wall-beam" aria-hidden="true"></div>
     </div>
-    <div class="container work-wall-caption"><span><strong id="workWallStatus">05 / 12 — Personal Brand Clips</strong><small>Scroll over the wall or drag left/right. The centered project grows; click it for a smooth full view.</small></span><div class="work-wall-progress" aria-hidden="true"><i></i></div></div>
+    <div class="container work-wall-caption"><span><strong id="workWallStatus">05 / 06 — Personal Brand Clips</strong><small>Scroll over the wall or drag left/right. The centered project grows; click it for a smooth full view.</small></span><div class="work-wall-progress" aria-hidden="true"><i></i></div></div>
   </section>
 
-  <!-- TESTIMONIALS CAROUSEL -->
-  <section class="section client-experience-section">
-    <div class="container">
-      <div class="section-head reveal" style="justify-content:center;text-align:center"><div><div class="kicker" style="justify-content:center">Client Experience</div><h2>What working together <span class="serif">feels like</span></h2></div></div>
-      <div class="testi-wrap reveal">
-        <div class="testi-orbit" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="testi-viewport"><div class="testi-track" id="testiTrack">
-          <article class="testi-slide"><div class="testi-profile"><div class="client-photo" aria-label="Reserved space for client photo or logo"><span>PHOTO<br>OR LOGO</span></div><div><div class="stars" aria-label="Five stars">★★★★★</div><div class="who">Creator Client</div><div class="client-meta">Growth Focus • YouTube</div></div></div><blockquote>“Clear communication, strategy before editing, and videos that finally look premium — not just cut together.”</blockquote><div class="review-result"><b>What stood out</b><span>Premium presentation • Clear strategy • Consistent delivery</span></div></article>
-          <article class="testi-slide"><div class="testi-profile"><div class="client-photo" aria-label="Reserved space for client photo or logo"><span>PHOTO<br>OR LOGO</span></div><div><div class="stars" aria-label="Five stars">★★★★★</div><div class="who">Business / Coach Client</div><div class="client-meta">Lead Content • Facebook + YouTube</div></div></div><blockquote>“I came for editing and stayed for the plan — titles, hooks and a calendar I could actually follow every week.”</blockquote><div class="review-result"><b>What stood out</b><span>Practical planning • Strong hooks • Dependable weekly system</span></div></article>
-          <article class="testi-slide"><div class="testi-profile"><div class="client-photo" aria-label="Reserved space for client photo or logo"><span>PHOTO<br>OR LOGO</span></div><div><div class="stars" aria-label="Five stars">★★★★★</div><div class="who">Page Owner</div><div class="client-meta">Short-Form System • Facebook Page</div></div></div><blockquote>“Fast turnaround on Shorts, captions and sound done properly, and honest advice on what will work for US viewers.”</blockquote><div class="review-result"><b>What stood out</b><span>Fast turnaround • Polished captions • US-audience focus</span></div></article>
-        </div></div>
-        <div class="testi-controls"><button class="testi-btn" id="testiPrev" aria-label="Previous testimonial">←</button><div class="testi-dots" id="testiDots"></div><button class="testi-btn" id="testiNext" aria-label="Next testimonial">→</button></div>
-        <p class="testi-note">Illustrative summaries of common client feedback themes across Fiverr, Upwork &amp; direct work — connect on <a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" style="font-weight:700;color:var(--teal)">Facebook</a> for references.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PACKAGES -->
+    <!-- PACKAGES -->
   <section class="section" id="packages">
     <div class="pkg-orb pkg-orb-1" aria-hidden="true"></div><div class="pkg-orb pkg-orb-2" aria-hidden="true"></div>
     <div class="container">
       <div class="section-head reveal"><div><div class="kicker">Packages</div><h2>Pick a starting point.<br><span class="serif">We customize from there.</span></h2></div><p>Every engagement is scoped after a short discovery chat — no one-size-fits-all pricing. These packages show what's included at each level.</p></div>
-      <div class="scarcity reveal"><div><b>October 2026 intake — limited slots</b><p>Only a few new projects are accepted each month to keep quality &amp; turnaround high. Growth is the most requested package.</p></div><div style="min-width:180px;flex:1;max-width:260px"><div class="slot-bar" aria-hidden="true"><i></i></div><p style="font-size:12px;margin-top:6px">Monthly capacity — filling fast • Secure your start date with a brief</p></div></div>
+      <div class="scarcity reveal"><b id="packageIntake" aria-live="polite">Current intake</b></div>
       <div class="motion-prelude package-prelude reveal" aria-hidden="true"><span class="prelude-label">Choose the pace that fits your next stage</span><div class="tier-stage"><div class="tier"><span>Launch</span></div><div class="tier"><span>Growth</span></div><div class="tier"><span>Scale</span></div></div></div>
       <div class="packages">
         <div class="pkg reveal" style="--d:0ms"><span class="pkg-tag" style="background:var(--teal-light);color:var(--teal)">Launch</span><h3>Launch</h3><p class="desc">For new channels & pages that need a strong foundation.</p><ul><li>Channel / Page setup & branding</li><li>Niche & content pillar plan</li><li>4 videos / month — editing + captions</li><li>Titles & basic SEO for each video</li><li>Posting schedule</li></ul><button class="btn btn-outline pkg-btn" data-pkg="Launch">Choose Launch →</button></div>
         <div class="pkg featured reveal" style="--d:90ms"><span class="pkg-tag">Most Popular</span><h3>Growth</h3><p class="desc">For creators ready to grow consistently and reach US audiences.</p><ul><li>Everything in Launch</li><li>8–12 videos / month + Shorts/Reels</li><li>Full YouTube SEO + thumbnail strategy</li><li>30-day content calendar</li><li>Retention & CTR optimization</li><li>Monthly performance review</li></ul><button class="btn btn-teal pkg-btn" data-pkg="Growth">Choose Growth →</button></div>
         <div class="pkg reveal" style="--d:180ms"><span class="pkg-tag" style="background:var(--orange-light);color:var(--orange)">Scale</span><h3>Scale & Monetize</h3><p class="desc">For brands & serious creators focused on revenue.</p><ul><li>Everything in Growth</li><li>AI automation workflow setup</li><li>Monetization strategy & funnels</li><li>Multi-platform: YT + FB + Shorts</li><li>Priority turnaround</li><li>1:1 strategy consulting</li></ul><button class="btn btn-outline pkg-btn" data-pkg="Scale & Monetize">Choose Scale →</button></div>
       </div>
-      <div class="compare">
-        <div class="compare-card reveal"><h4>Launch — Compare</h4><ul><li class="yes">Channel / Page setup &amp; branding</li><li class="yes">4 videos / month</li><li class="yes">Titles &amp; basic SEO</li><li class="no">Shorts / Reels included</li><li class="no">Thumbnail strategy</li><li class="no">AI automation setup</li></ul></div>
-        <div class="compare-card featured reveal" style="--d:90ms"><h4>Growth — Compare ★</h4><ul><li class="yes">Everything in Launch</li><li class="yes">8–12 videos / month + Shorts/Reels</li><li class="yes">Full SEO + thumbnail strategy</li><li class="yes">30-day content calendar</li><li class="yes">Monthly performance review</li><li class="no">1:1 strategy consulting</li></ul></div>
-        <div class="compare-card reveal" style="--d:180ms"><h4>Scale — Compare</h4><ul><li class="yes">Everything in Growth</li><li class="yes">AI automation workflow setup</li><li class="yes">Monetization strategy &amp; funnels</li><li class="yes">Multi-platform: YT + FB + Shorts</li><li class="yes">Priority turnaround</li><li class="yes">1:1 strategy consulting</li></ul></div>
-      </div>
+      
       <p style="text-align:center;color:var(--muted);font-size:13.5px;margin-top:14px">Need something custom — a single video, a channel audit, or a full rebrand? Use the brief builder below.</p>
     </div>
   </section>
@@ -1759,47 +1805,49 @@ body.lightbox-open{overflow:hidden}
   <!-- BRIEF BUILDER -->
   <section class="section" id="brief">
     <div class="container">
-      <div class="section-head reveal"><div><div class="kicker">Start a Project</div><h2>Build your brief in <span class="serif u-draw">60 seconds</span></h2></div><p>Tap your services, add your goal, and generate a ready-to-send brief. Copy it or download it — then send it to Mazahar on Facebook.</p></div>
+      <div class="section-head reveal"><div><div class="kicker">Start a Project</div><h2>Build your brief in <span class="serif u-draw">60 seconds</span></h2></div><p>Tap your services, add your goal, and generate a ready-to-send brief. Copy it or download it — then send it to me on Facebook.</p></div>
 
       <div class="builder reveal">
         <div class="builder-left">
           <div class="brief-steps" id="briefSteps" aria-hidden="true">
             <div class="bstep" data-step="0"><i>1</i><span>Name</span></div><div class="bline"><b></b></div>
             <div class="bstep" data-step="1"><i>2</i><span>Platform</span></div><div class="bline"><b></b></div>
-            <div class="bstep" data-step="2"><i>3</i><span>Services</span></div><div class="bline"><b></b></div>
-            <div class="bstep" data-step="3"><i>4</i><span>Goal</span></div>
+            <div class="bstep" data-step="2"><i>3</i><span>Package</span></div><div class="bline"><b></b></div>
+            <div class="bstep" data-step="3"><i>4</i><span>Services</span></div><div class="bline"><b></b></div>
+            <div class="bstep" data-step="4"><i>5</i><span>Videos/month</span></div><div class="bline"><b></b></div>
+            <div class="bstep" data-step="5"><i>6</i><span>Goal</span></div>
           </div>
-          <div class="field" style="--i:0"><label>Your name / Brand</label><input class="input" id="fName" placeholder="e.g. Alex — Fitness Coach"/></div>
+          <div class="field" style="--i:0"><label for="fName">Your name / Brand</label><input class="input" id="fName" required aria-required="true" placeholder="e.g. Alex — Fitness Coach"/></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-            <div class="field" style="--i:1"><label>Main Platform</label><select class="select" id="fPlatform"><option>YouTube</option><option>Facebook Page</option><option>YouTube + Facebook</option><option>Shorts / Reels / TikTok</option><option>Not sure yet — need advice</option></select></div>
-            <div class="field" style="--i:2"><label>Package Interest</label><select class="select" id="fPackage"><option>Growth</option><option>Launch</option><option>Scale & Monetize</option><option>Custom / Single Project</option><option>Channel Audit</option></select></div>
+            <div class="field" style="--i:1"><label for="fPlatform">Main Platform</label><select class="select" id="fPlatform" required aria-required="true"><option>YouTube</option><option>Facebook Page</option><option>YouTube + Facebook</option><option>Shorts / Reels / TikTok</option><option>Not sure yet — need advice</option></select></div>
+            <div class="field" style="--i:2"><label for="fPackage">Package Interest</label><select class="select" id="fPackage" required aria-required="true"><option>Growth</option><option>Launch</option><option>Scale & Monetize</option><option>Custom / Single Project</option><option>Channel Audit</option></select></div>
           </div>
           <div class="field" style="--i:3"><label>Services you need — tap to select</label><div class="chips" id="serviceChips">
             <button class="chip active" style="--i:0" data-s="AI Video Production">AI Video Production</button>
             <button class="chip active" style="--i:1" data-s="Video Editing">Video Editing</button>
             <button class="chip" style="--i:2" data-s="YouTube SEO">YouTube SEO</button>
-            <button class="chip" style="--i:3" data-s="Facebook Growth">Facebook Growth</button>
+            <button class="chip" style="--i:3" data-s="Facebook Page Growth">Facebook Page Growth</button>
             <button class="chip" style="--i:4" data-s="Content Strategy">Content Strategy</button>
             <button class="chip" style="--i:5" data-s="AI Automation">AI Automation</button>
             <button class="chip" style="--i:6" data-s="Thumbnails">Thumbnails</button>
             <button class="chip" style="--i:7" data-s="Monetization">Monetization</button>
           </div></div>
           <div class="field" style="--i:4"><label>Videos per month</label><div class="chips" id="volChips"><button class="chip" style="--i:0" data-v="1–4">1–4</button><button class="chip active" style="--i:1" data-v="5–8">5–8</button><button class="chip" style="--i:2" data-v="9–12">9–12</button><button class="chip" style="--i:3" data-v="13+ / Daily Shorts">13+ / Daily</button></div></div>
-          <div class="field" style="--i:5"><label>Your goal in one line</label><textarea class="input" id="fGoal" rows="3" placeholder="e.g. Grow my YouTube channel to 10k subs with US viewers and get monetized in 90 days..."></textarea></div>
+          <div class="field" style="--i:5"><label for="fGoal">Your goal in one line</label><textarea class="input" id="fGoal" rows="3" required aria-required="true" placeholder="e.g. Grow my YouTube channel to 10k subs with US viewers and get monetized in 90 days..."></textarea></div>
           <button class="btn btn-teal" id="genBtn" style="width:100%;padding:14px">Generate My Brief ✨</button>
         </div>
         <div class="builder-right">
           <label style="font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--muted)"><span class="live-dot" aria-hidden="true"></span>Your Project Brief — Live Preview</label>
           <div class="brief" id="briefOut" style="margin-top:10px">Tap “Generate My Brief” and your summary will appear here — ready to copy and send.
 
-It will include your platform, package, services, volume and goal, so Mazahar can reply with next steps and a custom quote.</div>
+It will include your platform, package, services, volume and goal, so I can reply with next steps and a custom quote.</div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
             <button class="btn btn-primary" id="copyBtn">Copy Brief</button>
             <button class="btn btn-outline" id="dlBtn">Download .txt</button>
             <a class="btn btn-orange" href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener">Send on Facebook ↗</a>
           </div>
           <p class="mini-note" style="margin-top:12px" id="copyStatus">Tip: Paste the copied brief directly into Facebook Messenger for the fastest reply. No account or sign-up needed on this page.</p>
-          <div style="margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px"><b style="font-size:14px">What happens next?</b><p class="mini-note" style="margin:6px 0 0">1) Mazahar reviews your brief &nbsp;•&nbsp; 2) Short discovery chat &nbsp;•&nbsp; 3) Custom quote + timeline &nbsp;•&nbsp; 4) Strategy first, then production starts.</p></div>
+          <div style="margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px"><b style="font-size:14px">What happens next?</b><p class="mini-note" style="margin:6px 0 0">1) I review your brief &nbsp;•&nbsp; 2) Short discovery chat &nbsp;•&nbsp; 3) Custom quote + timeline &nbsp;•&nbsp; 4) Strategy first, then production starts.</p></div>
         </div>
       </div>
     </div>
@@ -1814,64 +1862,40 @@ It will include your platform, package, services, volume and goal, so Mazahar ca
         <div class="faq-item reveal"><button class="faq-q">Can you really help me reach US audiences? <span>+</span></button><div class="faq-a">That's my specialty. It comes down to topic selection, hooks in the first 30 seconds, US-English titles, pacing, and SEO signals. We build the plan around US viewers from day one.</div></div>
         <div class="faq-item reveal"><button class="faq-q">How fast is turnaround? <span>+</span></button><div class="faq-a">It depends on volume and complexity — Shorts are fastest, long-form motion-graphics videos take longer. Your timeline is confirmed in the quote before we start, and Growth/Scale clients get priority.</div></div>
         <div class="faq-item reveal"><button class="faq-q">Do I need to show my face on camera? <span>+</span></button><div class="faq-a">Not necessarily. Many channels I help are faceless — AI voice/visuals, stock + motion graphics, or screen-based formats. We'll pick the format that fits you and your niche.</div></div>
-        <div class="faq-item reveal"><button class="faq-q">How do we start? <span>+</span></button><div class="faq-a">Use the brief builder above, copy your brief, and send it via Facebook. We'll do a short discovery chat, then you'll get a custom quote and start date.</div></div>
+        <div class="faq-item reveal"><button class="faq-q">How is pricing structured? <span>+</span></button><div class="faq-a">Pricing depends on the package you choose — Launch, Growth, or Scale &amp; Monetize — and the scope of your project. Every engagement is scoped after a short discovery chat, so build your brief above and I'll reply with a custom quote. No hidden fees, no one-size-fits-all pricing.</div></div>
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="section" style="padding-top:24px">
-    <div class="container"><div class="cta">
-      <div><h2>Let's build your brand — one video at a time.</h2><p>Tell me where you want your channel or page to be in 90 days. I'll map the content, production and growth plan to get you there.</p><a href="#brief" class="btn" style="background:#fff;color:#0B3D36;margin-top:8px">Build Your Brief →</a></div>
-      <div class="cta-card"><b style="font-size:15px">Connect directly</b><p style="font-size:14px;color:#555;margin:8px 0">Fastest reply is on Facebook — send your brief there:</p><a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener">facebook.com/mazahar007 ↗</a><p style="font-size:13px;color:#777;margin:12px 0 0">Fiverr • Upwork • Direct Clients<br>12+ years freelancing experience</p></div>
-    </div></div>
-  </section>
-</main>
-
-<div class="gallery-lightbox" id="galleryLightbox" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="lightboxHeading">
-  <button type="button" class="lightbox-backdrop" data-lightbox-close aria-label="Close full view"></button>
-  <div class="lightbox-shell">
-    <div class="lightbox-top"><div class="lightbox-title"><small id="lightboxKicker">Work &amp; Project Types</small><b id="lightboxHeading">Project sample</b></div><button type="button" class="lightbox-close" data-lightbox-close aria-label="Close project view">×</button></div>
-    <div class="lightbox-content" id="lightboxContent"></div>
-    <div class="lightbox-bottom"><span class="lightbox-count" id="lightboxCount">01 / 12</span><div class="lightbox-controls"><button type="button" class="lightbox-nav" id="lightboxPrev" aria-label="Previous project sample">‹</button><button type="button" class="lightbox-nav" id="lightboxNext" aria-label="Next project sample">›</button></div></div>
-  </div>
-</div>
-
+  <!-- CONTACT + FOOTER — merged closing section -->
 <footer class="site-footer" id="contact">
-  <div class="footer-ticker" aria-hidden="true">
-    <div class="footer-ticker-track"><span>Strategy in. <b>Stories out.</b> Views into growth. ✦ &nbsp; AI Video Production • Motion Graphics • YouTube SEO • Facebook Growth • &nbsp;</span><span>Strategy in. <b>Stories out.</b> Views into growth. ✦ &nbsp; AI Video Production • Motion Graphics • YouTube SEO • Facebook Growth • &nbsp;</span></div>
-  </div>
   <div class="container">
-    <div class="footer-main">
-      <div class="footer-pitch">
-        <span class="footer-status"><i aria-hidden="true"></i> Available for new projects</span>
-        <h2>Make your next idea <span>move.</span></h2>
-        <p>From the first three-second hook to the growth plan behind it — build content designed to be watched, remembered and acted on.</p>
-        <div class="footer-actions">
-          <a href="#brief" class="btn footer-primary">Start a Project →</a>
-          <a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" class="btn btn-outline footer-secondary">Message on Facebook ↗</a>
-        </div>
+    <div class="footer-merged">
+      <span class="footer-status"><i aria-hidden="true"></i> Available for new projects</span>
+      <h2>Let's build your brand — <span>one video at a time.</span></h2>
+      <p>Tell me where you want your channel or page to be in 90 days. I'll map the content, production and growth plan to get you there.</p>
+      <div class="footer-actions">
+        <a href="#brief" class="btn btn-primary primary-cta">Build My Brief</a>
+        <a href="https://www.facebook.com/mazahar007" target="_blank" rel="noopener" class="btn btn-outline footer-secondary">Message on Facebook ↗</a>
       </div>
-      <div class="footer-motion" aria-hidden="true">
-        <div class="footer-orbit">
-          <i class="footer-satellite"></i><i class="footer-satellite two"></i>
-          <div class="footer-core"><div><b>12+</b><small>Years of<br>creative work</small></div></div>
-        </div>
-      </div>
+      <nav class="footer-contact-links" aria-label="Contact"><a href="mailto:mamadamkoto@gmail.com">Email</a><!-- DEMO: replace with Mazahar's real Fiverr profile URL --><a href="https://www.fiverr.com/" target="_blank" rel="noopener">Fiverr ↗</a><!-- DEMO: replace with Mazahar's real Upwork profile URL --><a href="https://www.upwork.com/" target="_blank" rel="noopener">Upwork ↗</a></nav>
+      <nav class="footer-merged-links" aria-label="Footer">
+        <a href="#showreel">Motion</a><a href="#services">Services</a><a href="#about">About</a><a href="#process">Process</a><a href="#work">Work</a><a href="#packages">Packages</a><a href="#faq">FAQ</a>
+      </nav>
+      <div class="footer-bottom"><span>© 2026 Mazahar. All rights reserved.</span><span><b>AI Video • Strategy • Growth</b> &nbsp;—&nbsp; Built for creators ready to move.</span></div>
     </div>
-
-    <div class="footer-directory">
-      <div class="footer-brandline"><strong>Mazahar</strong>AI Video Production & Content Strategy Consultant helping creators turn better ideas into stronger channels.</div>
-      <nav class="footer-col" aria-label="Footer navigation"><h3>Explore</h3><div class="footer-links"><a href="#services">Services</a><a href="#work">Work</a><a href="#process">Process</a><a href="#packages">Packages</a><a href="#faq">FAQ</a></div></nav>
-      <div class="footer-col"><h3>Capabilities</h3><div class="footer-links"><a href="#motion">Motion Graphics</a><a href="#services">AI Video</a><a href="#services">YouTube SEO</a><a href="#services">Content Strategy</a></div></div>
-    </div>
-
-    <div class="footer-bottom"><span>© 2026 Mazahar. All rights reserved.</span><span><b>AI Video • Strategy • Growth</b> &nbsp;—&nbsp; Built for creators ready to move.</span></div>
   </div>
 </footer>
 
+<div class="mobile-cta-bar" aria-label="Quick project action"><a class="btn btn-primary primary-cta" href="#brief">Build My Brief</a></div>
+
 <script>
 document.documentElement.classList.add('js');
+const packageIntake=document.getElementById('packageIntake');
+if(packageIntake){
+  const intakeDate=new Date();
+  packageIntake.textContent=new Intl.DateTimeFormat('en-US',{month:'long',year:'numeric'}).format(intakeDate)+' intake';
+}
 
 // The recorded voice has deliberate pauses, so the typewriter follows its real word timings
 // instead of using one generic per-character delay. This keeps the tactile key clicks while the
@@ -1968,6 +1992,38 @@ const menuBtn=document.getElementById('menuBtn'), mobileMenu=document.getElement
 menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
 
+// The sticky mobile CTA appears after the hero, avoiding duplicate controls over the opening actions.
+(function(){
+  const bar=document.querySelector('.mobile-cta-bar'),hero=document.querySelector('.hero');
+  if(!bar||!hero)return;
+  const mobile=window.matchMedia('(max-width: 768px)');
+  const sync=visible=>bar.classList.toggle('visible',mobile.matches&&visible);
+  const observer=new IntersectionObserver(entries=>sync(!entries[0].isIntersecting),{threshold:.08});
+  observer.observe(hero);
+  mobile.addEventListener?.('change',()=>sync(hero.getBoundingClientRect().bottom<=0));
+})();
+
+// Keep desktop and mobile navigation synchronized with the section in view.
+(function(){
+  const links=[...document.querySelectorAll('.nav-links a[href^="#"],.mobile-menu a[href^="#"]')];
+  const sections=[...new Set(links.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean))];
+  if(!links.length||!sections.length)return;
+  function activate(id){
+    links.forEach(link=>{
+      const on=link.getAttribute('href')==='#'+id;
+      link.classList.toggle('active',on);
+      if(on)link.setAttribute('aria-current','true');else link.removeAttribute('aria-current');
+    });
+  }
+  const seen=new Map();
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>seen.set(entry.target,entry.isIntersecting?entry.intersectionRatio:0));
+    const current=[...seen.entries()].sort((a,b)=>b[1]-a[1])[0];
+    if(current&&current[1]>0)activate(current[0].id);
+  },{rootMargin:'-88px 0px -55% 0px',threshold:[0,.1,.25,.5,.75]});
+  sections.forEach(section=>observer.observe(section));
+})();
+
 // One showreel element: muted section background, then moved into a 16:9 popup on click.
 const portfolioReel=document.getElementById('portfolioReel'),reelToggle=document.getElementById('reelToggle'),reelModal=document.getElementById('reelModal'),reelModalSlot=document.getElementById('reelModalSlot');
 if(portfolioReel&&reelToggle&&reelModal&&reelModalSlot){
@@ -2014,26 +2070,39 @@ const cObs=new IntersectionObserver(es=>{es.forEach(e=>{
 })},{threshold:.6});
 counters.forEach(c=>cObs.observe(c));
 
-// reveal — smooth, staggered, with fallback so content is never trapped invisible
-const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px 80px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>rObs.observe(el));
-// section transitions — trigger only when the actual section reaches the viewport.
-// This preserves the authored sequence for lower sections instead of finishing it off-screen.
-const sObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('inview');sObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px 60px 0px'});
-document.querySelectorAll('main .section').forEach(s=>sObs.observe(s));
+// Uniform reveal: 24px from below, 500ms ease, once. Reduced motion shows everything immediately.
+const revealEls=[...document.querySelectorAll('.reveal')];
+const transitionSections=[...document.querySelectorAll('main .section')];
+const reduceReveals=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduceReveals){
+  revealEls.forEach(el=>el.classList.add('visible'));
+  transitionSections.forEach(section=>section.classList.add('inview'));
+}else{
+  const rObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');rObs.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px 80px 0px'});
+  revealEls.forEach(el=>rObs.observe(el));
+  const sObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('inview');sObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px 60px 0px'});
+  transitionSections.forEach(section=>sObs.observe(section));
+}
 // skills pop-in
 const skObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');skObs.unobserve(e.target)}})},{threshold:.3});
 const sk=document.getElementById('skillsRow'); if(sk) skObs.observe(sk);
 
-// FAQ — one open row at a time, with a true expanding answer panel.
-document.querySelectorAll('.faq-item').forEach(item=>{
-  const button=item.querySelector('.faq-q');
-  button.setAttribute('aria-expanded','false');
+// FAQ — one open row at a time, with explicit button/panel relationships.
+document.querySelectorAll('.faq-item').forEach((item,index)=>{
+  const button=item.querySelector('.faq-q'),panel=item.querySelector('.faq-a');
+  const buttonId='faq-button-'+(index+1),panelId='faq-panel-'+(index+1);
+  button.id=buttonId;panel.id=panelId;
+  button.setAttribute('aria-expanded','false');button.setAttribute('aria-controls',panelId);
+  panel.setAttribute('role','region');panel.setAttribute('aria-labelledby',buttonId);panel.setAttribute('aria-hidden','true');
   button.addEventListener('click',()=>{
     const open=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false')});
-    if(!open){item.classList.add('open');button.setAttribute('aria-expanded','true')}
-  })
+    document.querySelectorAll('.faq-item').forEach(i=>{
+      i.classList.remove('open');
+      i.querySelector('.faq-q').setAttribute('aria-expanded','false');
+      i.querySelector('.faq-a').setAttribute('aria-hidden','true');
+    });
+    if(!open){item.classList.add('open');button.setAttribute('aria-expanded','true');panel.setAttribute('aria-hidden','false')}
+  });
 });
 
 // chips single/multi
@@ -2048,12 +2117,21 @@ function chipGroup(id,single){
 }
 chipGroup('serviceChips',false); chipGroup('volChips',true);
 
-// package buttons
-document.querySelectorAll('.pkg-btn').forEach(b=>b.addEventListener('click',()=>{
-  document.getElementById('fPackage').value=b.dataset.pkg.includes('Scale')?'Scale & Monetize':b.dataset.pkg;
-  document.getElementById('brief').scrollIntoView({behavior:'smooth'});
-  generateBrief(true); flashBrief();
-}));
+// Package buttons pre-select the matching brief field and expose the selected card.
+document.querySelectorAll('.pkg-btn').forEach(button=>{
+  button.setAttribute('aria-pressed','false');
+  button.addEventListener('click',()=>{
+    const value=button.dataset.pkg.includes('Scale')?'Scale & Monetize':button.dataset.pkg;
+    document.getElementById('fPackage').value=value;
+    packageTouched=true;
+    document.querySelectorAll('.pkg').forEach(card=>card.classList.remove('selected-package'));
+    document.querySelectorAll('.pkg-btn').forEach(item=>item.setAttribute('aria-pressed','false'));
+    button.closest('.pkg').classList.add('selected-package');button.setAttribute('aria-pressed','true');
+    clearFieldError(document.getElementById('fPackage'));
+    generateBrief(true);flashBrief();
+    document.getElementById('brief').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
 
 ['fName','fPlatform','fPackage','fGoal'].forEach(id=>document.getElementById(id).addEventListener('input',()=>generateBrief(false)));
 
@@ -2073,11 +2151,40 @@ function generateBrief(scroll){
   return txt;
 }
 function flashBrief(){const b=document.getElementById('briefOut');b.classList.remove('flash');void b.offsetWidth;b.classList.add('flash')}
-document.getElementById('genBtn').addEventListener('click',()=>{generateBrief(false);flashBrief();document.getElementById('briefOut').scrollIntoView({behavior:'smooth',block:'center'})});
-document.getElementById('copyBtn').addEventListener('click',async()=>{
-  const txt=document.getElementById('briefOut').textContent;
-  try{await navigator.clipboard.writeText(txt);document.getElementById('copyStatus').textContent='✓ Copied! Now paste it into Facebook Messenger to Mazahar.'}
-  catch(e){document.getElementById('copyStatus').textContent='Copy failed in this browser — select the brief text and copy manually, or use Download.'}
+const requiredBriefFields=[...document.querySelectorAll('#brief [required]')];
+function clearFieldError(field){
+  if(!field)return;
+  const wrap=field.closest('.field');if(!wrap)return;
+  wrap.classList.remove('has-error');field.removeAttribute('aria-invalid');field.removeAttribute('aria-describedby');
+  const error=wrap.querySelector('.field-error');if(error)error.remove();
+}
+function showFieldError(field){
+  const wrap=field.closest('.field');if(!wrap)return;
+  wrap.classList.add('has-error');field.setAttribute('aria-invalid','true');
+  let error=wrap.querySelector('.field-error');
+  if(!error){error=document.createElement('span');error.className='field-error';error.id=field.id+'-error';error.textContent='This field is required';wrap.appendChild(error)}
+  field.setAttribute('aria-describedby',error.id);
+}
+function validateBrief(){
+  let valid=true,firstInvalid=null;
+  requiredBriefFields.forEach(field=>{
+    if(!field.value.trim()){showFieldError(field);valid=false;firstInvalid=firstInvalid||field}else clearFieldError(field);
+  });
+  if(firstInvalid){firstInvalid.focus();firstInvalid.scrollIntoView({behavior:'smooth',block:'center'})}
+  return valid;
+}
+requiredBriefFields.forEach(field=>field.addEventListener('input',()=>{if(field.value.trim())clearFieldError(field)}));
+document.getElementById('genBtn').addEventListener('click',()=>{
+  if(!validateBrief())return;
+  generateBrief(false);flashBrief();document.getElementById('briefOut').scrollIntoView({behavior:'smooth',block:'center'});
+});
+document.getElementById('copyBtn').addEventListener('click',async event=>{
+  if(!validateBrief())return;
+  const button=event.currentTarget,original=button.textContent,txt=generateBrief(false);
+  try{
+    await navigator.clipboard.writeText(txt);button.textContent='Copied ✓';document.getElementById('copyStatus').textContent='✓ Copied! Now paste it into Facebook Messenger and send it to me.';
+    window.setTimeout(()=>{button.textContent=original},2000);
+  }catch(e){document.getElementById('copyStatus').textContent='Copy failed in this browser — select the brief text and copy manually, or use Download.'}
 });
 document.getElementById('dlBtn').addEventListener('click',()=>{
   const txt=document.getElementById('briefOut').textContent;
@@ -2085,13 +2192,16 @@ document.getElementById('dlBtn').addEventListener('click',()=>{
   const a=document.createElement('a');a.href=url;a.download='project-brief-for-mazahar.txt';a.click();URL.revokeObjectURL(url);
 });
 // brief builder — animated step progress + preview tick
-let platformTouched=false;
-['fPlatform','fPackage'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{platformTouched=true;updateSteps()}));
+let platformTouched=false,packageTouched=false;
+document.getElementById('fPlatform').addEventListener('change',()=>{platformTouched=true;updateSteps()});
+document.getElementById('fPackage').addEventListener('change',()=>{packageTouched=true;updateSteps()});
 function updateSteps(){
   const done=[
     document.getElementById('fName').value.trim().length>0,
     platformTouched,
+    packageTouched,
     selectedServices().length>0,
+    !!selectedVol(),
     document.getElementById('fGoal').value.trim().length>0
   ];
   document.querySelectorAll('#briefSteps .bstep').forEach((s,i)=>s.classList.toggle('done',!!done[i]));
@@ -2102,18 +2212,6 @@ function tickBrief(){const b=document.getElementById('briefOut');b.classList.rem
 generateBrief(false);
 // fix audience grid on mobile
 const style=document.createElement('style');style.textContent='@media(max-width:900px){.audience-grid{grid-template-columns:1fr !important}}';document.head.appendChild(style);
-// ===== Testimonials carousel =====
-(function(){
-  const track=document.getElementById('testiTrack'); if(!track) return;
-  const slides=track.children.length; const dotsWrap=document.getElementById('testiDots'); let idx=0; let timer=null;
-  for(let i=0;i<slides;i++){const d=document.createElement('button');d.setAttribute('aria-label','Go to testimonial '+(i+1));d.addEventListener('click',()=>go(i,true));dotsWrap.appendChild(d)}
-  function paint(){track.style.transform='translateX(-'+(idx*100)+'%)';[...dotsWrap.children].forEach((d,i)=>d.classList.toggle('active',i===idx))}
-  function go(i,user){idx=(i+slides)%slides;paint();if(user)restart()}
-  function restart(){clearInterval(timer);timer=setInterval(()=>go(idx+1,false),5200)}
-  document.getElementById('testiPrev').addEventListener('click',()=>go(idx-1,true));
-  document.getElementById('testiNext').addEventListener('click',()=>go(idx+1,true));
-  paint(); restart();
-})();
 // ===== Scroll story fill + parallax =====
 (function(){
   const strip=document.getElementById('storyStrip'); const fill=document.getElementById('storyFill');
@@ -2138,11 +2236,85 @@ const style=document.createElement('style');style.textContent='@media(max-width:
     });
     node.parentNode.replaceChild(frag,node);
   }
-  document.querySelectorAll('.section-head h2').forEach(heading=>{
+  document.querySelectorAll('.section-head h2,.cinematic-gallery-head h2').forEach(heading=>{
     const walker=document.createTreeWalker(heading,NodeFilter.SHOW_TEXT);const nodes=[];
     while(walker.nextNode()) if(walker.currentNode.nodeValue.trim()) nodes.push(walker.currentNode);
     wi=0;nodes.forEach(splitTextNode);
   });
+})();
+
+// ===== Process ring: 8-frame 3D carousel (continuous rotation + inertial drag) =====
+(function(){
+  const stage=document.getElementById('processRingStage'),track=document.getElementById('processRingTrack');
+  if(!stage||!track) return;
+  const cards=Array.from(track.querySelectorAll('.cinematic-card'));
+  const N=cards.length; if(!N) return;
+  const badge=stage.querySelector('.cinematic-drag-badge');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const STEP=360/N, DEG_PER_PX=360/3000, AUTO_DPS=360/80;
+  let angle=0, vel=0, dragging=false, spinning=!reduce, lastX=0, lastT=0, resumeT=0, lastTick=0;
+  function radius(){const w=window.innerWidth;if(w<=430)return w*1.02;if(w<=760)return Math.min(470,Math.max(380,w*1.02));return Math.min(790,Math.max(600,w*0.49))}
+  function layout(){
+    const R=radius();
+    for(let i=0;i<N;i++){
+      const deg=angle+i*STEP, rad=deg*Math.PI/180, cos=Math.cos(rad), depth=(cos+1)/2;
+      const c=cards[i];
+      c.style.setProperty('--ring-x',(R*Math.sin(rad)).toFixed(1)+'px');
+      c.style.setProperty('--ring-z',(R*cos-R).toFixed(1)+'px');
+      c.style.setProperty('--ring-ry',deg.toFixed(2)+'deg');
+      c.style.setProperty('--ring-scale',(0.58+0.42*depth).toFixed(3));
+      c.style.setProperty('--ring-opacity',cos<-0.42?'0':(0.3+0.7*depth).toFixed(3));
+      c.style.setProperty('--ring-zindex',String(1000+Math.round(R*cos-R)));
+    }
+  }
+  function tick(t){
+    const dt=Math.min(0.05,(t-lastTick)/1000||0); lastTick=t;
+    if(!dragging){
+      if(spinning) angle+=AUTO_DPS*dt;
+      if(Math.abs(vel)>0.02){angle+=vel*dt;vel*=Math.pow(0.06,dt)} else vel=0;
+      layout();
+    }
+    requestAnimationFrame(tick);
+  }
+  function badgeTo(x,y){
+    if(!badge) return;
+    const r=stage.getBoundingClientRect();
+    badge.style.left=(x-r.left)+'px'; badge.style.top=(y-r.top)+'px';
+  }
+  function scheduleResume(){clearTimeout(resumeT);if(!reduce) resumeT=setTimeout(()=>{spinning=true},1000)}
+  stage.addEventListener('pointerdown',e=>{
+    dragging=true; spinning=false; vel=0; clearTimeout(resumeT);
+    stage.classList.add('is-dragging');
+    lastX=e.clientX; lastT=performance.now();
+    try{stage.setPointerCapture(e.pointerId)}catch(_){}
+    badgeTo(e.clientX,e.clientY);
+  });
+  stage.addEventListener('pointermove',e=>{
+    badgeTo(e.clientX,e.clientY);
+    if(!dragging) return;
+    const now=performance.now(), dx=e.clientX-lastX, dt=Math.max(1,now-lastT), dv=dx*DEG_PER_PX;
+    angle+=dv; vel=dv/(dt/1000); lastX=e.clientX; lastT=now;
+    layout();
+  });
+  function endDrag(e){
+    if(!dragging) return;
+    dragging=false; stage.classList.remove('is-dragging');
+    if(reduce||(e&&performance.now()-lastT>110)) vel=0;
+    scheduleResume();
+  }
+  stage.addEventListener('pointerup',endDrag);
+  stage.addEventListener('pointercancel',endDrag);
+  stage.addEventListener('keydown',e=>{
+    if(e.key!=='ArrowRight'&&e.key!=='ArrowLeft') return;
+    e.preventDefault();
+    spinning=false; vel=0; clearTimeout(resumeT);
+    angle+=e.key==='ArrowRight'?STEP:-STEP;
+    layout(); scheduleResume();
+  });
+  window.addEventListener('resize',layout,{passive:true});
+  layout();
+  const gal=stage.closest('.cinematic-gallery'); if(gal) gal.classList.add('ring-ready');
+  requestAnimationFrame(t=>{lastTick=t;requestAnimationFrame(tick)});
 })();
 
 // ===== Dimensional gallery: pointer and scroll-driven perspective =====
@@ -2180,6 +2352,8 @@ const style=document.createElement('style');style.textContent='@media(max-width:
   const stage=document.getElementById('workWallStage'),deck=document.getElementById('workWallDeck');
   if(!stage||!deck) return;
   const panels=[...deck.querySelectorAll('.work-wall-panel')],meter=document.querySelector('.work-wall-progress i'),status=document.getElementById('workWallStatus');
+  const desktopFine=window.matchMedia('(min-width: 769px) and (hover:hover) and (pointer:fine)').matches;
+  if(!desktopFine){panels.forEach(panel=>panel.removeAttribute('aria-hidden'));return}
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let target=Math.min(4,panels.length-1),position=target,raf=0,dragging=false,startX=0,startTarget=0,dragMoved=false,downPanel=null,openedOnRelease=false;
   const clamp=value=>Math.max(0,Math.min(panels.length-1,value));
@@ -2428,106 +2602,6 @@ const style=document.createElement('style');style.textContent='@media(max-width:
     el.addEventListener('mousemove',e=>{const r=el.getBoundingClientRect();const x=(e.clientX-r.left-r.width/2)*0.14;const y=(e.clientY-r.top-r.height/2)*0.22;el.style.transform='translate('+x+'px,'+y+'px)'});
     el.addEventListener('mouseleave',()=>{el.style.transform=''});
   });
-})();
-// ===== Cinematic Frames: LURO-style full 360° eight-frame ring =====
-(function(){
-  const section=document.getElementById('cinematicGallery');
-  const stage=document.getElementById('cinematicStage');
-  const track=document.getElementById('cinematicTrack');
-  const proxy=document.getElementById('cinematicDragProxy');
-  const badge=document.getElementById('cinematicDragBadge');
-  if(!section||!stage||!track||!proxy)return;
-  const cards=[...track.querySelectorAll('.cinematic-card')];
-  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const step=360/cards.length;
-  const dragDegreesPerPx=360/3000;
-  const autoDegreesPerMs=-360/80000;
-  let rotation=0,dragging=false,startX=0,startRotation=0,lastX=0,lastMove=0;
-  let throwVelocity=0,resumeAt=0,lastFrame=performance.now();
-
-  function radius(){
-    const value=getComputedStyle(stage).getPropertyValue('--ring-radius').trim();
-    if(value.endsWith('px'))return parseFloat(value);
-    const probe=document.createElement('span');
-    probe.style.cssText='position:absolute;width:'+value+';visibility:hidden;pointer-events:none';
-    stage.appendChild(probe);const result=probe.getBoundingClientRect().width;probe.remove();return result;
-  }
-  function normalize(value){return ((value%360)+360)%360}
-  function render(){
-    const r=radius();
-    cards.forEach((card,index)=>{
-      const angle=normalize(index*step+rotation);
-      const signed=angle>180?angle-360:angle;
-      const rad=angle*Math.PI/180;
-      const depth=Math.cos(rad);
-      const front=Math.max(0,depth);
-      const distance=Math.abs(signed);
-      /* Real circular coordinates create the rear return. Perspective makes the
-         middle image dominant while both side positions stay perfectly matched. */
-      const x=Math.sin(rad)*r;
-      const focal=Math.pow(front,10);
-      const z=(depth-1)*r+focal*110;
-      const emphasis=.72+focal*.42;
-      const opacity=distance<=98?.68+front*.32:distance<124?.68*(124-distance)/26:0;
-      card.style.setProperty('--ring-x',x.toFixed(2)+'px');
-      card.style.setProperty('--ring-z',z.toFixed(2)+'px');
-      card.style.setProperty('--ring-ry',(signed*.48).toFixed(3)+'deg');
-      card.style.setProperty('--ring-scale',emphasis.toFixed(3));
-      card.style.setProperty('--ring-opacity',Math.max(0,opacity).toFixed(3));
-      card.style.setProperty('--ring-zindex',String(10+Math.round(front*90)));
-    });
-  }
-  function frame(now){
-    const dt=Math.min(34,now-lastFrame);lastFrame=now;
-    if(!dragging){
-      if(Math.abs(throwVelocity)>.0006){
-        rotation+=throwVelocity*dt;
-        throwVelocity*=Math.pow(.992,dt);
-      }else{
-        if(throwVelocity!==0)throwVelocity=0;
-        if(!reduce&&now>=resumeAt)rotation+=autoDegreesPerMs*dt;
-      }
-      render();
-    }
-    requestAnimationFrame(frame);
-  }
-  function moveBadge(e){
-    const rect=stage.getBoundingClientRect();
-    const x=Math.max(46,Math.min(rect.width-46,e.clientX-rect.left));
-    const y=Math.max(46,Math.min(rect.height-46,e.clientY-rect.top));
-    badge.style.left=x+'px';badge.style.top=y+'px';
-  }
-  proxy.addEventListener('pointermove',e=>{
-    moveBadge(e);
-    if(!dragging)return;
-    const now=performance.now(),dx=e.clientX-startX,elapsed=Math.max(1,now-lastMove);
-    rotation=startRotation+dx*dragDegreesPerPx;
-    throwVelocity=(e.clientX-lastX)*dragDegreesPerPx/elapsed;
-    lastX=e.clientX;lastMove=now;render();
-  });
-  proxy.addEventListener('pointerenter',moveBadge);
-  proxy.addEventListener('pointerdown',e=>{
-    if(e.pointerType==='mouse'&&e.button!==0)return;
-    dragging=true;startX=lastX=e.clientX;startRotation=rotation;lastMove=performance.now();
-    throwVelocity=0;resumeAt=Infinity;stage.classList.add('is-dragging');proxy.setPointerCapture(e.pointerId);moveBadge(e);
-  });
-  function release(e){
-    if(!dragging)return;
-    dragging=false;stage.classList.remove('is-dragging');
-    if(proxy.hasPointerCapture(e.pointerId))proxy.releasePointerCapture(e.pointerId);
-    throwVelocity=Math.max(-.34,Math.min(.34,throwVelocity));
-    resumeAt=performance.now()+1000;
-    if(Math.abs(throwVelocity)<=.0006)throwVelocity=0;
-  }
-  proxy.addEventListener('pointerup',release);
-  proxy.addEventListener('pointercancel',release);
-  stage.addEventListener('keydown',e=>{
-    if(e.key!=='ArrowLeft'&&e.key!=='ArrowRight')return;
-    e.preventDefault();rotation+=e.key==='ArrowRight'?step:-step;throwVelocity=0;resumeAt=performance.now()+1000;render();
-  });
-  window.addEventListener('resize',render,{passive:true});
-  const observer=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){section.classList.add('ring-ready');observer.disconnect()}},{threshold:.18});
-  observer.observe(stage);render();requestAnimationFrame(frame);
 })();
 </script>
 </body>
