@@ -55,30 +55,48 @@
   --card-gap:  clamp(16px, 2vw, 24px);
   --gutter:    clamp(20px, 3vw, 32px);
   --header-h:  72px;
-}:root{--hero-top:64px}section{padding-block:var(--section-y);scroll-margin-top:calc(var(--header-h) + 16px)}.container{max-width:1200px;margin-inline:auto;padding-inline:var(--gutter);width:100%}.section-head{margin-bottom:var(--head-gap);row-gap:clamp(12px,1vw,16px)}.cards{display:grid;gap:var(--card-gap)}.services,.packages,.process,.hsc,.work-grid,.compare,.service-wall-grid{gap:var(--card-gap)}.hero{padding-block:var(--section-y);padding-top:var(--hero-top)}@media(max-width:560px){:root{--hero-top:32px}.section-head{row-gap:12px}}/* ===== PHASE 3 — section consolidation (15 → 10 sections) ===== */:root{--hero-top:48px}@media(max-width:560px){:root{--hero-top:32px}}.hero-actions{margin:20px 0 16px}/* manifesto line preserved as Services intro */.manifesto-kicker{display:flex;justify-content:center;margin-bottom:20px;text-align:center}.manifesto-kicker span{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;color:var(--ink)}.manifesto-kicker em{font-style:normal;color:var(--teal)}/* motion demos: one row */.motion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}/* process: dark cinematic steps (gallery style) */#process .process-dark{margin-top:clamp(36px,4vw,56px)}#process .process-dark .step{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);border-radius:20px}#process .process-dark .step:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(85,220,200,.35)}#process .process-dark .step h3{color:#F6F3EC}#process .process-dark .step p{color:rgba(246,243,236,.62)}#process .process-dark .step b{color:#55DCC8}@media(max-width:900px){#process .process-dark{grid-template-columns:1fr 1fr}}@media(max-width:560px){#process .process-dark{grid-template-columns:1fr}}/* merged contact footer (~500px) */.footer-merged{max-width:860px;margin-inline:auto;text-align:center;padding:70px 0 6px}.footer-merged .footer-status{margin-bottom:16px}.footer-merged h2{font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-.02em;color:#F4F1EA;margin:0 0 14px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}.footer-merged h2 span{color:#2ED3B7}.footer-merged>p{color:#AAB4B8;font-size:16.5px;max-width:620px;margin:0 auto}.footer-merged .footer-actions{justify-content:center;margin-top:26px}.footer-merged-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}.footer-merged-links a{color:#AAB4B8;font-size:13.5px;font-weight:600;text-decoration:none}.footer-merged-links a:hover{color:#2ED3B7}/* ===== Contact / social links (About + footer) ===== */.about-contact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:18px;font-size:14px;color:var(--muted)}.about-contact a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}.about-contact a:hover{color:var(--teal-dark);border-color:var(--teal-dark)}.footer-contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:20px}.footer-contact-links a{color:#AAB4B8;font-size:13.5px;font-weight:600;text-decoration:none}.footer-contact-links a:hover{color:#2ED3B7}.footer-merged .footer-bottom{border-top:0;padding:18px 0 24px;justify-content:center;gap:6px 20px;flex-wrap:wrap;text-align:center}@media(max-width:760px){.footer-merged{padding:54px 0 6px}.footer-merged .footer-actions{display:grid}.footer-merged .footer-actions .btn{width:100%}}/* ===== PHASE 4 — interaction polish ===== */.primary-cta{background:var(--ink);color:var(--bg);border-color:var(--ink)}.primary-cta:hover{background:var(--teal-dark);border-color:var(--teal-dark);color:#fff}.nav-links a.active,.mobile-menu a.active{color:var(--teal)}.nav-links a.active::after{transform:scaleX(1)}.mobile-menu a.active{background:var(--teal-light);padding-inline:10px;border-radius:8px}:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid var(--teal)!important;outline-offset:3px!important}.field-error{display:block;margin-top:6px;color:#C62828;font-size:12px;font-weight:700;line-height:1.35}.field.has-error .input,.field.has-error .select{border-color:#C62828!important;box-shadow:0 0 0 3px color-mix(in srgb,#C62828 14%,transparent)!important}.pkg.selected-package{border-color:var(--teal);box-shadow:0 0 0 2px color-mix(in srgb,var(--teal) 24%,transparent),var(--shadow)}.mobile-cta-bar{display:none}/* One reveal language everywhere: 24px upward travel, 500ms ease, once. */.js .reveal,.js .reveal-left,.js .reveal-right,.js .reveal-scale,.js .reveal-blur{
+}:root{--hero-top:64px}section{padding-block:var(--section-y);scroll-margin-top:calc(var(--header-h) + 16px)}.container{max-width:1200px;margin-inline:auto;padding-inline:var(--gutter);width:100%}.section-head{margin-bottom:var(--head-gap);row-gap:clamp(12px,1vw,16px)}.cards{display:grid;gap:var(--card-gap)}.services,.packages,.process,.hsc,.work-grid,.compare,.service-wall-grid{gap:var(--card-gap)}.hero{padding-block:var(--section-y);padding-top:var(--hero-top)}@media(max-width:560px){:root{--hero-top:32px}.section-head{row-gap:12px}}/* ===== PHASE 3 — section consolidation (15 → 10 sections) ===== */:root{--hero-top:48px}@media(max-width:560px){:root{--hero-top:32px}}.hero-actions{margin:20px 0 16px}/* manifesto line preserved as Services intro */.manifesto-kicker{display:flex;justify-content:center;margin-bottom:20px;text-align:center}.manifesto-kicker span{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(20px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;color:var(--ink)}.manifesto-kicker em{font-style:normal;color:var(--teal)}/* FIX 2026-10-17: manifesto line was invisible on the dark services wall (dark --ink #111417 on #091012 bg, dark --teal #0C7669) */#services .manifesto-kicker span{color:#F5F2EA}#services .manifesto-kicker em{color:#2ED3B7}/* motion demos: one row */.motion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}/* process: dark cinematic steps (gallery style) */#process .process-dark{margin-top:clamp(36px,4vw,56px)}#process .process-dark .step{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.12);border-radius:20px}#process .process-dark .step:hover{transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.5);border-color:rgba(85,220,200,.35)}#process .process-dark .step h3{color:#F6F3EC}#process .process-dark .step p{color:rgba(246,243,236,.62)}#process .process-dark .step b{color:#55DCC8}@media(max-width:900px){#process .process-dark{grid-template-columns:1fr 1fr}}@media(max-width:560px){#process .process-dark{grid-template-columns:1fr}}/* merged contact footer (~500px) */.footer-merged{max-width:860px;margin-inline:auto;text-align:center;padding:70px 0 6px}.footer-merged .footer-status{margin-bottom:16px}.footer-merged h2{font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-.02em;color:#F4F1EA;margin:0 0 14px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}.footer-merged h2 span{color:#2ED3B7}.footer-merged>p{color:#AAB4B8;font-size:16.5px;max-width:620px;margin:0 auto}.footer-merged .footer-actions{justify-content:center;margin-top:26px}.footer-merged-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:32px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12)}.footer-merged-links a{color:#AAB4B8;font-size:13.5px;font-weight:600;text-decoration:none}.footer-merged-links a:hover{color:#2ED3B7}/* ===== Contact / social links (About + footer) ===== */.about-contact{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin-top:18px;font-size:14px;color:var(--muted)}.about-contact a{color:var(--ink);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:1px}.about-contact a:hover{color:var(--teal-dark);border-color:var(--teal-dark)}.footer-contact-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;margin-top:20px}.footer-contact-links a{color:#AAB4B8;font-size:13.5px;font-weight:600;text-decoration:none}.footer-contact-links a:hover{color:#2ED3B7}.footer-merged .footer-bottom{border-top:0;padding:18px 0 24px;justify-content:center;gap:6px 20px;flex-wrap:wrap;text-align:center}@media(max-width:760px){.footer-merged{padding:54px 0 6px}.footer-merged .footer-actions{display:grid}.footer-merged .footer-actions .btn{width:100%}}/* ===== PHASE 4 — interaction polish ===== */.primary-cta{background:var(--ink);color:var(--bg);border-color:var(--ink)}.primary-cta:hover{background:var(--teal-dark);border-color:var(--teal-dark);color:#fff}.nav-links a.active,.mobile-menu a.active{color:var(--teal)}.nav-links a.active::after{transform:scaleX(1)}.mobile-menu a.active{background:var(--teal-light);padding-inline:10px;border-radius:8px}:where(a,button,input,select,textarea,[tabindex]):focus-visible{outline:2px solid var(--teal)!important;outline-offset:3px!important}.field-error{display:block;margin-top:6px;color:#C62828;font-size:12px;font-weight:700;line-height:1.35}.field.has-error .input,.field.has-error .select{border-color:#C62828!important;box-shadow:0 0 0 3px color-mix(in srgb,#C62828 14%,transparent)!important}.pkg.selected-package{border-color:var(--teal);box-shadow:0 0 0 2px color-mix(in srgb,var(--teal) 24%,transparent),var(--shadow)}.mobile-cta-bar{display:none}/* One reveal language everywhere: 24px upward travel, 500ms ease, once. */.js .reveal,.js .reveal-left,.js .reveal-right,.js .reveal-scale,.js .reveal-blur{
   opacity:0!important;transform:translateY(24px)!important;filter:none!important;clip-path:none!important;
   transition:opacity 500ms ease,transform 500ms ease!important;transition-delay:0ms!important;animation:none!important
 }.js .reveal.visible{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important}.motion-word{opacity:1!important;transform:none!important;transition:none!important;animation:none!important}.js .wipe,.js .wipe.visible{clip-path:none!important;transition:none!important}.js #process .process .step.reveal,.js #process .audience-grid .step.reveal,
 .js #packages .pkg.reveal,.js #faq .faq-item.reveal,.js #about .about-photo.reveal{animation:none!important}#brief.inview .builder-left,#brief.inview .builder-right{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}#services.inview .service-wall-card{animation:none!important;opacity:1!important;filter:none!important}.work-wall-section.inview .work-wall-panel-inner{animation:workWallFloat 7s ease-in-out infinite!important;opacity:1!important;filter:none!important}@media(max-width:768px){body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}.mobile-cta-bar{position:fixed;left:0;right:0;bottom:0;z-index:9000;display:none;width:100%;box-sizing:border-box;padding:8px var(--gutter);padding-bottom:calc(8px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 94%,transparent);border-top:1px solid var(--line);backdrop-filter:blur(14px)}.mobile-cta-bar.visible{display:flex}.mobile-cta-bar .btn{width:100%;padding:11px 18px}.hero .hero-visual.reveal{opacity:1!important;transform:none!important}.work-wall-stage{height:auto!important;margin:24px 0 0!important;overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;cursor:auto!important;scrollbar-width:none}.work-wall-stage::-webkit-scrollbar{display:none}.work-wall-stage::before,.work-wall-beam{display:none!important}.work-wall-deck{position:relative!important;inset:auto!important;display:flex!important;gap:16px!important;width:max-content!important;transform:none!important;padding:8px var(--gutter) 20px!important}.work-wall-panel{position:relative!important;left:auto!important;top:auto!important;flex:0 0 min(82vw,320px)!important;width:min(82vw,320px)!important;height:390px!important;opacity:1!important;filter:none!important;transform:none!important;scroll-snap-align:center;scroll-snap-stop:always;z-index:auto!important}.work-wall-panel-inner{animation:none!important}.work-wall-caption{padding-inline:var(--gutter)}}@media(prefers-reduced-motion:reduce){.js .reveal,.js .reveal-left,.js .reveal-right,.js .reveal-scale,.js .reveal-blur{opacity:1!important;transform:none!important;filter:none!important;clip-path:none!important;transition:none!important;animation:none!important}}/* ===== FIXES 2026-10-17 — user screenshot round (no new binary assets; sounds via Web Audio) ===== *//* Fix 1 — Showreel headline: full-contrast off-white on the dark stage, fully visible even if reveal never fires */#showreel .section-head h2{color:#F5F2EA}#showreel .section-head h2 .motion-word{opacity:1!important;transform:none!important;filter:none!important}@keyframes puzzleSpin{to{transform:rotate(360deg)}}@keyframes tapRing{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.25);opacity:0}}@keyframes tapNudge{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}@keyframes alertPop{0%{transform:scale(.6) rotate(-6deg);opacity:0}100%{transform:scale(1) rotate(-2deg);opacity:1}}@media(prefers-reduced-motion:reduce){}/* Fix 4 — Process header typewriter caret + gentle teal shimmer after typing */.proc-caret{display:inline-block;width:.085em;height:.95em;margin-left:.07em;vertical-align:-.1em;border-radius:3px;background:#55DCC8;animation:procBlink .72s steps(1,end) infinite}@keyframes procBlink{50%{opacity:0}}#process .proc-typed .craft-accent{animation:tealShimmer 3.4s ease-in-out infinite}@keyframes tealShimmer{0%,100%{filter:brightness(1)}50%{filter:brightness(1.4)}}@media(prefers-reduced-motion:reduce){.proc-caret{animation:none}#process .proc-typed .craft-accent{animation:none}}
 /* ===== About photo: 4-piece orbital puzzle reveal, single click (photo untouched) ===== */
-.about-puzzle{position:absolute;inset:0;z-index:5;background:rgba(5,9,10,.72);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);transition:opacity 1s ease,transform 1s ease,visibility 0s}
+.about-puzzle{position:absolute;inset:0;z-index:5;background:rgba(5,9,10,.55);-webkit-backdrop-filter:blur(28px) brightness(.45);backdrop-filter:blur(28px) brightness(.45);transition:opacity 1s ease,transform 1s ease,visibility 0s}
 .about-puzzle.revealed{opacity:0;transform:scale(1.06);visibility:hidden;pointer-events:none;transition:opacity 1s ease,transform 1s ease,visibility 0s linear 1s}
-.about-piece{position:absolute;width:84px;height:84px;border:0;background:transparent;color:#2ED3B7;cursor:pointer;padding:6px;filter:drop-shadow(0 10px 26px rgba(46,211,183,.35));transition:transform .45s ease,opacity .45s ease;z-index:2;animation:orbitYDown 7s ease-in-out infinite}
-.about-piece svg{width:100%;height:100%;display:block;animation:puzzleSpin var(--spin-dur,5s) linear infinite}
-.about-piece-1{top:10%;left:8%;--spin-dur:4.5s;animation-name:orbitYDown;animation-duration:7s}
-.about-piece-2{top:7%;right:9%;--spin-dur:6.5s;animation-name:orbitYUp;animation-duration:8.6s}
-.about-piece-2 svg{animation-direction:reverse}
-.about-piece-3{bottom:12%;left:13%;--spin-dur:5.5s;animation-name:orbitX;animation-duration:6.4s}
-.about-piece-4{bottom:9%;right:8%;--spin-dur:7.5s;animation-name:orbitLoop;animation-duration:9.8s}
-.about-piece-4 svg{animation-direction:reverse}
+/* ===== About photo: sticker badge puzzle game (photo untouched) ===== */
+.about-sticker{position:absolute;width:76px;height:76px;border-radius:50%;border:3px solid rgba(255,255,255,.92);cursor:pointer;padding:0;display:grid;place-items:center;z-index:2;box-shadow:0 10px 28px rgba(0,0,0,.45),inset 0 3px 8px rgba(255,255,255,.75),inset 0 -8px 14px rgba(0,0,0,.16);transition:transform .45s ease,opacity .45s ease;animation:orbitYDown 7s ease-in-out infinite}
+.sticker-face{font-size:34px;line-height:1;filter:drop-shadow(0 2px 3px rgba(0,0,0,.28));pointer-events:none;transition:transform .25s ease}
+.about-sticker:hover .sticker-face{transform:scale(1.18) rotate(-6deg)}
+.about-sticker:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.about-sticker-1{top:5%;left:6%;background:radial-gradient(circle at 32% 28%,#fff 0%,#ffd6e8 25%,#ff9ec7 60%,#f06292 100%);animation-name:orbitYDown;animation-duration:7s}
+.about-sticker-2{top:3%;left:33%;background:radial-gradient(circle at 32% 28%,#fff 0%,#dbeafe 25%,#93c5fd 60%,#3b82f6 100%);animation-name:orbitWide;animation-duration:8.2s;animation-direction:reverse}
+.about-sticker-3{top:5%;right:6%;background:radial-gradient(circle at 32% 28%,#fff 0%,#fef9c3 25%,#fde047 60%,#eab308 100%);animation-name:orbitYUp;animation-duration:6.8s}
+.about-sticker-4{top:36%;right:4%;background:radial-gradient(circle at 32% 28%,#fff 0%,#ffedd5 25%,#fdba74 60%,#f97316 100%);animation-name:orbitTall;animation-duration:7.6s}
+.about-sticker-5{bottom:7%;right:6%;background:radial-gradient(circle at 32% 28%,#fff 0%,#fee2e2 25%,#fca5a5 60%,#ef4444 100%);animation-name:orbitX;animation-duration:9.2s}
+.about-sticker-6{bottom:4%;left:33%;background:radial-gradient(circle at 32% 28%,#fff 0%,#dcfce7 25%,#86efac 60%,#22c55e 100%);animation-name:orbitLoop;animation-duration:8.8s}
+.about-sticker-7{bottom:7%;left:6%;background:radial-gradient(circle at 32% 28%,#fff 0%,#f3e8ff 25%,#c4b5fd 60%,#8b5cf6 100%);animation-name:orbitDrift;animation-duration:7.2s;animation-direction:reverse}
+.about-sticker-8{top:36%;left:4%;background:radial-gradient(circle at 32% 28%,#fff 0%,#fef3c7 25%,#fcd34d 60%,#f59e0b 100%);animation-name:orbitLoopR;animation-duration:9.6s}
+.about-sticker-9{top:18%;left:18%;background:radial-gradient(circle at 32% 28%,#fff 0%,#e0e7ff 25%,#a5b4fc 60%,#6366f1 100%);animation-name:orbitWide;animation-duration:7.8s}
+.about-sticker-10{top:20%;right:18%;background:radial-gradient(circle at 32% 28%,#fff 0%,#ccfbf1 25%,#5eead4 60%,#14b8a6 100%);animation-name:orbitTall;animation-duration:8.6s;animation-direction:reverse}
+.about-sticker-11{bottom:20%;left:46%;background:radial-gradient(circle at 32% 28%,#fff 0%,#cffafe 25%,#67e8f9 60%,#06b6d4 100%);animation-name:orbitYDown;animation-duration:9.9s;animation-direction:reverse}
+.about-sticker-special{left:45%;top:45%;background:radial-gradient(circle at 32% 28%,#ffd9a8 0%,#ff8a4c 30%,#f43f2e 62%,#b3121f 100%);border-color:#fff;z-index:3;animation-name:orbitX;animation-duration:8.4s;animation-direction:reverse}
+
+.about-sticker.wrong .sticker-face{animation:pieceShake .45s ease}
+
+
+
+
+
+
+
 @keyframes orbitYDown{0%,100%{transform:translate(0,-44px)}50%{transform:translate(0,44px)}}
 @keyframes orbitYUp{0%,100%{transform:translate(0,44px)}50%{transform:translate(0,-44px)}}
 @keyframes orbitX{0%,100%{transform:translate(-52px,6px)}50%{transform:translate(52px,-6px)}}
-@keyframes orbitLoop{0%{transform:translate(-42px,-30px)}25%{transform:translate(42px,-30px)}50%{transform:translate(42px,30px)}75%{transform:translate(-42px,30px)}100%{transform:translate(-42px,-30px)}}
-.about-piece:hover{color:#5EEAD4}
-.about-piece:focus-visible{outline:2px solid #2ED3B7;outline-offset:4px;border-radius:12px}
-.about-piece.wrong svg{animation:pieceShake .45s ease}
-.about-piece.dismissed{animation:none;transform:translate(0,-72px) scale(.12);opacity:0;pointer-events:none}
+@keyframes orbitLoop{0%{transform:translate(-42px,-30px)}25%{transform:translate(42px,-30px)}50%{transform:translate(42px,30px)}75%{transform:translate(-42px,30px)}100%{transform:translate(-42px,-30px)}}@keyframes orbitWide{0%,100%{transform:translate(-64px,10px)}50%{transform:translate(64px,-10px)}}@keyframes orbitTall{0%,100%{transform:translate(8px,-56px)}50%{transform:translate(-8px,56px)}}@keyframes orbitDrift{0%,100%{transform:translate(-48px,26px)}50%{transform:translate(48px,-26px)}}@keyframes orbitLoopR{0%{transform:translate(42px,30px)}25%{transform:translate(-42px,30px)}50%{transform:translate(-42px,-30px)}75%{transform:translate(42px,-30px)}100%{transform:translate(42px,30px)}}.clickme-tag{position:absolute;left:50%;bottom:-13px;transform:translateX(-50%);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:#fff;color:#c1121f;padding:4px 10px;border-radius:999px;white-space:nowrap;pointer-events:none;border:2px solid #c1121f;box-shadow:0 4px 12px rgba(0,0,0,.35)}.about-puzzle-alert-virus{background:#8A1010;box-shadow:0 18px 44px rgba(217,45,32,.5)}.about-puzzle-alert-virus.show{display:inline-flex;animation:virusGlitch .4s steps(2,end) infinite}@keyframes virusGlitch{0%,100%{transform:translate(-50%,-50%) rotate(-2deg) translateX(0)}25%{transform:translate(-50%,-50%) rotate(-2deg) translateX(-5px) skewX(-4deg)}50%{transform:translate(-50%,-50%) rotate(-2deg) translateX(5px)}75%{transform:translate(-50%,-50%) rotate(-2deg) translateX(-3px) skewX(3deg)}}.about-puzzle.revealed-slow{opacity:0;transform:scale(1.12);visibility:hidden;pointer-events:none;transition:opacity 2s ease,transform 2s ease,visibility 0s linear 2s}@media(max-width:560px){.about-sticker{width:56px;height:56px}.sticker-face{font-size:25px}.clickme-tag{font-size:9px;padding:3px 8px;bottom:-11px}}
+
+
+
+
 @keyframes pieceShake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-7px) rotate(-8deg)}40%{transform:translateX(6px) rotate(6deg)}60%{transform:translateX(-4px) rotate(-4deg)}80%{transform:translateX(3px) rotate(3deg)}}
 .about-puzzle-hint{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:#F5F2EA;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;z-index:1}
 .about-puzzle-hint .tap-ring{position:relative;width:56px;height:56px;display:grid;place-items:center}
@@ -88,11 +106,11 @@
 .about-puzzle-alert{display:none;position:absolute;left:50%;top:44%;transform:translate(-50%,-50%) rotate(-2deg);z-index:4;background:#D92D20;color:#fff;font-weight:800;font-size:17px;letter-spacing:.02em;padding:14px 26px;border-radius:16px;box-shadow:0 18px 44px rgba(217,45,32,.4);white-space:nowrap}
 .about-puzzle-alert.show{display:inline-flex;animation:alertPop .28s cubic-bezier(.2,1.4,.4,1)}
 @media (prefers-reduced-motion:reduce){
-.about-piece{animation:none}
-.about-piece svg{animation:none}
+.about-sticker{animation:none}
+.about-sticker-special{left:44%;top:10%;transform:translate(-50%,-50%);animation:none}.sticker-face{animation:none}.about-sticker.wrong .sticker-face{animation:none}.about-puzzle-alert-virus.show{animation:none}.about-puzzle.revealed-slow{transition:opacity .4s ease,transform .4s ease,visibility 0s linear .4s}
 .about-puzzle-hint .tap-ring::before,.about-puzzle-hint .tap-cursor,.about-puzzle-alert.show{animation:none}
 .about-puzzle{transition:opacity .3s ease,visibility 0s}.about-puzzle.revealed{transition:opacity .3s ease,visibility 0s linear .3s}
-.about-piece{transition:opacity .4s ease}
+.about-sticker{transition:opacity .4s ease}
 }
 /* ===== WORK VIEWER — fullscreen work sample overlay (restored) ===== */
 .work-viewer[hidden]{display:none}
@@ -131,6 +149,30 @@
   .work-viewer-shell{animation:none}
 }
 </style>
+<style>/* MOBILE POLISH 2026-10-18 — mobile-only refinements; desktop rendering untouched */
+@media(max-width:768px){
+.hero-deco-sq{display:none!important}
+.builder{grid-template-columns:1fr!important}
+.builder>*{min-width:0}
+.builder [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+input,.select,textarea.input,select{font-size:16px!important}
+.chip{padding:12px 16px}
+.brief-steps{overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.brief-steps::-webkit-scrollbar{display:none}
+.cinematic-stage{height:clamp(460px,125vw,540px)}
+}
+@media(max-width:560px){
+@keyframes orbitYDown{0%,100%{transform:translate(0,-20px)}50%{transform:translate(0,20px)}}
+@keyframes orbitYUp{0%,100%{transform:translate(0,20px)}50%{transform:translate(0,-20px)}}
+@keyframes orbitX{0%,100%{transform:translate(-18px,3px)}50%{transform:translate(18px,-3px)}}
+@keyframes orbitDrift{0%,100%{transform:translate(-17px,12px)}50%{transform:translate(17px,-12px)}}
+@keyframes orbitWide{0%,100%{transform:translate(-24px,5px)}50%{transform:translate(24px,-5px)}}
+@keyframes orbitTall{0%,100%{transform:translate(4px,-25px)}50%{transform:translate(-4px,25px)}}
+@keyframes orbitLoop{0%{transform:translate(-19px,-14px)}25%{transform:translate(19px,-14px)}50%{transform:translate(19px,14px)}75%{transform:translate(-19px,14px)}100%{transform:translate(-19px,-14px)}}
+@keyframes orbitLoopR{0%{transform:translate(19px,14px)}25%{transform:translate(-19px,14px)}50%{transform:translate(-19px,-14px)}75%{transform:translate(19px,-14px)}100%{transform:translate(19px,14px)}}
+.about-puzzle-hint{z-index:4}
+}
+</style>
 </head>
 <body>
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -160,7 +202,7 @@
   <section class="hero" id="heroSection">
     <div class="orb orb-1" aria-hidden="true"></div><div class="orb orb-2" aria-hidden="true"></div><div class="orb orb-3" aria-hidden="true"></div>
     <!-- floating motion shapes -->
-    <div aria-hidden="true" style="position:absolute;top:22px;right:18%;width:72px;height:72px;border:1.5px solid var(--teal);border-radius:18px;opacity:.18;animation:floatY 7s ease-in-out infinite;transform:rotate(12deg)"></div>
+    <div class="hero-deco-sq" aria-hidden="true" style="position:absolute;top:22px;right:18%;width:72px;height:72px;border:1.5px solid var(--teal);border-radius:18px;opacity:.18;animation:floatY 7s ease-in-out infinite;transform:rotate(12deg)"></div>
     <div aria-hidden="true" style="position:absolute;bottom:90px;left:4%;width:14px;height:14px;border-radius:50%;background:var(--amber);opacity:.7;animation:floatY 5s ease-in-out infinite"></div>
     <div aria-hidden="true" style="position:absolute;top:48%;left:46%;font-size:22px;opacity:.35;animation:floatY 6s ease-in-out infinite">✦</div>
     <div class="container hero-grid">
@@ -349,7 +391,7 @@
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="container about-grid">
-      <div class="about-photo reveal reveal-left mask-reveal"><img src="assets/about-mazahar.jpg" alt="Mazahar on a mint scooter" loading="lazy"/><div class="about-puzzle" role="group" aria-label="Puzzle game: tap a piece to reveal the photo"><button class="about-piece about-piece-1" type="button" aria-label="Puzzle piece 1"><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M20 20 L38 20 C38 10 62 10 62 20 L80 20 L80 38 C90 38 90 62 80 62 L80 80 L20 80 L20 62 C10 62 10 38 20 38 Z"/></svg></button><button class="about-piece about-piece-2" type="button" aria-label="Puzzle piece 2"><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M20 20 L38 20 C38 10 62 10 62 20 L80 20 L80 38 C90 38 90 62 80 62 L80 80 L20 80 L20 62 C10 62 10 38 20 38 Z"/></svg></button><button class="about-piece about-piece-3" type="button" aria-label="Puzzle piece 3"><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M20 20 L38 20 C38 10 62 10 62 20 L80 20 L80 38 C90 38 90 62 80 62 L80 80 L20 80 L20 62 C10 62 10 38 20 38 Z"/></svg></button><button class="about-piece about-piece-4" type="button" aria-label="Puzzle piece 4"><svg viewBox="0 0 100 100" fill="currentColor" aria-hidden="true"><path d="M20 20 L38 20 C38 10 62 10 62 20 L80 20 L80 38 C90 38 90 62 80 62 L80 80 L20 80 L20 62 C10 62 10 38 20 38 Z"/></svg></button><span class="about-puzzle-hint" aria-hidden="true"><span class="tap-ring"><svg class="tap-cursor" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3l12 8.5-7.2 1.3L8 19.5z"/></svg></span><span>Tap a piece to reveal</span></span><span class="about-puzzle-alert" aria-hidden="true">Wrong Answer</span></div><span class="about-chip about-chip-1"><i></i> On the road — creating daily</span><span class="about-chip about-chip-2">✦ 12+ Years Freelancing</span></div>
+      <div class="about-photo reveal reveal-left mask-reveal"><img src="assets/about-mazahar.jpg" alt="Mazahar on a mint scooter" loading="lazy"/><div class="about-puzzle" role="group" aria-label="Sticker game: find the sticker marked Click ME"><button class="about-sticker about-sticker-1" type="button" aria-label="Sticker: baby"><span class="sticker-face" aria-hidden="true">👶</span></button><button class="about-sticker about-sticker-2" type="button" aria-label="Sticker: car"><span class="sticker-face" aria-hidden="true">🚗</span></button><button class="about-sticker about-sticker-3" type="button" aria-label="Sticker: banana"><span class="sticker-face" aria-hidden="true">🍌</span></button><button class="about-sticker about-sticker-4" type="button" aria-label="Sticker: dog"><span class="sticker-face" aria-hidden="true">🐶</span></button><button class="about-sticker about-sticker-5" type="button" aria-label="Sticker: pizza"><span class="sticker-face" aria-hidden="true">🍕</span></button><button class="about-sticker about-sticker-6" type="button" aria-label="Sticker: soccer ball"><span class="sticker-face" aria-hidden="true">⚽</span></button><button class="about-sticker about-sticker-7" type="button" aria-label="Sticker: balloon"><span class="sticker-face" aria-hidden="true">🎈</span></button><button class="about-sticker about-sticker-8" type="button" aria-label="Sticker: star"><span class="sticker-face" aria-hidden="true">⭐</span></button><button class="about-sticker about-sticker-9" type="button" aria-label="Sticker: gamepad"><span class="sticker-face" aria-hidden="true">🎮</span></button><button class="about-sticker about-sticker-10" type="button" aria-label="Sticker: cat"><span class="sticker-face" aria-hidden="true">🐱</span></button><button class="about-sticker about-sticker-11" type="button" aria-label="Sticker: rocket"><span class="sticker-face" aria-hidden="true">🚀</span></button><button class="about-sticker about-sticker-special" type="button" aria-label="Special sticker marked Click ME"><span class="sticker-face" aria-hidden="true">🎯</span><span class="clickme-tag" aria-hidden="true">Click ME</span></button><span class="about-puzzle-hint" aria-hidden="true"><span class="tap-ring"><svg class="tap-cursor" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 3l12 8.5-7.2 1.3L8 19.5z"/></svg></span><span>Find the Click ME sticker!</span></span><span class="about-puzzle-alert" aria-hidden="true">Wrong Answer</span><span class="about-puzzle-alert about-puzzle-alert-virus" aria-hidden="true">Virus Attack</span></div><span class="about-chip about-chip-1"><i></i> On the road — creating daily</span><span class="about-chip about-chip-2">✦ 12+ Years Freelancing</span></div>
       <div class="reveal">
         <div class="kicker">About Mazahar</div>
         <h2 style="font-size:clamp(32px,3.8vw,46px);line-height:1">12+ years freelancing.<br><span class="serif" style="font-size:.92em">Now all-in on video.</span></h2>
@@ -902,7 +944,7 @@ const style=document.createElement('style');try{style.textContent='@media(max-wi
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const STEP=360/N, DEG_PER_PX=360/3000, AUTO_DPS=360/80;
   let angle=0, vel=0, dragging=false, spinning=!reduce, lastX=0, lastT=0, resumeT=0, lastTick=0;
-  function radius(){const w=window.innerWidth;if(w<=430)return w*1.02;if(w<=760)return Math.min(470,Math.max(380,w*1.02));return Math.min(790,Math.max(600,w*0.49))}
+  function radius(){const w=window.innerWidth;if(w<=430)return w*0.72;if(w<=760)return Math.min(400,Math.max(320,w*0.72));return Math.min(790,Math.max(600,w*0.49))}
   function layout(){
     const R=radius();
     for(let i=0;i<N;i++){
@@ -1174,7 +1216,9 @@ const style=document.createElement('style');try{style.textContent='@media(max-wi
   }
   stage.addEventListener('click',e=>{
     const card=cardAtPoint(e.clientX,e.clientY)||e.target.closest('.service-wall-card');
-    if(!card)return;e.preventDefault();e.stopPropagation();open(card);
+    if(!card)return;e.preventDefault();e.stopPropagation();
+    try{if(window.__svcTouch&&window.__svcTapType&&!card.dataset.svcTyped){card.dataset.svcTyped='1';window.__svcTapType(card);return;}}catch(_){}
+    open(card);
   },true);
   cards.forEach(card=>card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open(card)}}));
   modal.querySelectorAll('[data-lightbox-close]').forEach(btn=>btn.addEventListener('click',()=>{if(modal.dataset.mode==='service')close()}));
@@ -1259,87 +1303,120 @@ const style=document.createElement('style');try{style.textContent='@media(max-wi
   if(!cards.length) return;
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fineHover=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-  if(reduce||!fineHover) return; // static full text, no sound
+  if(reduce) return; // reduced-motion: static full text, no sound
   let actx=null;
   function actxGet(){
     if(!actx){const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return null; actx=new AC();}
     if(actx.state==='suspended') actx.resume();
     return actx;
   }
-  function typeClick(){
+  // 6 distinct keyboard profiles, one per service card (index 0-5). Each profile:
+  // [filterType, freqMin, freqMax, qMin, qMax, clickMsMin, clickMsMax, peakMin, peakMax,
+  //  thumpFreqMin, thumpFreqMax, thumpPeak, thumpMs (0=none),
+  //  pingFreqMin, pingFreqMax, pingPeak, pingMs (0=none)]
+  const KEY_PROFILES=[
+    ['bandpass',4800,5600, 2.0,2.8, 3,5, 0.030,0.048, 0,0,0,0, 0,0,0,0],      // 1. bright mechanical clicky
+    ['bandpass',1500,2000, 0.8,1.2, 8,12, 0.026,0.042, 110,140,0.030,40, 0,0,0,0], // 2. deep thocky linear
+    ['bandpass',4000,6000, 2.4,3.2, 2,4, 0.028,0.044, 0,0,0,0, 2200,2800,0.010,45], // 3. vintage typewriter + ping
+    ['bandpass',2500,3500, 1.4,2.0, 2,4, 0.012,0.020, 0,0,0,0, 0,0,0,0],      // 4. soft laptop chiclet
+    ['lowpass',800,1200, 0.7,1.0, 8,14, 0.022,0.036, 0,0,0,0, 0,0,0,0],       // 5. muted membrane
+    ['bandpass',2000,3000, 3.0,4.0, 15,25, 0.030,0.046, 90,120,0.022,60, 900,1200,0.012,90] // 6. buckling-spring
+  ];
+  function krnd(a,b){ return a+Math.random()*(b-a); }
+  function typeClick(pi){
     try{
       const ac=actxGet(); if(!ac) return;
+      const P=KEY_PROFILES[(pi|0)%KEY_PROFILES.length];
       const t=ac.currentTime;
-      // shared noise buffer for the mechanical key click (built once)
+      // shared noise buffer for key clicks (built once, long enough for longest decay)
       if(!ac._keyNoise){
-        const len=Math.max(1,Math.floor(ac.sampleRate*0.03));
+        const len=Math.max(1,Math.floor(ac.sampleRate*0.12));
         const buf=ac.createBuffer(1,len,ac.sampleRate);
         const d=buf.getChannelData(0);
         for(let i=0;i<len;i++) d[i]=Math.random()*2-1;
         ac._keyNoise=buf;
       }
-      // click: short filtered-noise burst, bandpass 3-5kHz, random per keystroke
+      // click: filtered-noise burst, per-profile spectrum, randomized per keystroke
       const src=ac.createBufferSource(); src.buffer=ac._keyNoise;
-      const bp=ac.createBiquadFilter(); bp.type='bandpass';
-      bp.frequency.value=3000+Math.random()*2000;
-      bp.Q.value=1.1+Math.random()*0.6;
-      const g=ac.createGain();
-      const peak=0.028+Math.random()*0.022;
+      const f=ac.createBiquadFilter(); f.type=P[0];
+      f.frequency.value=krnd(P[1],P[2]); f.Q.value=krnd(P[3],P[4]);
+      const g=ac.createGain(); const peak=krnd(P[7],P[8]); const dur=krnd(P[5],P[6])/1000;
       g.gain.setValueAtTime(0.0001,t);
       g.gain.exponentialRampToValueAtTime(peak,t+0.0015);
-      g.gain.exponentialRampToValueAtTime(0.0001,t+0.006+Math.random()*0.004);
-      src.connect(bp); bp.connect(g); g.connect(ac.destination);
-      src.start(t,Math.random()*0.02); src.stop(t+0.04);
-      // thump: tiny low body under the click
-      const o=ac.createOscillator(), og=ac.createGain();
-      o.type='sine'; o.frequency.value=150+Math.random()*50;
-      og.gain.setValueAtTime(0.0001,t);
-      og.gain.exponentialRampToValueAtTime(0.02,t+0.003);
-      og.gain.exponentialRampToValueAtTime(0.0001,t+0.03);
-      o.connect(og); og.connect(ac.destination);
-      o.start(t); o.stop(t+0.045);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+dur);
+      src.connect(f); f.connect(g); g.connect(ac.destination);
+      src.start(t,Math.random()*0.05); src.stop(t+dur+0.05);
+      // thump: low body under the click (profiles 2 & 6)
+      if(P[11]>0){
+        const o=ac.createOscillator(), og=ac.createGain();
+        o.type='sine'; o.frequency.value=krnd(P[9],P[10]);
+        const td=P[12]/1000;
+        og.gain.setValueAtTime(0.0001,t);
+        og.gain.exponentialRampToValueAtTime(P[11],t+0.004);
+        og.gain.exponentialRampToValueAtTime(0.0001,t+td);
+        o.connect(og); og.connect(ac.destination);
+        o.start(t); o.stop(t+td+0.02);
+      }
+      // ping: metallic resonance (profiles 3 & 6)
+      if(P[15]>0){
+        const po=ac.createOscillator(), pg=ac.createGain();
+        po.type='triangle'; po.frequency.value=krnd(P[13],P[14]);
+        const pd=P[16]/1000;
+        pg.gain.setValueAtTime(0.0001,t);
+        pg.gain.exponentialRampToValueAtTime(P[15],t+0.002);
+        pg.gain.exponentialRampToValueAtTime(0.0001,t+pd);
+        po.connect(pg); pg.connect(ac.destination);
+        po.start(t); po.stop(t+pd+0.02);
+      }
     }catch(e){}
   }
   const jobs=new WeakMap();
   function full(p){ if(!p.dataset.fullText) p.dataset.fullText=p.textContent.trim(); return p.dataset.fullText; }
   function cancel(card){
     const t=jobs.get(card); if(t){clearTimeout(t); jobs.delete(card);}
-    const p=card.querySelector('p'); if(p) p.textContent=full(p);
+    const p=card.querySelector('p'); if(p){p.textContent=full(p); try{p.style.minHeight='';}catch(e){}}
     card.classList.remove('is-typing','typing-copy');
   }
-  function start(card){
+  function start(card,pi){
     cancel(card);
     const p=card.querySelector('p'); if(!p) return;
+    try{p.style.minHeight=p.offsetHeight+'px';}catch(e){}
     const text=full(p); let i=0;
     card.classList.add('is-typing','typing-copy');
     p.textContent='';
     (function tick(){
       i++;
       p.textContent=text.slice(0,i);
-      if(i<text.length){ typeClick(); jobs.set(card,setTimeout(tick,34)); }
-      else { jobs.delete(card); card.classList.remove('is-typing','typing-copy'); }
+      if(i<text.length){ typeClick(pi); jobs.set(card,setTimeout(tick,34)); }
+      else { jobs.delete(card); card.classList.remove('is-typing','typing-copy'); try{var pq=card.querySelector('p'); if(pq)pq.style.minHeight='';}catch(e){} }
     })();
   }
-  cards.forEach(card=>{
-    card.addEventListener('mouseenter',()=>start(card));
-    card.addEventListener('mouseleave',()=>cancel(card));
+  cards.forEach((card,idx)=>{
+    card.addEventListener('mouseenter',()=>{if(fineHover)start(card,idx);});
+    card.addEventListener('mouseleave',()=>{if(fineHover)cancel(card);});
   });
+  if(!fineHover){
+    // Touch: first tap plays the typing + per-card keyboard sound; next tap opens the detail view.
+    window.__svcTouch=true;
+    window.__svcTapType=function(card){const i=cards.indexOf(card); if(i>-1)start(cards[i],i);};
+  }
 })()}catch(e){};try{
 
-// ===== Fix 2026-10-17 — About photo: 4-piece orbital puzzle, 1s reveal + 20s recurring return (photo untouched) =====
+// ===== Fix 2026-10-18 — About photo: sticker badge puzzle game (photo untouched) =====
 (function(){
   const overlay=document.querySelector('.about-puzzle');
   if(!overlay) return;
-  const pieces=[...overlay.querySelectorAll('.about-piece')];
-  if(!pieces.length) return;
-  const alertEl=overlay.querySelector('.about-puzzle-alert');
+  const stickers=[...overlay.querySelectorAll('.about-sticker')];
+  if(!stickers.length) return;
+  const wrongEl=overlay.querySelector('.about-puzzle-alert:not(.about-puzzle-alert-virus)');
+  const virusEl=overlay.querySelector('.about-puzzle-alert-virus');
   const RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const T_FLY=RM?250:600;
-  const T_DISSOLVE=RM?500:1050;
-  const DISSOLVE_MS=RM?350:1000;
+  const VIRUS_BEAT=RM?400:1100;
+  const SLOW_MS=RM?400:2000;
   const RETURN_MS=20000;
+  const WRONG_MS=500;
   let phase='playing';
-  let returnTimer=null;
+  let returnTimer=null, wrongTimer=null;
   function clearReturn(){ if(returnTimer){ clearTimeout(returnTimer); returnTimer=null; } }
   function buzz(){
     try{
@@ -1360,33 +1437,70 @@ const style=document.createElement('style');try{style.textContent='@media(max-wi
       setTimeout(()=>{try{ac.close()}catch(e){}},800);
     }catch(e){}
   }
-  function showAlert(){
-    if(!alertEl) return;
-    alertEl.classList.remove('show');
-    void alertEl.offsetWidth;
-    alertEl.classList.add('show');
+  function alarmBuzz(){
+    try{
+      const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+      const ac=new AC(); if(ac.state==='suspended') ac.resume();
+      const t=ac.currentTime;
+      const o=ac.createOscillator(), g=ac.createGain();
+      o.type='sawtooth';
+      o.frequency.setValueAtTime(700,t);
+      o.frequency.exponentialRampToValueAtTime(140,t+0.9);
+      g.gain.setValueAtTime(0.0001,t);
+      g.gain.exponentialRampToValueAtTime(0.09,t+0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001,t+1.0);
+      o.connect(g); g.connect(ac.destination);
+      o.start(t); o.stop(t+1.05);
+      const o2=ac.createOscillator(), g2=ac.createGain();
+      o2.type='square';
+      o2.frequency.setValueAtTime(220,t);
+      o2.frequency.exponentialRampToValueAtTime(70,t+0.9);
+      g2.gain.setValueAtTime(0.0001,t);
+      g2.gain.exponentialRampToValueAtTime(0.03,t+0.03);
+      g2.gain.exponentialRampToValueAtTime(0.0001,t+1.0);
+      o2.connect(g2); g2.connect(ac.destination);
+      o2.start(t); o2.stop(t+1.05);
+      setTimeout(()=>{try{ac.close()}catch(e){}},1400);
+    }catch(e){}
   }
-  function resetPieces(){ pieces.forEach(p=>p.classList.remove('wrong','dismissed')); }
+  function flash(el){
+    if(!el) return;
+    el.classList.remove('show');
+    void el.offsetWidth;
+    el.classList.add('show');
+  }
+  function flashWrong(){
+    flash(wrongEl);
+    if(wrongTimer) clearTimeout(wrongTimer);
+    wrongTimer=setTimeout(()=>{ if(wrongEl) wrongEl.classList.remove('show'); wrongTimer=null; },WRONG_MS);
+  }
+  function hideAlerts(){ if(wrongEl) wrongEl.classList.remove('show'); if(virusEl) virusEl.classList.remove('show'); if(wrongTimer){ clearTimeout(wrongTimer); wrongTimer=null; } }
   function returnPuzzle(){
     clearReturn();
     if(phase!=='revealed') return;
     phase='returning';
-    resetPieces();
-    if(alertEl) alertEl.classList.remove('show');
-    overlay.classList.remove('revealed');
-    setTimeout(()=>{ if(phase==='returning') phase='playing'; },DISSOLVE_MS+80);
+    stickers.forEach(p=>p.classList.remove('wrong'));
+    hideAlerts();
+    overlay.classList.remove('revealed','revealed-slow');
+    setTimeout(()=>{ if(phase==='returning') phase='playing'; },(RM?400:1000)+80);
   }
   function armReturn(){ clearReturn(); returnTimer=setTimeout(returnPuzzle,RETURN_MS); }
-  pieces.forEach((piece)=>{
-    piece.addEventListener('click',()=>{
+  stickers.forEach((st)=>{
+    st.addEventListener('click',()=>{
       if(phase!=='playing') return;
-      phase='revealing';
-      clearReturn();
-      piece.classList.add('wrong');
-      showAlert(); buzz();
-      setTimeout(()=>{ piece.classList.remove('wrong'); piece.classList.add('dismissed'); },T_FLY);
-      setTimeout(()=>{ overlay.classList.add('revealed'); },T_DISSOLVE);
-      setTimeout(()=>{ if(phase==='revealing'){ phase='revealed'; armReturn(); } },T_DISSOLVE+DISSOLVE_MS);
+      if(st.classList.contains('about-sticker-special')){
+        phase='revealing';
+        clearReturn();
+        flash(virusEl);
+        alarmBuzz();
+        setTimeout(()=>{ overlay.classList.add('revealed-slow'); },VIRUS_BEAT);
+        setTimeout(()=>{ if(phase==='revealing'){ phase='revealed'; armReturn(); } },VIRUS_BEAT+SLOW_MS+80);
+      }else{
+        st.classList.add('wrong');
+        flashWrong();
+        buzz();
+        setTimeout(()=>st.classList.remove('wrong'),500);
+      }
     });
   });
 })()}catch(e){};try{
