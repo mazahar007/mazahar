@@ -291,6 +291,178 @@ textarea{resize:vertical;min-height:96px}
   .btn:hover,.service:hover,.work-card:hover{transform:none}
 }
 
+/* ===== MOTION LAYER ===== */
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes spinSlow{to{transform:rotate(360deg)}}
+@keyframes shapeMorph{0%,100%{border-radius:16px;transform:rotate(0)}50%{border-radius:50%;transform:rotate(90deg) scale(1.06)}}
+@keyframes slideBar{from{transform:translateX(0)}to{transform:translateX(150%)}}
+@keyframes kineticIn{0%{opacity:0;transform:translateX(-18px)}12%,82%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}}
+@keyframes lowerThird{0%{opacity:0;transform:translateX(-16px)}10%,88%{opacity:1;transform:none}100%{opacity:0;transform:translateY(6px)}}
+@keyframes fillBar{from{width:0}to{width:100%}}
+@keyframes orbFloat{from{transform:translate(0,0)}to{transform:translate(-30px,24px)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
+@keyframes borderSpin{to{--angle:360deg}}
+@keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(46,211,183,.55)}100%{box-shadow:0 0 0 22px rgba(46,211,183,0)}}
+@property --angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+
+/* Scroll progress */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--teal),var(--amber),var(--orange));pointer-events:none}
+
+/* Custom cursor (fine pointers only) */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:200;border-radius:50%;opacity:0;transition:opacity .3s,width .25s,height .25s,background .25s,border-color .25s;transform:translate(-50%,-50%)}
+.cursor-dot{width:7px;height:7px;background:var(--orange)}
+.cursor-ring{width:36px;height:36px;border:1.5px solid color-mix(in srgb,var(--teal) 70%,transparent)}
+.has-cursor .cursor-dot,.has-cursor .cursor-ring{opacity:1}
+.cursor-ring.hover{width:58px;height:58px;background:color-mix(in srgb,var(--teal) 12%,transparent);border-color:var(--teal)}
+
+/* Hero motion */
+.hero-shapes{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-shapes span{position:absolute;display:block}
+.hs-square{width:46px;height:46px;background:var(--teal);opacity:.16;left:46%;top:14%;animation:shapeMorph 7s ease-in-out infinite}
+.hs-circle{width:22px;height:22px;border-radius:50%;background:var(--amber);opacity:.55;left:4%;top:60%;animation:floatY 5s ease-in-out infinite}
+.hs-tri{width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:28px solid var(--orange);opacity:.35;left:40%;bottom:12%;animation:floatY 6.5s ease-in-out infinite .6s}
+.hs-ring{width:120px;height:120px;border-radius:50%;border:2px dashed color-mix(in srgb,var(--teal) 35%,transparent);right:3%;bottom:6%;animation:spinSlow 24s linear infinite}
+.hs-spark{left:52%;top:62%;color:var(--orange);font-size:22px;animation:floatY 4.5s ease-in-out infinite 1s}
+.hero-visual{transition:transform .2s ease-out;will-change:transform}
+.float-card{animation:floatY 6s ease-in-out infinite}
+.float-card.left{animation-delay:1.5s}
+.stat b .n,.mini-stats b .n{display:inline;font:inherit;color:inherit;opacity:1;letter-spacing:inherit;text-transform:none}
+.typed{display:inline}
+.typed .t-accent{color:var(--ink)}
+.typed .t-serif{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--teal);letter-spacing:-.02em}
+.caret{display:inline-block;width:.07em;height:.82em;margin-left:.06em;background:var(--teal);vertical-align:-.05em;animation:blink 1s steps(1) infinite}
+.hero h1.done .caret{opacity:0;animation:none}
+.voice-btn{display:inline-flex;align-items:center;gap:10px;margin:-8px 0 22px;padding:7px 14px 7px 8px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink2);font:600 13px "Public Sans",sans-serif;cursor:pointer;transition:border-color .2s}
+.voice-btn:hover{border-color:var(--teal)}
+.voice-btn .eqs{display:inline-flex;align-items:center;gap:2px;width:26px;height:26px;border-radius:50%;justify-content:center;background:var(--teal-light)}
+.voice-btn .eqs i{display:block;width:2.5px;height:12px;border-radius:2px;background:var(--teal);transform:scaleY(.35)}
+.voice-btn.playing .eqs i{animation:eq .7s ease-in-out infinite}
+.voice-btn.playing .eqs i:nth-child(2){animation-delay:.15s}
+.voice-btn.playing .eqs i:nth-child(3){animation-delay:.3s}
+
+/* Marquee ticker */
+.ticker{background:var(--ink);color:var(--bg);overflow:hidden;padding:18px 0;position:relative}
+.ticker-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-track span{display:inline-flex;align-items:center;gap:28px;padding-right:28px;font:700 clamp(18px,2.4vw,26px)/1 var(--display);letter-spacing:-.01em;white-space:nowrap}
+.ticker-track span em{font-family:var(--serif);font-weight:500;color:var(--amber)}
+.ticker-track b{color:var(--orange);font-size:.8em}
+@media (prefers-color-scheme: dark){.ticker{background:#F3F0E9;color:#111417}.ticker-track span em{color:#B4740B}}
+
+/* Masked word reveal for headlines */
+.js .split .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.js .split .w > span{display:inline-block;transform:translateY(105%);transition:transform .9s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * 55ms)}
+.js .split.in .w > span{transform:none}
+
+/* Spotlight + tilt cards */
+.spot{--mx:50%;--my:50%;transform-style:preserve-3d}
+.spot::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(380px circle at var(--mx) var(--my),color-mix(in srgb,var(--teal) 13%,transparent),transparent 60%)}
+.spot:hover::before{opacity:1}
+.service > *,.step > *{position:relative}
+.js .reveal.in.spot{transition:transform .25s ease-out,opacity .7s ease,box-shadow .25s,border-color .25s}
+.service p.typing::after{content:"";display:inline-block;width:2px;height:1em;margin-left:2px;background:var(--teal);vertical-align:-.15em;animation:blink .8s steps(1) infinite}
+
+/* Showreel overlay + motion cards */
+.reel-overlay{position:absolute;left:clamp(16px,3vw,32px);top:50%;transform:translateY(-50%);max-width:400px;padding:clamp(20px,2.6vw,30px);border-radius:22px;color:#fff;background:linear-gradient(135deg,rgba(232,90,36,.86),rgba(245,184,65,.62) 45%,rgba(12,118,105,.86));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 24px 60px rgba(0,0,0,.35);transition:opacity .4s,transform .4s}
+.reel-overlay small{font-size:11px;font-weight:800;letter-spacing:.16em;opacity:.9}
+.reel-overlay h3{font-size:clamp(26px,3.2vw,40px);margin:10px 0 0;color:#fff}
+.reel-overlay h3 span{display:block;font-family:var(--serif);font-style:italic;font-weight:500}
+.reel-overlay p{font-size:14.5px;margin-top:12px;opacity:.92}
+.reel-overlay .tags{margin:14px 0 0}
+.reel-overlay .tag{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:#fff}
+.reel-big-play{position:absolute;right:clamp(20px,6vw,80px);top:50%;width:84px;height:84px;margin-top:-42px;border-radius:50%;border:0;background:#fff;color:#111417;display:grid;place-items:center;cursor:pointer;animation:pulseRing 2s ease-out infinite;transition:transform .25s}
+.reel-big-play:hover{transform:scale(1.08)}
+.reel-big-play svg{width:30px;height:30px;margin-left:4px}
+.reel-wrap.sound-on .reel-overlay{opacity:0;transform:translateY(-50%) translateX(-20px);pointer-events:none}
+.motion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+.mcard{position:relative;overflow:hidden;border-radius:22px;padding:24px;min-height:270px}
+.mcard small{position:relative;font-size:11px;letter-spacing:.14em;font-weight:800}
+.mcard p{position:relative;font-size:14px;margin-top:16px}
+.mcard-1{background:#131A1E;border:1px solid rgba(255,255,255,.08);color:#fff}
+.mcard-1 .orb{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#0C7669,transparent 70%);top:-60px;right:-40px;animation:orbFloat 6s ease-in-out infinite alternate}
+.mcard-1 small{opacity:.6}
+.kinetic{position:relative;margin-top:22px;line-height:.95;font:800 clamp(32px,3.4vw,40px)/.98 var(--display)}
+.kinetic div{opacity:0;animation:kineticIn 3.6s cubic-bezier(.16,1,.3,1) infinite}
+.kinetic div:nth-child(2){color:#2ED3B7;animation-delay:.7s}
+.kinetic div:nth-child(3){color:#F5B841;animation-delay:1.4s}
+.mcard-1 p{opacity:.72}
+.mcard-2{background:#F3F0E9;color:#111417}
+.mcard-2 small,.mcard-2 p{color:#5F6672}
+.shapes{position:relative;height:120px;margin-top:16px}
+.shapes .sq{position:absolute;left:8px;top:18px;width:64px;height:64px;border-radius:16px;background:#0C7669;animation:shapeMorph 5s ease-in-out infinite}
+.shapes .ci{position:absolute;left:96px;top:8px;width:52px;height:52px;border-radius:50%;background:#F5B841;animation:floatY 4s ease-in-out infinite}
+.shapes .tr{position:absolute;right:18px;top:28px;width:0;height:0;border-left:28px solid transparent;border-right:28px solid transparent;border-bottom:48px solid #E85A24;animation:floatY 5.5s ease-in-out infinite}
+.shapes .bar{position:absolute;left:8px;right:8px;bottom:6px;height:2px;background:#E2DBCD}
+.shapes .bar i{display:block;height:100%;width:40%;background:#0C7669;border-radius:999px;animation:slideBar 2.8s cubic-bezier(.16,1,.3,1) infinite alternate}
+.mcard-3{background:linear-gradient(135deg,#0C7669,#06463F);color:#fff}
+.mcard-3 small{opacity:.75}
+.lower-third{position:relative;margin-top:18px;background:rgba(255,255,255,.96);color:#111;border-radius:14px;padding:14px 16px;animation:lowerThird 4.5s cubic-bezier(.16,1,.3,1) infinite}
+.lower-third b{font:800 17px/1 var(--display)}
+.lower-third span{display:block;font-size:12.5px;color:#666;margin-top:3px}
+.lower-third .fill{height:3px;background:#E9E2D6;border-radius:999px;margin-top:10px;overflow:hidden}
+.lower-third .fill i{display:block;height:100%;background:#0C7669;animation:fillBar 4.5s linear infinite}
+.mini-stats{position:relative;display:flex;gap:22px;margin-top:20px}
+.mini-stats b{display:block;font:800 30px/1 var(--display)}
+.mini-stats span{font-size:11px;letter-spacing:.1em;text-transform:uppercase;opacity:.75;font-weight:700}
+
+/* Reel modal */
+.modal{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:20px;background:rgba(5,8,10,.86);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .3s}
+.modal[hidden]{display:none}
+.modal.open{opacity:1}
+.modal-shell{position:relative;width:min(1100px,100%);transform:scale(.94);transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.modal.open .modal-shell{transform:none}
+.modal video{width:100%;border-radius:18px;background:#000;aspect-ratio:16/9}
+.modal-close{position:absolute;top:-52px;right:0;width:42px;height:42px;border-radius:50%;border:0;background:#fff;color:#111;font-size:24px;line-height:1;cursor:pointer}
+.no-scroll{overflow:hidden}
+
+/* Waveform divider */
+.wave{display:flex;justify-content:center;align-items:center;gap:4px;height:64px;background:var(--bg)}
+.wave i{display:block;width:4px;height:34px;border-radius:4px;background:linear-gradient(var(--teal),var(--amber));transform-origin:center;animation:eq 1.2s ease-in-out infinite;animation-delay:calc(var(--i) * -90ms)}
+
+/* Work coverflow */
+.work-rail{display:flex;gap:24px;overflow-x:auto;scroll-snap-type:x mandatory;padding:30px max(20px,calc((100vw - 1180px)/2)) 40px;scrollbar-width:none;cursor:grab;-webkit-overflow-scrolling:touch}
+.work-rail::-webkit-scrollbar{display:none}
+.work-rail.dragging{cursor:grabbing;scroll-snap-type:none}
+.work-rail.dragging *{pointer-events:none}
+.work-rail .work-card{flex:0 0 min(400px,80vw);scroll-snap-align:center;transform:scale(var(--s,1));opacity:var(--o,1);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .35s,box-shadow .3s;will-change:transform}
+.work-rail .work-card:hover{transform:scale(var(--s,1)) translateY(-4px)}
+.work-nav{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:-8px}
+.work-nav .count{font:700 15px var(--display);color:var(--muted)}
+.work-nav .count b{color:var(--ink);font-size:20px}
+.work-arrows{display:flex;gap:10px}
+.arrow{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:all .2s}
+.arrow:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.arrow svg{width:20px;height:20px}
+.work-progress{flex:1;max-width:320px;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.work-progress i{display:block;height:100%;width:100%;background:var(--teal);transform-origin:0 50%;transform:scaleX(0);transition:transform .2s}
+
+/* Process 3D ring */
+.ring-stage{position:relative;height:clamp(380px,46vw,520px);margin-top:56px;perspective:1600px;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;border-radius:var(--radius-lg);background:radial-gradient(ellipse at 50% 40%,#12302B,#0B0F12 70%)}
+.ring-stage.dragging{cursor:grabbing}
+.ring-track{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.ring-item{position:absolute;width:clamp(150px,16vw,210px);aspect-ratio:1/2;left:0;top:0;transform-style:preserve-3d;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.ring-item img{width:100%;height:100%;object-fit:cover;border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.5);pointer-events:none;-webkit-user-drag:none}
+.ring-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.1);color:#fff;font-size:13px;font-weight:600;letter-spacing:.06em;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+
+/* Featured package animated border */
+.package.featured{border:0;isolation:isolate}
+.package.featured::before{content:"";position:absolute;inset:-2px;border-radius:calc(var(--radius-lg) + 2px);background:conic-gradient(from var(--angle),#2ED3B7,#F5B841,#E85A24,#2ED3B7);z-index:-2;animation:borderSpin 5s linear infinite}
+.package.featured::after{content:"";position:absolute;inset:0;border-radius:var(--radius-lg);background:var(--ink);z-index:-1}
+
+/* Skills pop */
+.js .skills span{opacity:0;transform:translateY(10px) scale(.94);transition:opacity .5s,transform .5s cubic-bezier(.34,1.56,.64,1);transition-delay:calc(var(--i) * 60ms)}
+.js .skills.in span{opacity:1;transform:none}
+.skills span:hover{border-color:var(--teal);color:var(--teal)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important}
+  .js .split .w > span,.js .skills span{transform:none !important;opacity:1 !important;transition:none !important}
+  .kinetic div,.lower-third{opacity:1}
+  .cursor-dot,.cursor-ring{display:none}
+}
+
 /* Responsive */
 @media (max-width:1080px){
   .nav-links{display:none}
@@ -312,6 +484,9 @@ textarea{resize:vertical;min-height:96px}
   .float-card{right:-8px}
   .float-card.left{left:-8px}
   .about-photo .float-card{right:12px}
+  .motion-grid{grid-template-columns:1fr}
+  .reel-overlay{max-width:340px}
+  .reel-big-play{width:64px;height:64px;margin-top:-32px}
 }
 @media (max-width:640px){
   .container{width:calc(100% - 32px)}
@@ -330,7 +505,16 @@ textarea{resize:vertical;min-height:96px}
   .float-card{padding:10px 14px}
   .float-card b{font-size:15px}
   .float-card.left{display:none}
-  .reel-wrap{aspect-ratio:4/3}
+  .reel-wrap{aspect-ratio:auto;display:flex;flex-direction:column;background:var(--dark2)}
+  .reel-wrap video{aspect-ratio:16/9;height:auto}
+  .reel-overlay{position:relative;left:auto;top:auto;transform:none;max-width:none;border-radius:0 0 22px 22px}
+  .reel-wrap.sound-on .reel-overlay{opacity:1;transform:none;pointer-events:auto}
+  .reel-big-play{top:28%;right:50%;margin-right:-32px}
+  .reel-controls{top:12px;bottom:auto;left:12px}
+  .reel-btn{height:36px;padding:0 12px;font-size:13px}
+  .hs-square,.hs-tri,.hs-spark{display:none}
+  .ring-item{width:130px}
+  .work-nav .work-progress{display:none}
   .footer-bottom{flex-direction:column;align-items:center;text-align:center}
   .mobile-cta{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:40;gap:8px;transform:translateY(140%);transition:transform .3s ease}
   .mobile-cta.show{transform:none}
@@ -340,6 +524,9 @@ textarea{resize:vertical;min-height:96px}
 </style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 <a href="#main" class="btn btn-primary btn-sm" style="position:absolute;left:-9999px;top:8px;z-index:100" onfocus="this.style.left='8px'" onblur="this.style.left='-9999px'">Skip to content</a>
 
 <header class="site-header" id="top">
@@ -381,22 +568,27 @@ textarea{resize:vertical;min-height:96px}
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-shapes" aria-hidden="true">
+      <span class="hs-square"></span><span class="hs-circle"></span><span class="hs-tri"></span><span class="hs-ring"></span><span class="hs-spark">✦</span>
+    </div>
     <div class="container hero-grid">
       <div>
         <span class="pill"><i class="dot" aria-hidden="true"></i> Available for new projects</span>
-        <h1>AI video that grows channels, <em>not just views.</em></h1>
+        <h1 id="heroType" aria-label="AI video that grows channels, not just views."><span class="typed" id="heroTypeText" aria-hidden="true">AI video that grows channels, <span class="t-serif">not just views.</span></span><span class="caret" aria-hidden="true"></span></h1>
+        <button class="voice-btn" id="voiceBtn" type="button"><span class="eqs" aria-hidden="true"><i></i><i></i><i></i></span><span id="voiceLabel">Play headline audio</span></button>
+        <audio id="heroVoice" src="assets/ai-video.mp3" preload="none"></audio>
         <p class="hero-lead">I'm <strong>Mazahar</strong> — an AI Video Production &amp; Content Strategy Consultant. I help creators and brands grow <span class="hl">YouTube channels</span> and <span class="hl">Facebook Pages</span> with strategic content, professional editing, SEO and <span class="hl">US audience targeting</span>.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#brief">Get a Free Quote →</a>
           <a class="btn btn-ghost" href="#services">See My Services</a>
         </div>
         <div class="hero-stats">
-          <div class="stat"><b>12+ yrs</b><span>Freelance experience</span></div>
-          <div class="stat"><b>6</b><span>Core services</span></div>
+          <div class="stat"><b><span class="n" data-count="12">12</span>+ yrs</b><span>Freelance experience</span></div>
+          <div class="stat"><b data-count="6">6</b><span>Core services</span></div>
           <div class="stat"><b>US</b><span>Audience focus</span></div>
         </div>
       </div>
-      <div class="hero-visual">
+      <div class="hero-visual" id="heroVisual">
         <div class="photo">
           <img src="assets/hero-mazahar.webp" alt="Portrait of Mazahar outdoors" width="800" height="1200" fetchpriority="high">
           <span class="photo-tag">▶ MOTION • AI • STRATEGY</span>
@@ -431,6 +623,12 @@ textarea{resize:vertical;min-height:96px}
     </div>
   </div>
 
+
+  <!-- TICKER -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track"><span><em>Don’t just publish.</em> Create to grow.<b>✦</b></span><span>AI Video Production<b>✦</b></span><span>Motion Graphics<b>✦</b></span><span>Video Editing<b>✦</b></span><span>YouTube SEO<b>✦</b></span><span>Facebook Page Growth<b>✦</b></span><span>Content Strategy<b>✦</b></span><span>AI Automation<b>✦</b></span><span><em>Don’t just publish.</em> Create to grow.<b>✦</b></span><span>AI Video Production<b>✦</b></span><span>Motion Graphics<b>✦</b></span><span>Video Editing<b>✦</b></span><span>YouTube SEO<b>✦</b></span><span>Facebook Page Growth<b>✦</b></span><span>Content Strategy<b>✦</b></span><span>AI Automation<b>✦</b></span></div>
+  </div>
+
   <!-- SERVICES -->
   <section class="section" id="services">
     <div class="container">
@@ -439,42 +637,42 @@ textarea{resize:vertical;min-height:96px}
         <p>Six services, one production system. Pick one, or combine them — strategy, editing and distribution work best together.</p>
       </div>
       <div class="services-grid">
-        <article class="service reveal">
+        <article class="service spot reveal">
           <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="14" height="14" rx="3"/><path d="M16 10l6-3v10l-6-3"/></svg></div>
           <small>01 — PRODUCTION</small>
           <h3>AI Video Production</h3>
           <p>Cinematic and motion-graphics videos made with AI workflows — faster turnaround without losing the premium feel.</p>
           <ul class="checks"><li>AI-assisted concepts &amp; scripts</li><li>Motion graphics &amp; kinetic type</li><li>Shorts, Reels &amp; long-form</li></ul>
         </article>
-        <article class="service reveal">
+        <article class="service spot reveal">
           <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.1 15.9M14.5 14.5L20 20M8.1 8.1L12 12"/></svg></div>
           <small>02 — EDITING</small>
           <h3>Video Editing</h3>
           <p>Clean, professional edits with smooth transitions, sound design, captions and pacing built for retention.</p>
           <ul class="checks"><li>Retention-first pacing</li><li>Captions, SFX &amp; music</li><li>Thumbnails &amp; end screens</li></ul>
         </article>
-        <article class="service reveal">
+        <article class="service spot reveal">
           <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
           <small>03 — GROWTH</small>
           <h3>YouTube SEO &amp; Growth</h3>
           <p>Titles, descriptions, tags and packaging engineered to rank, get clicked, and reach US viewers.</p>
           <ul class="checks"><li>Keyword &amp; competitor research</li><li>Title + thumbnail strategy</li><li>Channel optimization</li></ul>
         </article>
-        <article class="service reveal">
+        <article class="service spot reveal">
           <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
           <small>04 — SOCIAL</small>
           <h3>Facebook Page Growth</h3>
           <p>Build and grow a Facebook Page that converts — content pillars, posting rhythm and audience targeting.</p>
           <ul class="checks"><li>Page setup &amp; branding</li><li>Content pillars &amp; calendar</li><li>US audience targeting</li></ul>
         </article>
-        <article class="service reveal">
+        <article class="service spot reveal">
           <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 15h2M14 15h2"/></svg></div>
           <small>05 — STRATEGY</small>
           <h3>Content Strategy</h3>
           <p>A clear 30–90 day plan: what to post, why, and how it leads to subscribers, leads or sales.</p>
           <ul class="checks"><li>Niche &amp; positioning</li><li>30–90 day roadmap</li><li>Monetization planning</li></ul>
         </article>
-        <article class="service reveal">
+        <article class="service spot reveal">
           <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
           <small>06 — AUTOMATION</small>
           <h3>AI Tools &amp; Automation</h3>
@@ -494,6 +692,13 @@ textarea{resize:vertical;min-height:96px}
       </div>
       <div class="reel-wrap reveal">
         <video id="reel" src="assets/mazahar-showreel-26s.mp4" poster="assets/mazahar-showreel-poster.jpg" muted loop playsinline preload="metadata" aria-label="Mazahar showreel, 26 seconds"></video>
+        <div class="reel-overlay">
+          <small>MAZAHAR • SHOWREEL</small>
+          <h3>Ideas into motion.<span>Stories into growth.</span></h3>
+          <p>AI-powered video production, cinematic editing and motion graphics.</p>
+          <div class="tags"><span class="tag">AI Video</span><span class="tag">Motion Design</span><span class="tag">YouTube Growth</span></div>
+        </div>
+        <button class="reel-big-play" id="reelOpen" type="button" aria-label="Watch the showreel with sound"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
         <div class="reel-controls">
           <button class="reel-btn" id="reelPlay" type="button" aria-label="Pause showreel">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Play</span>
@@ -503,46 +708,76 @@ textarea{resize:vertical;min-height:96px}
           </button>
         </div>
       </div>
-      <div class="reel-points">
-        <div class="reel-point reveal"><small>01 — KINETIC TYPE</small><h3>Hooks that hit</h3><p>Bold words slide and pop in rhythm — perfect for hooks, intros and Shorts.</p></div>
-        <div class="reel-point reveal"><small>02 — TRANSITIONS</small><h3>Smooth, premium flow</h3><p>Ease-in-out, fades and slides — no hard cuts. A polished feel in every transition.</p></div>
-        <div class="reel-point reveal"><small>03 — LOWER THIRDS &amp; DATA</small><h3>Clear on-screen info</h3><p>Branded titles, lower thirds and animated numbers that make your message easy to follow.</p></div>
+      <div class="motion-grid">
+        <div class="mcard mcard-1 reveal">
+          <div class="orb" aria-hidden="true"></div>
+          <small>01 — KINETIC TYPE</small>
+          <div class="kinetic" aria-label="Build. Grow. Monetize."><div>BUILD.</div><div>GROW.</div><div>MONETIZE.</div></div>
+          <p>Bold words slide &amp; pop in rhythm — perfect for hooks, intros &amp; Shorts.</p>
+        </div>
+        <div class="mcard mcard-2 reveal">
+          <small>02 — SHAPES &amp; TRANSITIONS</small>
+          <div class="shapes" aria-hidden="true"><span class="sq"></span><span class="ci"></span><span class="tr"></span><span class="bar"><i></i></span></div>
+          <p>Smooth ease-in-out, fades &amp; slides — no hard cuts. A premium feel in every transition.</p>
+        </div>
+        <div class="mcard mcard-3 reveal">
+          <small>03 — LOWER THIRDS &amp; DATA</small>
+          <div class="lower-third"><b>MAZAHAR</b><span>AI Video Production &amp; Content Strategy</span><div class="fill"><i></i></div></div>
+          <div class="mini-stats"><div><b><span class="n" data-count="12">12</span>+</b><span>Years</span></div><div><b data-count="8">8</b><span>Skills</span></div><div><b data-count="3">3</b><span>Platforms</span></div></div>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="modal" id="reelModal" hidden role="dialog" aria-modal="true" aria-label="Showreel with sound">
+    <div class="modal-shell">
+      <button class="modal-close" type="button" data-close aria-label="Close showreel">×</button>
+      <video id="reelFull" src="assets/mazahar-showreel-26s.mp4" poster="assets/mazahar-showreel-poster.jpg" controls playsinline preload="none"></video>
+    </div>
+  </div>
+
+  <div class="wave" aria-hidden="true" id="wave"></div>
 
   <!-- WORK -->
   <section class="section" id="work">
     <div class="container">
       <div class="section-head reveal">
         <div><span class="eyebrow">Work &amp; project types</span><h2>What I can make <em class="accent">for you</em></h2></div>
-        <p>Six production directions for creators and brands. Each one is shaped around your niche, audience and goals.</p>
+        <p>Six production directions for creators and brands. Swipe or drag through them — each one is shaped around your niche, audience and goals.</p>
       </div>
-      <div class="work-grid">
-        <article class="work-card reveal">
+    </div>
+    <div class="work-rail" id="workRail" tabindex="0" aria-label="Project types — swipe or use arrow keys">
+        <article class="work-card">
           <div class="work-media"><img src="assets/work-longform.webp" alt="Video editing workspace with a timeline on screen" loading="lazy" width="900" height="600"></div>
           <div class="work-body"><div class="tags"><span class="tag">YouTube</span><span class="tag">Long-form</span></div><h3>Creator Long-Form Videos</h3><p>Retention-first edits with chapters, captions and purposeful pacing.</p><p class="scope"><b>Includes:</b> story edit, motion titles, audio polish, captions, platform-ready delivery.</p></div>
         </article>
-        <article class="work-card reveal">
+        <article class="work-card">
           <div class="work-media"><img src="assets/work-facebook.webp" alt="Camera and studio lighting setup" loading="lazy" width="900" height="600"></div>
           <div class="work-body"><div class="tags"><span class="tag">Facebook</span><span class="tag">Page growth</span></div><h3>Facebook Page Build-Out</h3><p>Brand system, content pillars and a repeatable publishing rhythm.</p><p class="scope"><b>Includes:</b> page direction, visual language, recurring formats, content calendar.</p></div>
         </article>
-        <article class="work-card reveal">
+        <article class="work-card">
           <div class="work-media"><img src="assets/work-shorts.webp" alt="Abstract teal and amber motion light streaks" loading="lazy" width="700" height="1400"></div>
           <div class="work-body"><div class="tags"><span class="tag">Shorts / Reels</span><span class="tag">Daily</span></div><h3>Shorts &amp; Reels System</h3><p>Hook-led vertical cuts with text, captions and sound design.</p><p class="scope"><b>Includes:</b> repeatable hook template, kinetic captions, pattern interrupts, exports.</p></div>
         </article>
-        <article class="work-card reveal">
+        <article class="work-card">
           <div class="work-media"><img src="assets/work-faceless.webp" alt="Color grading and editing suite" loading="lazy" width="700" height="1400"></div>
           <div class="work-body"><div class="tags"><span class="tag">YouTube</span><span class="tag">Faceless</span></div><h3>Faceless AI Channels</h3><p>AI-assisted visuals, narration and motion-led storytelling.</p><p class="scope"><b>Includes:</b> format design, scene plan, asset workflow, edit, channel packaging.</p></div>
         </article>
-        <article class="work-card reveal">
+        <article class="work-card">
           <div class="work-media"><img src="assets/hero-mazahar.webp" alt="Mazahar outdoors" loading="lazy" width="800" height="1200" style="object-position:50% 30%"></div>
           <div class="work-body"><div class="tags"><span class="tag">Personal brand</span><span class="tag">Clips</span></div><h3>Personal Brand Clips</h3><p>Confident, clean edits that turn your expertise into clear moments.</p><p class="scope"><b>Includes:</b> selects, branded framing, punch-in rhythm, captions, clip series.</p></div>
         </article>
-        <article class="work-card reveal">
+        <article class="work-card">
           <div class="work-media"><img src="assets/work-business.webp" alt="Camera and lenses on a production desk" loading="lazy" width="700" height="1400"></div>
           <div class="work-body"><div class="tags"><span class="tag">Business</span><span class="tag">Lead content</span></div><h3>Coach &amp; Business Videos</h3><p>Talking-head and promo edits built for trust and clarity.</p><p class="scope"><b>Includes:</b> message shaping, clean pacing, branded motion, call-to-action.</p></div>
         </article>
+    </div>
+    <div class="container work-nav">
+      <span class="count"><b id="workIndex">01</b> / 06</span>
+      <div class="work-progress" aria-hidden="true"><i id="workBar"></i></div>
+      <div class="work-arrows">
+        <button class="arrow" id="workPrev" type="button" aria-label="Previous project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="arrow" id="workNext" type="button" aria-label="Next project"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
     </div>
   </section>
@@ -555,10 +790,14 @@ textarea{resize:vertical;min-height:96px}
         <p>Strategy first, then production. You always know what's happening and why.</p>
       </div>
       <div class="process-grid">
-        <div class="step reveal"><span class="step-num">01</span><h3>Discover</h3><p>We clarify your niche, audience (especially US), goals, and what success looks like in 90 days.</p></div>
-        <div class="step reveal"><span class="step-num">02</span><h3>Strategy</h3><p>Content pillars, hooks, titles and a posting roadmap — before we edit a single frame.</p></div>
-        <div class="step reveal"><span class="step-num">03</span><h3>Produce</h3><p>AI + professional editing: motion graphics, captions, SFX and thumbnails, with smooth revisions.</p></div>
-        <div class="step reveal"><span class="step-num">04</span><h3>Grow &amp; Optimize</h3><p>Publish with SEO, track retention and CTR, and double down on what works. Monetization next.</p></div>
+        <div class="step spot reveal"><span class="step-num">01</span><h3>Discover</h3><p>We clarify your niche, audience (especially US), goals, and what success looks like in 90 days.</p></div>
+        <div class="step spot reveal"><span class="step-num">02</span><h3>Strategy</h3><p>Content pillars, hooks, titles and a posting roadmap — before we edit a single frame.</p></div>
+        <div class="step spot reveal"><span class="step-num">03</span><h3>Produce</h3><p>AI + professional editing: motion graphics, captions, SFX and thumbnails, with smooth revisions.</p></div>
+        <div class="step spot reveal"><span class="step-num">04</span><h3>Grow &amp; Optimize</h3><p>Publish with SEO, track retention and CTR, and double down on what works. Monetization next.</p></div>
+      </div>
+      <div class="ring-stage reveal" id="ringStage" aria-label="Behind the scenes gallery — drag to spin">
+        <div class="ring-track" id="ringTrack"><div class="ring-item"><img src="assets/ring-camera-stage.webp" alt="Camera and lenses on a dark production desk" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-color-grade.webp" alt="Color grading suite in teal and amber" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-edit-suite.webp" alt="Video editing timeline on a large display" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-motion-energy.webp" alt="Abstract teal and amber motion light streaks" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-production-kit.webp" alt="Camera gear and shot list ready for production" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-sound-design.webp" alt="Sound design session with mixer and headphones" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-storyboard.webp" alt="Storyboard sketches planning video scenes" loading="lazy" width="520" height="1040" draggable="false"></div><div class="ring-item"><img src="assets/ring-studio.webp" alt="Professional video editing workspace" loading="lazy" width="520" height="1040" draggable="false"></div></div>
+        <span class="ring-hint" aria-hidden="true">← Drag to spin →</span>
       </div>
     </div>
   </section>
@@ -610,7 +849,7 @@ textarea{resize:vertical;min-height:96px}
         <h2>12+ years freelancing. <em class="accent">Now all-in on video.</em></h2>
         <p>I'm a Video Editor, AI Expert, Content Creator and Digital Content Consultant. For more than 12 years I've worked on Fiverr, Upwork and with many direct clients. Today I focus entirely on video content — combining AI tools, sharp editing and proven growth strategy.</p>
         <p>My specialty is helping creators reach US audiences: the hooks, titles, pacing and SEO that US viewers actually click and watch — and the monetization path behind it.</p>
-        <div class="skills">
+        <div class="skills" id="skills">
           <span>AI Video Production</span><span>Video Editing</span><span>AI Content Creation</span><span>YouTube SEO</span><span>Content Strategy</span><span>Social Media Growth</span><span>AI Tools &amp; Automation</span><span>Digital Consulting</span>
         </div>
         <div class="about-actions">
@@ -883,6 +1122,350 @@ textarea{resize:vertical;min-height:96px}
     copyText(buildBrief()).then(function(){
       status.textContent = 'Brief copied — paste it in Messenger after the page opens.';
     }, function(){});
+  });
+})();
+</script>
+<script>
+// ===== Motion layer — every block is independent, so one failing never stops the rest =====
+(function(){
+  var $ = function(s, r){ return (r || document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  function safe(fn){ try { fn(); } catch (err) { if (window.console) console.warn('motion:', err); } }
+  function onView(el, cb, opts){
+    if (!('IntersectionObserver' in window)) { cb(el); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting) { cb(e.target); io.unobserve(e.target); } });
+    }, opts || { rootMargin: '0px 0px -10% 0px' });
+    io.observe(el);
+  }
+
+  // Hero headline: typewriter synced to the recorded voice (word cue points from the recording)
+  safe(function(){
+    var h1 = $('#heroType'), out = $('#heroTypeText'), btn = $('#voiceBtn'), label = $('#voiceLabel'), voice = $('#heroVoice');
+    var finalHTML = out.innerHTML;
+    // Reserve the finished headline's height so the content below never jumps while typing.
+    function reserve(){ var cur = out.innerHTML; out.innerHTML = finalHTML; h1.style.minHeight = ''; h1.style.minHeight = h1.offsetHeight + 'px'; out.innerHTML = cur; }
+    reserve();
+    window.addEventListener('resize', reserve);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(reserve);
+    var cues = [
+      { text: 'AI', start: .16, end: .53 }, { text: ' video', start: .55, end: .90 },
+      { text: ' that', start: .90, end: 1.08 }, { text: ' grows', start: 1.10, end: 1.39 },
+      { text: ' channels,', start: 1.39, end: 2.12 }, { text: ' not', start: 2.50, end: 2.76 },
+      { text: ' just', start: 2.77, end: 3.05 }, { text: ' views.', start: 3.08, end: 3.60 }
+    ];
+    var speechEnd = 3.66, runId = 0, frame = 0, loopTimer = 0, audioCtx = null, withSound = false, shown = 0;
+    function textAt(t){
+      var v = '';
+      cues.forEach(function(c){
+        if (t < c.start) return;
+        if (t >= c.end) { v += c.text; return; }
+        var p = (t - c.start) / (c.end - c.start);
+        v += c.text.slice(0, Math.min(c.text.length, Math.floor(p * c.text.length) + 1));
+      });
+      return v;
+    }
+    function click(ch){
+      if (!withSound || !audioCtx || audioCtx.state !== 'running' || /\s/.test(ch)) return;
+      var now = audioCtx.currentTime, o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type = 'triangle'; o.frequency.setValueAtTime(/[,.]/.test(ch) ? 520 : 720 + Math.random() * 90, now);
+      g.gain.setValueAtTime(.0001, now); g.gain.exponentialRampToValueAtTime(.016, now + .003); g.gain.exponentialRampToValueAtTime(.0001, now + .026);
+      o.connect(g); g.connect(audioCtx.destination); o.start(now); o.stop(now + .03);
+    }
+    function render(text){
+      // Keep the italic serif accent while typing: everything after "channels," is styled.
+      var split = 'AI video that grows channels,'.length;
+      var a = text.slice(0, split), b = text.slice(split);
+      out.textContent = a;
+      if (b) { var s = document.createElement('span'); s.className = 't-serif'; s.textContent = b.replace(/^ /, ''); out.appendChild(document.createTextNode(' ')); out.appendChild(s); }
+    }
+    function finish(id){
+      if (id !== runId) return;
+      out.innerHTML = finalHTML; h1.classList.add('done');
+      btn.classList.remove('playing');
+      label.textContent = withSound ? 'Replay headline audio' : 'Play headline audio';
+      if (!reduced && !withSound) loopTimer = setTimeout(function(){ play(false); }, 7000);
+    }
+    function play(sound){
+      cancelAnimationFrame(frame); clearTimeout(loopTimer);
+      runId++; var id = runId, start = performance.now(); withSound = sound; shown = 0;
+      h1.classList.remove('done'); out.textContent = '';
+      btn.classList.toggle('playing', sound);
+      if (sound) {
+        label.textContent = 'Playing…';
+        voice.currentTime = 0;
+        var p = voice.play();
+        if (p && p.catch) p.catch(function(){ withSound = false; btn.classList.remove('playing'); label.textContent = 'Tap to play headline audio'; });
+      }
+      (function sync(){
+        if (id !== runId) return;
+        var t = withSound && !voice.paused ? voice.currentTime : (performance.now() - start) / 1000;
+        var v = textAt(t);
+        if (v.length > shown) { for (var i = shown; i < v.length; i++) click(v.charAt(i)); shown = v.length; render(v); }
+        if (t >= speechEnd) { finish(id); return; }
+        frame = requestAnimationFrame(sync);
+      })();
+    }
+    btn.addEventListener('click', function(){
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) { audioCtx = audioCtx || new AC(); if (audioCtx.state === 'suspended') audioCtx.resume(); }
+      play(true);
+    });
+    if (reduced) { h1.classList.add('done'); return; }
+    play(false);
+  });
+
+  // Scroll progress bar
+  safe(function(){
+    var bar = $('#scrollProgress'), ticking = false;
+    function paint(){
+      var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+      bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
+    paint();
+  });
+
+  // Custom cursor + magnetic buttons (desktop mouse only)
+  safe(function(){
+    if (!finePointer || reduced) return;
+    var dot = $('#cursorDot'), ring = $('#cursorRing'), mx = -100, my = -100, rx = -100, ry = -100;
+    document.documentElement.classList.add('has-cursor');
+    window.addEventListener('mousemove', function(e){ mx = e.clientX; my = e.clientY; dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)'; }, { passive: true });
+    document.addEventListener('mouseleave', function(){ document.documentElement.classList.remove('has-cursor'); });
+    document.addEventListener('mouseenter', function(){ document.documentElement.classList.add('has-cursor'); });
+    (function loop(){
+      rx += (mx - rx) * .18; ry += (my - ry) * .18;
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    })();
+    document.addEventListener('mouseover', function(e){ ring.classList.toggle('hover', !!e.target.closest('a,button,summary,label,.work-card,.ring-stage')); });
+    $$('.btn').forEach(function(b){
+      b.addEventListener('mousemove', function(e){
+        var r = b.getBoundingClientRect();
+        b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * .18) + 'px,' + ((e.clientY - r.top - r.height / 2) * .28) + 'px)';
+      });
+      b.addEventListener('mouseleave', function(){ b.style.transform = ''; });
+    });
+  });
+
+  // Hero photo: 3D tilt toward the mouse + gentle scroll parallax
+  safe(function(){
+    if (reduced) return;
+    var v = $('#heroVisual'), tx = 0, ty = 0, sy = 0;
+    function paint(){ v.style.transform = 'perspective(1200px) rotateY(' + (tx * 6) + 'deg) rotateX(' + (-ty * 6) + 'deg) translateY(' + sy + 'px)'; }
+    if (finePointer) {
+      $('.hero').addEventListener('mousemove', function(e){
+        var r = v.getBoundingClientRect();
+        tx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / r.width));
+        ty = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / r.height));
+        paint();
+      });
+      $('.hero').addEventListener('mouseleave', function(){ tx = ty = 0; paint(); });
+    }
+    window.addEventListener('scroll', function(){ if (window.scrollY < 900) { sy = window.scrollY * -0.05; paint(); } }, { passive: true });
+  });
+
+  // Count-up numbers
+  safe(function(){
+    $$('[data-count]').forEach(function(el){
+      var target = +el.getAttribute('data-count');
+      if (reduced) return;
+      el.textContent = '0';
+      onView(el, function(){
+        var t0 = performance.now();
+        (function tick(now){
+          var p = Math.min((now - t0) / 1300, 1);
+          el.textContent = Math.round((1 - Math.pow(1 - p, 4)) * target);
+          if (p < 1) requestAnimationFrame(tick);
+        })(t0);
+      });
+    });
+  });
+
+  // Section headlines: words rise out of a mask
+  safe(function(){
+    if (reduced) return;
+    $$('.section-head h2, .about-text h2, .cta h2').forEach(function(h){
+      var i = 0;
+      (function walk(node){
+        Array.prototype.slice.call(node.childNodes).forEach(function(n){
+          if (n.nodeType === 3) {
+            var frag = document.createDocumentFragment();
+            n.textContent.split(/(\s+)/).forEach(function(part){
+              if (!part) return;
+              if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+              var w = document.createElement('span'), inner = document.createElement('span');
+              w.className = 'w'; inner.textContent = part; inner.style.setProperty('--i', i++);
+              w.appendChild(inner); frag.appendChild(w);
+            });
+            n.parentNode.replaceChild(frag, n);
+          } else if (n.nodeType === 1 && n.tagName !== 'BR') walk(n);
+        });
+      })(h);
+      h.classList.add('split');
+      onView(h, function(el){ el.classList.add('in'); });
+    });
+  });
+
+  // Cards: cursor spotlight + 3D tilt
+  safe(function(){
+    if (!finePointer || reduced) return;
+    $$('.spot').forEach(function(c){
+      c.addEventListener('mousemove', function(e){
+        var r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        c.style.setProperty('--mx', (x * 100) + '%'); c.style.setProperty('--my', (y * 100) + '%');
+        c.style.transform = 'perspective(900px) rotateY(' + ((x - .5) * 7) + 'deg) rotateX(' + ((.5 - y) * 7) + 'deg) translateY(-4px)';
+      });
+      c.addEventListener('mouseleave', function(){ c.style.transform = ''; });
+    });
+  });
+
+  // Service cards: description re-types itself on hover
+  safe(function(){
+    if (!finePointer || reduced) return;
+    $$('.service').forEach(function(card){
+      var p = $('p', card), full = p.textContent, timer = 0;
+      p.style.minHeight = p.offsetHeight + 'px';
+      window.addEventListener('resize', function(){ p.style.minHeight = ''; p.style.minHeight = p.offsetHeight + 'px'; });
+      card.addEventListener('mouseenter', function(){
+        clearInterval(timer); var n = 0; p.classList.add('typing');
+        timer = setInterval(function(){
+          n += 2; p.textContent = full.slice(0, n);
+          if (n >= full.length) { clearInterval(timer); p.textContent = full; p.classList.remove('typing'); }
+        }, 14);
+      });
+      card.addEventListener('mouseleave', function(){ clearInterval(timer); p.textContent = full; p.classList.remove('typing'); });
+    });
+  });
+
+  // Showreel: popup with sound, overlay hides when inline sound is on
+  safe(function(){
+    var reel = $('#reel'), modal = $('#reelModal'), full = $('#reelFull'), wrap = $('.reel-wrap'), last = null;
+    reel.addEventListener('volumechange', function(){ wrap.classList.toggle('sound-on', !reel.muted); });
+    function open(){
+      last = document.activeElement; reel.pause();
+      modal.hidden = false; document.body.classList.add('no-scroll');
+      requestAnimationFrame(function(){ modal.classList.add('open'); });
+      full.currentTime = 0; full.play().catch(function(){});
+      $('.modal-close', modal).focus();
+    }
+    function close(){
+      full.pause(); modal.classList.remove('open'); document.body.classList.remove('no-scroll');
+      setTimeout(function(){ modal.hidden = true; }, 300);
+      if (!reduced) reel.play().catch(function(){});
+      if (last) last.focus();
+    }
+    $('#reelOpen').addEventListener('click', open);
+    $$('[data-close]', modal).forEach(function(b){ b.addEventListener('click', close); });
+    modal.addEventListener('click', function(e){ if (e.target === modal) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !modal.hidden) close(); });
+  });
+
+  // Waveform divider bars
+  safe(function(){
+    var wave = $('#wave'), n = window.innerWidth < 640 ? 28 : 48, html = '';
+    for (var i = 0; i < n; i++) html += '<i style="--i:' + i + ';height:' + (14 + Math.round(Math.abs(Math.sin(i * .45)) * 30)) + 'px"></i>';
+    wave.innerHTML = html;
+  });
+
+  // Work coverflow: centered card grows, drag with mouse, arrows + keys
+  safe(function(){
+    var rail = $('#workRail'), cards = $$('.work-card', rail), idxEl = $('#workIndex'), bar = $('#workBar'), raf = 0;
+    function paint(){
+      raf = 0;
+      var center = rail.scrollLeft + rail.clientWidth / 2, best = 0, bestD = Infinity;
+      cards.forEach(function(c, i){
+        var mid = c.offsetLeft + c.offsetWidth / 2, d = Math.abs(center - mid) / rail.clientWidth;
+        if (d < bestD) { bestD = d; best = i; }
+        if (!reduced) { c.style.setProperty('--s', Math.max(.86, 1 - d * .28).toFixed(3)); c.style.setProperty('--o', Math.max(.55, 1 - d * .7).toFixed(3)); }
+      });
+      idxEl.textContent = ('0' + (best + 1)).slice(-2);
+      var max = rail.scrollWidth - rail.clientWidth;
+      bar.style.transform = 'scaleX(' + (max > 0 ? Math.max(.08, rail.scrollLeft / max) : 1) + ')';
+      rail.dataset.index = best;
+    }
+    rail.addEventListener('scroll', function(){ if (!raf) raf = requestAnimationFrame(paint); }, { passive: true });
+    window.addEventListener('resize', paint);
+    function go(i){
+      i = Math.max(0, Math.min(cards.length - 1, i));
+      var c = cards[i];
+      rail.scrollTo({ left: c.offsetLeft - (rail.clientWidth - c.offsetWidth) / 2, behavior: reduced ? 'auto' : 'smooth' });
+    }
+    $('#workPrev').addEventListener('click', function(){ go(+rail.dataset.index - 1); });
+    $('#workNext').addEventListener('click', function(){ go(+rail.dataset.index + 1); });
+    rail.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(+rail.dataset.index + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(+rail.dataset.index - 1); }
+    });
+    cards.forEach(function(c, i){ c.addEventListener('click', function(){ if (+rail.dataset.index !== i) go(i); }); });
+    // Mouse drag (touch already scrolls natively)
+    var down = false, moved = false, sx = 0, sl = 0;
+    rail.addEventListener('pointerdown', function(e){ if (e.pointerType !== 'mouse') return; down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; });
+    window.addEventListener('pointermove', function(e){
+      if (!down) return;
+      if (!moved && Math.abs(e.clientX - sx) > 5) { moved = true; rail.classList.add('dragging'); }
+      if (moved) rail.scrollLeft = sl - (e.clientX - sx);
+    });
+    window.addEventListener('pointerup', function(){
+      if (!down) return; down = false;
+      if (moved) { rail.classList.remove('dragging'); go(+rail.dataset.index); }
+    });
+    // Mouse wheel scrolls the rail sideways while hovering it
+    rail.addEventListener('wheel', function(e){
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      var max = rail.scrollWidth - rail.clientWidth;
+      if ((e.deltaY > 0 && rail.scrollLeft < max - 2) || (e.deltaY < 0 && rail.scrollLeft > 2)) { e.preventDefault(); rail.scrollLeft += e.deltaY; }
+    }, { passive: false });
+    requestAnimationFrame(function(){ go(0); paint(); });
+  });
+
+  // Process 3D ring: continuous spin + inertial drag
+  safe(function(){
+    var stage = $('#ringStage'), track = $('#ringTrack'), items = $$('.ring-item', track);
+    var n = items.length, angle = 0, vel = reduced ? 0 : .08, auto = reduced ? 0 : .08, dragging = false, lastX = 0, resumeT = 0, visible = false;
+    function layout(){
+      var w = items[0].offsetWidth, h = items[0].offsetHeight;
+      var radius = Math.round(w * 1.75);
+      items.forEach(function(it, i){
+        it.style.marginLeft = (-w / 2) + 'px'; it.style.marginTop = (-h / 2) + 'px';
+        it.style.transform = 'rotateY(' + (i * 360 / n) + 'deg) translateZ(' + radius + 'px)';
+      });
+      track.style.setProperty('--r', radius);
+      track.dataset.r = radius;
+    }
+    function paint(){ track.style.transform = 'translateZ(' + (-track.dataset.r) + 'px) rotateY(' + angle + 'deg)'; }
+    function tick(){
+      if (visible) {
+        if (!dragging) { vel += (auto - vel) * .03; angle += vel; }
+        paint();
+      }
+      requestAnimationFrame(tick);
+    }
+    stage.addEventListener('pointerdown', function(e){
+      dragging = true; lastX = e.clientX; stage.classList.add('dragging');
+      if (stage.setPointerCapture) stage.setPointerCapture(e.pointerId);
+    });
+    stage.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var dx = e.clientX - lastX; lastX = e.clientX;
+      vel = dx * .25; angle += vel;
+    });
+    function end(){ if (!dragging) return; dragging = false; stage.classList.remove('dragging'); }
+    stage.addEventListener('pointerup', end); stage.addEventListener('pointercancel', end);
+    if ('IntersectionObserver' in window) new IntersectionObserver(function(es){ visible = es[0].isIntersecting; }).observe(stage); else visible = true;
+    window.addEventListener('resize', function(){ layout(); paint(); });
+    layout(); paint(); requestAnimationFrame(tick);
+  });
+
+  // About skills pop in one by one
+  safe(function(){
+    var s = $('#skills');
+    $$('span', s).forEach(function(el, i){ el.style.setProperty('--i', i); });
+    onView(s, function(el){ el.classList.add('in'); });
   });
 })();
 </script>
